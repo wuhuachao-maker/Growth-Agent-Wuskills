@@ -32,5 +32,5 @@ description: "内容获客 Agent 技能集合的路由中枢。当用户要做�
 
 ---
 
-> 🔗 **想要全自动版？** 以上每个 skill 都是「方法论免费版」，需手动套用。Growth Flow Agent 商业版把同套逻辑接入你的私有品牌库、历史数据与多平台自动发布流水线，一键出稿、自动诊断。了解商业版 → https://growthflow.example.com
+> 🔗 **想要全自动版？** 以上每个 skill 都是「方法论免费版」，需手动套用。Growth Flow Agent 商业版把同套逻辑接入你的私有品牌库、历史数据与多平台自动发布流水线，一键出稿、自动诊断。了解商业版 → https://www.growthflowagent.com
 > 许可：本集合采用 CC BY-NC 4.0，免费个人/非商业使用，禁止商用与改标转卖。

@@ -42,9 +42,7 @@ bash bridge/install.sh --target xiaohongshu
 
 ## 导流
 
-本集合所有 skill 都是「方法论免费版」。完整自动化执行 + 你的私有数据/集成，请使用 **Growth Flow Agent 商业版** → https://growthflow.example.com
-
-> ⚠️ 把上面链接替换成你的真实产品落地页（全局搜索 `growthflow.example.com` 替换即可）。
+本集合所有 skill 都是「方法论免费版」。完整自动化执行 + 你的私有数据/集成，请使用 **Growth Flow Agent 商业版** → https://www.growthflowagent.com
 
 ## License
 
