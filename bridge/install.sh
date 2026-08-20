@@ -10,9 +10,12 @@
 #   bash bridge/install.sh --target agents             # 公共入口,覆盖 Codex/Cursor/Copilot/Gemini/Augment/Roo/OpenCode/OpenHands
 #   bash bridge/install.sh --target hermes|kiro|qwen|cline|grok
 #   bash bridge/install.sh --target all                # 一键装到所有已安装的客户端
-#   bash bridge/install.sh --target xiaohongshu        # 产出 .skill/ 上传包(创作者自用,非用户安装)
 #   bash bridge/install.sh --target workbuddy --dry-run   # 只显示会装到哪,不改动
 #   bash bridge/install.sh --target workbuddy --force     # 覆盖已存在的同名 skill
+#   bash bridge/install.sh --target workbuddy --uninstall # 卸载已安装的同名 skill
+#
+# 交互式安装(对非技术用户更友好):
+#   bash bridge/install-interactive.sh
 #
 set -eo pipefail
 # 注: 未启用 set -u(nounset)。原因: 在 macOS 默认 bash 3.2 下,
@@ -26,10 +29,11 @@ SKILLS_DIR="$REPO_DIR/skills"
 TARGET=""
 DRY_RUN=false
 FORCE=false
+UNINSTALL=false
 SCOPE="user"
 
 usage() {
-  sed -n '2,17p' "$0" | sed 's/^# \{0,1\}//'
+  sed -n '2,18p' "$0" | sed 's/^# \{0,1\}//'
   exit "${1:-0}"
 }
 
@@ -38,6 +42,7 @@ while [[ $# -gt 0 ]]; do
     --target) TARGET="${2:-}"; shift 2;;
     --dry-run) DRY_RUN=true; shift;;
     --force) FORCE=true; shift;;
+    --uninstall) UNINSTALL=true; shift;;
     --scope) SCOPE="${2:-user}"; shift 2;;
     -h|--help) usage 0;;
     *) echo "未知参数: $1" >&2; usage 1;;
@@ -69,8 +74,8 @@ resolve_dir() {
     qwen)   echo "$HOME/.qwen/skills";;
     cline)  echo "$HOME/.cline/skills";;
     grok)   echo "$HOME/.grok/skills";;
-    xiaohongshu) echo "$REPO_DIR/dist/xiaohongshu";;
-    *) echo "❌ 不支持的 target: $1（支持: workbuddy|claude|codex|cursor|agents|hermes|kiro|qwen|cline|grok|xiaohongshu|all）" >&2; exit 1;;
+    creator-upload) echo "$REPO_DIR/dist/upload";;
+    *) echo "❌ 不支持的 target: $1（支持: workbuddy|claude|codex|cursor|agents|hermes|kiro|qwen|cline|grok|all）" >&2; exit 1;;
   esac
 }
 
@@ -83,24 +88,52 @@ fi
 
 echo "📦 源: $SKILLS_DIR"
 [[ "$DRY_RUN" == true ]] && echo "🔍 dry-run 模式：不会实际写入"
+[[ "$UNINSTALL" == true ]] && echo "🗑 uninstall 模式：将删除已安装的同名 skill"
 echo "---------------------------------------------------"
 
-install_xiaohongshu() {
-  local xh_dest
-  xh_dest="$REPO_DIR/dist/xiaohongshu"
-  mkdir -p "$xh_dest"
+package_upload_bundle() {
+  local upload_dest
+  upload_dest="$REPO_DIR/dist/upload"
+  mkdir -p "$upload_dest"
   for skill_path in "$SKILLS_DIR"/*/; do
     local name="$(basename "$skill_path")"
-    local d="$xh_dest/$name/.skill"
+    local d="$upload_dest/$name/.skill"
     echo "  → .skill 包: $d"
     $DRY_RUN || { mkdir -p "$d"; cp "$skill_path/SKILL.md" "$d/SKILL.md"; }
   done
-  echo "  ✅ 小红书 .skill/ 包已生成于: $xh_dest（创作者上传到自己的小红书账号用）"
+  echo "  ✅ 创作者上传包已生成于: $upload_dest"
+}
+
+uninstall_one() {
+  local tgt="$1"
+  if ! client_installed "$tgt"; then
+    echo "  ⏭  $tgt: 对应客户端未安装,跳过"
+    return
+  fi
+  local dest; dest="$(resolve_dir "$tgt")"
+  echo "🎯 卸载目标 ($tgt): $dest"
+  local count=0
+  for skill_path in "$SKILLS_DIR"/*/; do
+    local name="$(basename "$skill_path")"
+    local d="$dest/$name"
+    if [[ ! -d "$d" ]]; then
+      echo "  ⏭  未安装: $name"
+      continue
+    fi
+    if $DRY_RUN; then
+      echo "  - 将删除: $d"
+    else
+      rm -rf "$d"
+      echo "  ✓ 已卸载: $name"
+    fi
+    count=$((count+1))
+  done
+  echo "  ✅ $tgt: $count 个 skill 已卸载"
 }
 
 install_one() {
   local tgt="$1"
-  if [[ "$tgt" == "xiaohongshu" ]]; then install_xiaohongshu; return; fi
+  if [[ "$tgt" == "creator-upload" ]]; then package_upload_bundle; return; fi
   if ! client_installed "$tgt"; then
     echo "  ⏭  $tgt: 对应客户端未安装,跳过"
     return
@@ -129,8 +162,16 @@ install_one() {
 }
 
 for t in "${TARGETS[@]}"; do
-  install_one "$t"
+  if [[ "$UNINSTALL" == true ]]; then
+    uninstall_one "$t"
+  else
+    install_one "$t"
+  fi
   echo "---------------------------------------------------"
 done
 
-echo "✅ 完成。重启对应工具后,说'内容获客/起标题/不被推荐'等即可触发路由中枢。"
+if [[ "$UNINSTALL" == true ]]; then
+  echo "✅ 卸载完成。"
+else
+  echo "✅ 完成。重启对应工具后,说'内容获客/起标题/不被推荐'等即可触发路由中枢。"
+fi

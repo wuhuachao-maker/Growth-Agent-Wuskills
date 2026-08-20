@@ -1,6 +1,6 @@
 # Growth Flow Agent · 内容获客技能集合（免费 · 多工具分发版）
 
-> 一套开源的「内容获客方法论」Agent 技能，覆盖**爆款标题、公众号流量诊断、B2B 硬广、内容诊断、IP 增长、Skill 工程**。
+> 一套开源的「内容获客方法论」Agent 技能，覆盖**爆款标题、公众号流量诊断、B2B 硬广、内容诊断、IP 增长、Skill 工程、内容选题、口播脚本、私域转化**。
 > 这是 **Growth Flow Agent（GFA）内容获客系统**的**免费引流前端**——只开源方法论，产品壁垒（私有数据 / 自动化流水线 / license 校验 / 专有知识库）留在商业版。
 
 ## 这是什么
@@ -11,26 +11,30 @@
 
 ## 一键安装（给使用者）
 
-普通人拿到这套 skill，只需要一键装到自己用的 Agent 工具里，**不需要也不会去装什么"小红书版本"**。
+### 方式 A：复制一条命令（推荐）
 
 ```bash
-# 装到 WorkBuddy（~/.workbuddy/skills/）
-bash bridge/install.sh --target workbuddy
+# 装到 WorkBuddy
+curl -sL https://raw.githubusercontent.com/wuhuachao-maker/Growth-Agent-Wuskills/main/bridge/install.sh | bash -s -- --target workbuddy
 
-# 装到 Claude Code（~/.claude/skills/，user 级；加 --scope project 装到项目级 .claude/skills/）
-bash bridge/install.sh --target claude
-
-# 装到 Codex / Cursor / Copilot / Gemini 等（统一公共入口 ~/.agents/skills/）
-bash bridge/install.sh --target agents
+# 装到 Claude Code
+curl -sL https://raw.githubusercontent.com/wuhuachao-maker/Growth-Agent-Wuskills/main/bridge/install.sh | bash -s -- --target claude
 
 # 一键装到所有已安装的客户端
-bash bridge/install.sh --target all
-
-# 先看会装到哪、不实际改动？
-bash bridge/install.sh --target all --dry-run
+curl -sL https://raw.githubusercontent.com/wuhuachao-maker/Growth-Agent-Wuskills/main/bridge/install.sh | bash -s -- --target all
 ```
 
-> Node 环境也可用同款脚本：`node bridge/install.mjs --target <name>`。
+### 方式 B：本地运行（开发者/想先看效果）
+
+```bash
+# 先看会装到哪，不实际改动
+bash bridge/install.sh --target all --dry-run
+
+# 正式安装
+bash bridge/install.sh --target all
+```
+
+> 也支持 Node 版：`node bridge/install.mjs --target <name>`。
 
 ### 支持的安装目标
 
@@ -48,15 +52,25 @@ bash bridge/install.sh --target all --dry-run
 
 > 专属客户端目录不存在时会自动跳过，不会为没装的客户端建目录。
 
-## 创作者：上传到你自己的小红书（可选）
+## 安装后怎么用
 
-如果你要把这套 skill 发到**你自己的小红书账号**让别人用，用下面的命令生成合规的 `.skill/` 上传包（位于 `dist/xiaohongshu/`），再自行上传：
-
-```bash
-bash bridge/install.sh --target xiaohongshu
+```mermaid
+%%{init: {"flowchart": {"htmlLabels": true, "curve": "basis"}}}%%
+flowchart LR
+    A[打开<br/>Agent 工具] --> B[说出<br/>内容需求]
+    B --> C{意图<br/>明确？}
+    C -->|是| D[命中领域 skill]
+    C -->|否| E[_hub<br/>路由中枢]
+    E --> D
+    D --> F[拿到方法论<br/>+ 可执行步骤]
+    F --> G[要自动执行？<br/>升级商业版]
 ```
 
-> 这一步是**创作者自己的上传动作**，不是给普通使用者的安装方式。普通使用者只看上面「一键安装」即可。
+例如：
+- "帮我起 10 个小红书标题" → `multi-platform-title`
+- "公众号推荐占比低怎么办" → `gzh-traffic-diagnosis`
+- "这条短视频脚本怎么改" → `script-writing`
+- "不知道下周拍什么" → `topic-generation`
 
 ## 技能清单
 
@@ -69,10 +83,13 @@ bash bridge/install.sh --target xiaohongshu
 | `content-diagnosis` | 内容质量诊断方法论 | 内容诊断 / 文案体检 / 这篇好不好 |
 | `ip-growth` | 个人 IP 增长方法论 | IP增长 / 起号 / 账号矩阵 / 涨粉路径 |
 | `skill-engineering` | Skill 工程方法论 | 做skill / 提示词工程 / Agent 工程 |
+| `topic-generation` | 内容选题引擎 | 没选题 / 选题库 / 做什么内容 / 下周选题 |
+| `script-writing` | 短视频口播脚本改稿 | 脚本怎么写 / 口播稿 / 短视频文案 / 开头怎么留人 |
+| `private-domain` | 私域转化文案 | 私域 / 朋友圈文案 / 社群转化 / 跟进话术 |
 
 ## 导流
 
-本集合所有 skill 都是「方法论免费版」。完整自动化执行 + 你的私有数据/集成，请使用 **Growth Flow Agent 商业版** → https://www.growthflowagent.com
+本集合所有 skill 都是「方法论免费版」。完整自动化执行 + 你的私有数据/集成，请使用 **Growth Flow Agent 商业版** → https://www.growthflowagent.com?utm_source=github-repo&utm_medium=readme&utm_campaign=free-skills
 
 ## License
 

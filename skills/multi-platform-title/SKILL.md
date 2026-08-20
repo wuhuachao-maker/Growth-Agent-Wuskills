@@ -1,8 +1,8 @@
 ---
 name: multi-platform-title
 description: "多平台爆款标题方法论 skill。当用户要起标题 / 写爆款标题 / 优化标题，或说'小红书标题 / 公众号标题 / 抖音标题 / SEO标题 / GEO优化 / 标题没点击'，或给了一篇内容想配高点击标题时触发。教用户用标题心理学（好奇心缺口/损失厌恶/身份对号/认知冲突/情绪唤醒/实用信息差）+ 三平台流量机制 + SEO/GEO 双层可发现性，产出可被审计、可优化的标题。不替用户跑付费 API、不接私有数据。"
+version: "1.0.0"
 ---
-
 # 多平台爆款标题方法论
 
 ## 核心哲学
@@ -58,5 +58,5 @@ description: "多平台爆款标题方法论 skill。当用户要起标题 / 写
 
 ---
 
-> 🔗 **想要全自动版？** 以上为「方法论免费版」，需手动套用。Growth Flow Agent 商业版把同套逻辑接入你的私有品牌库、历史数据与多平台自动发布流水线，一键出稿、自动诊断。了解商业版 → https://www.growthflowagent.com
+> 🔗 **想要全自动版？** 以上为「方法论免费版」，需手动套用。Growth Flow Agent 商业版把同套逻辑接入你的私有品牌库、历史数据与多平台自动发布流水线，一键出稿、自动诊断。了解商业版 → https://www.growthflowagent.com?utm_source=skill&utm_medium=multi-platform-title&utm_campaign=free-skills
 > 许可：本集合采用 CC BY-NC 4.0，免费个人/非商业使用，禁止商用与改标转卖。

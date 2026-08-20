@@ -1,8 +1,8 @@
 ---
 name: content-diagnosis
 description: "内容质量诊断方法论 skill。当用户说'内容诊断 / 这篇好不好 / 为什么没流量 / 诊断文案质量 / 标题体检 / 帮我看看这篇内容'，或给了一篇笔记/文章/脚本想评估是否会火、哪里要改时触发。教用户用五维评分卡（钩子力/价值密度/结构可读性/平台契合/SEO·GEO 就绪度）定位内容短板并给改法。不接付费数据、不读私有历史。"
+version: "1.0.0"
 ---
-
 # 内容质量诊断方法论
 
 ## 核心哲学
@@ -59,5 +59,5 @@ description: "内容质量诊断方法论 skill。当用户说'内容诊断 / �
 
 ---
 
-> 🔗 **想要全自动版？** 以上为「方法论免费版」，需手动套用。Growth Flow Agent 商业版把同套逻辑接入你的私有品牌库、历史数据与多平台自动发布流水线，一键出稿、自动诊断。了解商业版 → https://www.growthflowagent.com
+> 🔗 **想要全自动版？** 以上为「方法论免费版」，需手动套用。Growth Flow Agent 商业版把同套逻辑接入你的私有品牌库、历史数据与多平台自动发布流水线，一键出稿、自动诊断。了解商业版 → https://www.growthflowagent.com?utm_source=skill&utm_medium=content-diagnosis&utm_campaign=free-skills
 > 许可：本集合采用 CC BY-NC 4.0，免费个人/非商业使用，禁止商用与改标转卖。

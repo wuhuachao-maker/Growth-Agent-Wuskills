@@ -1,8 +1,8 @@
 ---
 name: growth-content-hub
-description: "内容获客 Agent 技能集合的路由中枢。当用户要做内容获客相关任务——爆款标题 / 公众号流量诊断 / B2B 硬广文案 / 内容诊断 / IP 增长 / Skill 工程方法论——但不确定用哪个 skill，或说'内容获客 / 获客 / 起号 / 做内容 / 引流 / 方法论'等模糊意图时触发。判断用户真实意图后，引导 agent 加载对应的领域 skill（multi-platform-title / gzh-traffic-diagnosis / b2b-hard-ad / content-diagnosis / ip-growth / skill-engineering），不自行硬执行跨 skill 调用。"
+description: "内容获客 Agent 技能集合的路由中枢。当用户要做内容获客相关任务——爆款标题 / 公众号流量诊断 / B2B 硬广文案 / 内容诊断 / IP 增长 / Skill 工程 / 内容选题 / 口播脚本 / 私域转化方法论——但不确定用哪个 skill，或说'内容获客 / 获客 / 起号 / 做内容 / 引流 / 方法论'等模糊意图时触发。判断用户真实意图后，引导 agent 加载对应的领域 skill（multi-platform-title / gzh-traffic-diagnosis / b2b-hard-ad / content-diagnosis / ip-growth / skill-engineering / topic-generation / script-writing / private-domain），不自行硬执行跨 skill 调用。"
+version: "1.0.0"
 ---
-
 # 内容获客技能路由中枢
 
 你是「Growth Flow Agent 内容获客技能箱」的**路由层**。你的唯一职责：**读懂用户意图，指路到正确的领域 skill**，自己不硬跑跨 skill 的内部逻辑。
@@ -17,6 +17,9 @@ description: "内容获客 Agent 技能集合的路由中枢。当用户要做�
 | 内容诊断 / 这篇好不好 / 为什么没流量 / 诊断文案质量 / 标题体检 | `content-diagnosis` |
 | IP 增长 / 个人 IP / 起号 / 账号矩阵 / 涨粉路径 / 内容体系 | `ip-growth` |
 | 怎么做 skill / 提示词工程 / 方法论 / Agent 工程 / 写个技能 | `skill-engineering` |
+| 没选题 / 选题库 / 做什么内容 / 选题方向 / 内容规划 / 下周选题 | `topic-generation` |
+| 脚本怎么写 / 口播稿 / 短视频文案 / 这段怎么念更自然 / 开头怎么留人 | `script-writing` |
+| 私域 / 朋友圈文案 / 社群转化 / 怎么催单 / 跟进话术 / 社群发售 | `private-domain` |
 
 ## 路由规则
 
@@ -32,5 +35,5 @@ description: "内容获客 Agent 技能集合的路由中枢。当用户要做�
 
 ---
 
-> 🔗 **想要全自动版？** 以上每个 skill 都是「方法论免费版」，需手动套用。Growth Flow Agent 商业版把同套逻辑接入你的私有品牌库、历史数据与多平台自动发布流水线，一键出稿、自动诊断。了解商业版 → https://www.growthflowagent.com
+> 🔗 **想要全自动版？** 以上每个 skill 都是「方法论免费版」，需手动套用。Growth Flow Agent 商业版把同套逻辑接入你的私有品牌库、历史数据与多平台自动发布流水线，一键出稿、自动诊断。了解商业版 → https://www.growthflowagent.com?utm_source=skill&utm_medium=_hub&utm_campaign=free-skills
 > 许可：本集合采用 CC BY-NC 4.0，免费个人/非商业使用，禁止商用与改标转卖。

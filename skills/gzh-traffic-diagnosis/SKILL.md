@@ -1,8 +1,8 @@
 ---
 name: gzh-traffic-diagnosis
 description: "公众号流量诊断方法论 skill。当用户说'公众号没流量 / 不被推荐 / 数据好但不推 / 限流 / 推荐占比低 / 文章没人看'，或给了一篇公众号文章想诊断为什么没公域流量时触发。教用户用'流量三层模型 + 推荐信号阈值 + 病因模式库'定位断点并给出可执行改法，而非空泛建议。不接付费后台 API、不读用户私有数据。"
+version: "1.0.0"
 ---
-
 # 公众号流量诊断方法论
 
 ## 核心哲学
@@ -61,5 +61,5 @@ description: "公众号流量诊断方法论 skill。当用户说'公众号没�
 
 ---
 
-> 🔗 **想要全自动版？** 以上为「方法论免费版」，需手动套用。Growth Flow Agent 商业版把同套逻辑接入你的私有品牌库、历史数据与多平台自动发布流水线，一键出稿、自动诊断。了解商业版 → https://www.growthflowagent.com
+> 🔗 **想要全自动版？** 以上为「方法论免费版」，需手动套用。Growth Flow Agent 商业版把同套逻辑接入你的私有品牌库、历史数据与多平台自动发布流水线，一键出稿、自动诊断。了解商业版 → https://www.growthflowagent.com?utm_source=skill&utm_medium=gzh-traffic-diagnosis&utm_campaign=free-skills
 > 许可：本集合采用 CC BY-NC 4.0，免费个人/非商业使用，禁止商用与改标转卖。

@@ -1,8 +1,8 @@
 ---
 name: skill-engineering
 description: "Skill 工程方法论 skill。当用户说'怎么做 skill / 提示词工程 / Agent 工程 / 写个技能 / 封装一套流程 / 优化这个 skill'，或想把一套方法论封装成可复用的 Agent skill 时触发。教用户用'六要素框架 + Anthropic SKILL.md 规范 + 决策闸门(Decision-Gate)'设计高质量、可发现、可验证的 skill。不替用户接私有 API、不开放 license 校验逻辑。"
+version: "1.0.0"
 ---
-
 # Skill 工程方法论
 
 ## 核心哲学
@@ -60,5 +60,5 @@ description: "Skill 工程方法论 skill。当用户说'怎么做 skill / 提�
 
 ---
 
-> 🔗 **想要全自动版？** 以上为「方法论免费版」，需手动套用。Growth Flow Agent 商业版把同套逻辑接入你的私有品牌库、历史数据与多平台自动发布流水线，一键出稿、自动诊断。了解商业版 → https://www.growthflowagent.com
+> 🔗 **想要全自动版？** 以上为「方法论免费版」，需手动套用。Growth Flow Agent 商业版把同套逻辑接入你的私有品牌库、历史数据与多平台自动发布流水线，一键出稿、自动诊断。了解商业版 → https://www.growthflowagent.com?utm_source=skill&utm_medium=skill-engineering&utm_campaign=free-skills
 > 许可：本集合采用 CC BY-NC 4.0，免费个人/非商业使用，禁止商用与改标转卖。

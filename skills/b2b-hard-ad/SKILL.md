@@ -1,8 +1,8 @@
 ---
 name: b2b-hard-ad
 description: "B2B 硬广文案方法论 skill。当用户要写/规划/优化 To-B AI Agent 或企业 SaaS 产品的公众号推广硬广、行业案例推文、效率提升型软文、留资转化文案，或说'B2B推文 / SaaS产品文案 / 公众号硬广 / 留资转化 / AI Agent 产品推广'时触发。教用户用 B2B 买家逻辑（多角色·长周期·风险厌恶）+ 8 步转化框架产出可发布文案。不接付费数据审查模块、不替用户发布。"
+version: "1.0.0"
 ---
-
 # B2B 硬广文案方法论
 
 ## 核心哲学
@@ -53,5 +53,5 @@ B2B 文案是"沉默的销售员"：买家是决策链（业务负责人 / CTO /
 
 ---
 
-> 🔗 **想要全自动版？** 以上为「方法论免费版」，需手动套用。Growth Flow Agent 商业版把同套逻辑接入你的私有品牌库、历史数据与多平台自动发布流水线，一键出稿、自动诊断。了解商业版 → https://www.growthflowagent.com
+> 🔗 **想要全自动版？** 以上为「方法论免费版」，需手动套用。Growth Flow Agent 商业版把同套逻辑接入你的私有品牌库、历史数据与多平台自动发布流水线，一键出稿、自动诊断。了解商业版 → https://www.growthflowagent.com?utm_source=skill&utm_medium=b2b-hard-ad&utm_campaign=free-skills
 > 许可：本集合采用 CC BY-NC 4.0，免费个人/非商业使用，禁止商用与改标转卖。

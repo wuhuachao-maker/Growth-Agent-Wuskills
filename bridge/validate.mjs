@@ -3,12 +3,15 @@
  * validate.mjs — 校验 growth-agent-skills 集合中的所有 SKILL.md
  *
  * 检查项：
- *  1. frontmatter 能被解析，且只含 name + description 两个字段
+ *  1. frontmatter 能被解析，且含 name / description / version
  *  2. name 为合法 slug（小写字母/数字/中划线）
  *  3. description 长度 >= 30 且含中文触发词（非纯英文）
  *  4. 正文长度 >= 400 字符（避免空壳）
- *  5. 含引流钩子 growthflowagent.com（商业版落地页）
+ *  5. 含引流钩子 growthflowagent.com，且带 UTM 参数
  *  6. 含 CC BY-NC 4.0 许可声明
+ *  7. skills/skills.json 清单与目录一致
+ *  8. 非 hub skill 之间触发词不冲突
+ *  9. hub 路由表覆盖所有领域 skill
  *
  * 用法：
  *   node bridge/validate.mjs
@@ -22,13 +25,14 @@ import { fileURLToPath } from "node:url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const SKILLS_DIR = path.join(ROOT, "skills");
+const MANIFEST_PATH = path.join(SKILLS_DIR, "skills.json");
 
-const LEAD_GEN = "growthflowagent.com";
+const LEAD_GEN_HOST = "growthflowagent.com";
 const CC_DECL = "CC BY-NC 4.0";
 const MIN_DESC = 30;
 const MIN_BODY = 400;
 
-/** 极简 YAML frontmatter 解析：仅支持 name / description 两字段 */
+/** 极简 YAML frontmatter 解析：支持 name / description / version 等单行字段 */
 function parseFrontmatter(raw) {
   const m = raw.match(/^---\n([\s\S]*?)\n---/);
   if (!m) return { ok: false, error: "缺少 --- frontmatter --- 块" };
@@ -37,11 +41,10 @@ function parseFrontmatter(raw) {
   const lines = body.split("\n");
   let curKey = null;
   for (const line of lines) {
-    const kv = line.match(/^([a-zA-Z_]+):\s?(.*)$/);
+    const kv = line.match(/^([a-zA-Z_][a-zA-Z0-9_]*):\s?(.*)$/);
     if (kv) {
       curKey = kv[1].trim();
       let val = kv[2].trim();
-      // 去引号
       if (
         (val.startsWith('"') && val.endsWith('"')) ||
         (val.startsWith("'") && val.endsWith("'"))
@@ -50,31 +53,32 @@ function parseFrontmatter(raw) {
       }
       out[curKey] = val;
     } else if (curKey && (line.startsWith(" ") || line.startsWith("\t"))) {
-      // 续行（description 折行）—— 本集合约定单行，这里兜底拼接
+      // 续行兜底拼接
       out[curKey] += " " + line.trim();
     }
   }
   return { ok: true, data: out };
 }
 
-function findSkills(dir) {
-  const results = [];
-  if (!fs.existsSync(dir)) return results;
+function findSkillSlugs(dir) {
+  const slugs = [];
+  if (!fs.existsSync(dir)) return slugs;
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
     if (!entry.isDirectory()) continue;
     const skillPath = path.join(dir, entry.name, "SKILL.md");
-    if (fs.existsSync(skillPath)) results.push(skillPath);
+    if (fs.existsSync(skillPath)) slugs.push(entry.name);
   }
-  return results;
+  return slugs.sort();
 }
 
 function hasChinese(str) {
   return /[\u4e00-\u9fa5]/.test(str);
 }
 
-function validateFile(file) {
+function validateFile(file, manifestMap) {
   const issues = [];
   const raw = fs.readFileSync(file, "utf8");
+  const slug = path.basename(path.dirname(file));
 
   // 1. frontmatter
   const fm = parseFrontmatter(raw);
@@ -82,14 +86,12 @@ function validateFile(file) {
     issues.push(`frontmatter: ${fm.error}`);
     return { file, issues, ok: false };
   }
-  const { name, description } = fm.data;
+  const { name, description, version } = fm.data;
 
-  // 只允许 name + description
-  const extraKeys = Object.keys(fm.data).filter(
-    (k) => k !== "name" && k !== "description"
-  );
+  const allowedKeys = new Set(["name", "description", "version"]);
+  const extraKeys = Object.keys(fm.data).filter((k) => !allowedKeys.has(k));
   if (extraKeys.length) {
-    issues.push(`frontmatter 含多余字段: ${extraKeys.join(", ")}（只允许 name/description）`);
+    issues.push(`frontmatter 含未知字段: ${extraKeys.join(", ")}`);
   }
 
   // 2. name
@@ -97,6 +99,8 @@ function validateFile(file) {
     issues.push("缺少 name");
   } else if (!/^[a-z0-9-]+$/.test(name)) {
     issues.push(`name "${name}" 非合法 slug（应小写字母/数字/中划线）`);
+  } else if (manifestMap.has(slug) && manifestMap.get(slug).name !== name) {
+    issues.push(`name "${name}" 与 skills.json 中 "${manifestMap.get(slug).name}" 不一致`);
   }
 
   // 3. description
@@ -111,18 +115,36 @@ function validateFile(file) {
     }
   }
 
-  // 4. 正文长度（去掉 frontmatter）
+  // 4. version
+  if (!version) {
+    issues.push("缺少 version（建议 1.0.0）");
+  } else if (!/^\d+\.\d+\.\d+/.test(version)) {
+    issues.push(`version "${version}" 格式不规范（建议语义化版本 1.0.0）`);
+  }
+
+  // 5. 正文长度（去掉 frontmatter）
   const body = raw.replace(/^---\n[\s\S]*?\n---/, "").trim();
   if (body.length < MIN_BODY) {
     issues.push(`正文过短（${body.length} < ${MIN_BODY}），疑似空壳`);
   }
 
-  // 5. 引流钩子
-  if (!raw.includes(LEAD_GEN)) {
-    issues.push(`缺少引流钩子（应含 ${LEAD_GEN}）`);
+  // 6. 引流钩子 + UTM
+  if (!raw.includes(LEAD_GEN_HOST)) {
+    issues.push(`缺少引流钩子（应含 ${LEAD_GEN_HOST}）`);
+  } else {
+    const expectedMedium = `utm_medium=${slug}`;
+    if (!raw.includes("utm_source=skill")) {
+      issues.push("引流钩子缺少 utm_source=skill");
+    }
+    if (!raw.includes(expectedMedium)) {
+      issues.push(`引流钩子 utm_medium 应为 ${slug}`);
+    }
+    if (!raw.includes("utm_campaign=free-skills")) {
+      issues.push("引流钩子缺少 utm_campaign=free-skills");
+    }
   }
 
-  // 6. CC 声明
+  // 7. CC 声明
   if (!raw.includes(CC_DECL)) {
     issues.push(`缺少 ${CC_DECL} 许可声明`);
   }
@@ -130,22 +152,89 @@ function validateFile(file) {
   return { file, issues, ok: issues.length === 0 };
 }
 
+function validateManifest(slugs) {
+  const issues = [];
+  let manifest;
+  try {
+    manifest = JSON.parse(fs.readFileSync(MANIFEST_PATH, "utf8"));
+  } catch (e) {
+    issues.push(`skills.json 解析失败: ${e.message}`);
+    return { ok: false, issues, manifest: null, map: new Map() };
+  }
+
+  if (!manifest.skills || !Array.isArray(manifest.skills)) {
+    issues.push("skills.json 缺少 skills 数组");
+    return { ok: false, issues, manifest, map: new Map() };
+  }
+
+  const map = new Map();
+  const manifestSlugs = [];
+  for (const s of manifest.skills) {
+    if (!s.slug) {
+      issues.push("manifest 中存在缺少 slug 的条目");
+      continue;
+    }
+    manifestSlugs.push(s.slug);
+    map.set(s.slug, s);
+  }
+
+  const dirOnly = slugs.filter((s) => !manifestSlugs.includes(s));
+  const manifestOnly = manifestSlugs.filter((s) => !slugs.includes(s));
+  if (dirOnly.length) {
+    issues.push(`skills/ 目录存在但未在 manifest 登记: ${dirOnly.join(", ")}`);
+  }
+  if (manifestOnly.length) {
+    issues.push(`manifest 登记但 skills/ 目录不存在: ${manifestOnly.join(", ")}`);
+  }
+
+  // 触发词冲突检查（排除 _hub）
+  const triggerToSkill = new Map();
+  for (const s of manifest.skills) {
+    if (s.slug === "_hub") continue;
+    for (const t of s.triggers || []) {
+      const normalized = t.trim().toLowerCase();
+      if (triggerToSkill.has(normalized)) {
+        issues.push(`触发词冲突: "${t}" 同时属于 ${triggerToSkill.get(normalized)} 和 ${s.slug}`);
+      } else {
+        triggerToSkill.set(normalized, s.slug);
+      }
+    }
+  }
+
+  // hub 覆盖检查
+  const hub = manifest.skills.find((s) => s.slug === "_hub");
+  if (!hub) {
+    issues.push("manifest 缺少 _hub 路由中枢");
+  } else {
+    const domainSlugs = manifest.skills.filter((s) => s.slug !== "_hub").map((s) => s.slug);
+    const missingRoutes = domainSlugs.filter((s) => !(hub.routesTo || []).includes(s));
+    if (missingRoutes.length) {
+      issues.push(`_hub routesTo 未覆盖: ${missingRoutes.join(", ")}`);
+    }
+  }
+
+  return { ok: issues.length === 0, issues, manifest, map };
+}
+
 // ---- 主流程 ----
 const strict = process.argv.includes("--strict");
-const files = findSkills(SKILLS_DIR);
+const slugs = findSkillSlugs(SKILLS_DIR);
 
-if (files.length === 0) {
+if (slugs.length === 0) {
   console.error("未找到任何 SKILL.md（请检查 skills/ 目录）");
   process.exit(1);
 }
 
+const { ok: manifestOk, issues: manifestIssues, map: manifestMap } = validateManifest(slugs);
+
 let pass = 0;
 let fail = 0;
-console.log(`校验 ${files.length} 个 skill：\n`);
+console.log(`校验 ${slugs.length} 个 skill：\n`);
 
-for (const f of files) {
-  const rel = path.relative(ROOT, f);
-  const r = validateFile(f);
+for (const slug of slugs) {
+  const file = path.join(SKILLS_DIR, slug, "SKILL.md");
+  const rel = path.relative(ROOT, file);
+  const r = validateFile(file, manifestMap);
   if (r.ok) {
     pass++;
     console.log(`  ✓ ${rel}`);
@@ -153,6 +242,33 @@ for (const f of files) {
     fail++;
     console.log(`  ✗ ${rel}`);
     for (const i of r.issues) console.log(`      - ${i}`);
+  }
+}
+
+if (manifestIssues.length) {
+  fail += manifestIssues.length;
+  console.log(`  ✗ skills/skills.json`);
+  for (const i of manifestIssues) console.log(`      - ${i}`);
+} else {
+  console.log(`  ✓ skills/skills.json`);
+  pass++;
+}
+
+// hub 路由表覆盖检查：hub SKILL.md 正文应出现所有领域 skill slug
+const hubFile = path.join(SKILLS_DIR, "_hub", "SKILL.md");
+if (fs.existsSync(hubFile) && manifestOk) {
+  const hubRaw = fs.readFileSync(hubFile, "utf8");
+  const domainSlugs = Array.from(manifestMap.values())
+    .filter((s) => s.slug !== "_hub")
+    .map((s) => s.slug);
+  const missingInHub = domainSlugs.filter((s) => !hubRaw.includes(s));
+  if (missingInHub.length) {
+    fail++;
+    console.log(`  ✗ skills/_hub/SKILL.md`);
+    console.log(`      - 路由表未提及: ${missingInHub.join(", ")}`);
+  } else {
+    console.log(`  ✓ skills/_hub/SKILL.md 路由覆盖完整`);
+    pass++;
   }
 }
 
