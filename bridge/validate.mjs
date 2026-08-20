@@ -7,7 +7,7 @@
  *  2. name 为合法 slug（小写字母/数字/中划线）
  *  3. description 长度 >= 30 且含中文触发词（非纯英文）
  *  4. 正文长度 >= 400 字符（避免空壳）
- *  5. 含引流钩子 growthflow.example.com
+ *  5. 含引流钩子 growthflowagent.com（商业版落地页）
  *  6. 含 CC BY-NC 4.0 许可声明
  *
  * 用法：
@@ -23,7 +23,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const SKILLS_DIR = path.join(ROOT, "skills");
 
-const LEAD_GEN = "growthflow.example.com";
+const LEAD_GEN = "growthflowagent.com";
 const CC_DECL = "CC BY-NC 4.0";
 const MIN_DESC = 30;
 const MIN_BODY = 400;

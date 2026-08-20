@@ -5,26 +5,31 @@
 # 用法:
 #   bash bridge/install.sh --target workbuddy          # 装到 ~/.workbuddy/skills/
 #   bash bridge/install.sh --target claude [--scope user|project]
-#   bash bridge/install.sh --target codex              # 装到 ~/.codex/skills/ 并注入 codex.md 适配层
-#   bash bridge/install.sh --target xiaohongshu        # 产出 .skill/ 合规包到 dist/xiaohongshu/
-#   bash bridge/install.sh --target workbuddy --dry-run   # 只显示会装到哪，不改动
+#   bash bridge/install.sh --target codex              # 公共入口 ~/.agents/skills/(Codex 读取)
+#   bash bridge/install.sh --target cursor             # 公共入口 ~/.agents/skills/(Cursor 读取)
+#   bash bridge/install.sh --target agents             # 公共入口,覆盖 Codex/Cursor/Copilot/Gemini/Augment/Roo/OpenCode/OpenHands
+#   bash bridge/install.sh --target hermes|kiro|qwen|cline|grok
+#   bash bridge/install.sh --target all                # 一键装到所有已安装的客户端
+#   bash bridge/install.sh --target xiaohongshu        # 产出 .skill/ 上传包(创作者自用,非用户安装)
+#   bash bridge/install.sh --target workbuddy --dry-run   # 只显示会装到哪,不改动
 #   bash bridge/install.sh --target workbuddy --force     # 覆盖已存在的同名 skill
 #
-set -euo pipefail
+set -eo pipefail
+# 注: 未启用 set -u(nounset)。原因: 在 macOS 默认 bash 3.2 下,
+# 嵌套函数内 `local var="$X"` 配合 nounset 会出现“循环内可用、循环外报 unbound”
+# 的兼容性 bug。本地安装脚本用 set -e + pipefail 已足够安全, 故不强依赖 nounset。
 
-# ---- 路径 ----
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 SKILLS_DIR="$REPO_DIR/skills"
 
-# ---- 参数 ----
 TARGET=""
 DRY_RUN=false
 FORCE=false
 SCOPE="user"
 
 usage() {
-  sed -n '2,14p' "$0" | sed 's/^# \{0,1\}//'
+  sed -n '2,17p' "$0" | sed 's/^# \{0,1\}//'
   exit "${1:-0}"
 }
 
@@ -42,74 +47,90 @@ done
 [[ -z "$TARGET" ]] && { echo "❌ 必须指定 --target" >&2; usage 1; }
 [[ ! -d "$SKILLS_DIR" ]] && { echo "❌ 找不到 skills/ 目录: $SKILLS_DIR" >&2; exit 1; }
 
-# ---- 目标目录解析 ----
-case "$TARGET" in
-  workbuddy) TARGET_DIR="$HOME/.workbuddy/skills" ;;
-  claude)
-    if [[ "$SCOPE" == "project" ]]; then TARGET_DIR=".claude/skills";
-    else TARGET_DIR="$HOME/.claude/skills"; fi ;;
-  codex) TARGET_DIR="$HOME/.codex/skills" ;;
-  xiaohongshu) TARGET_DIR="$REPO_DIR/dist/xiaohongshu" ;;
-  *) echo "❌ 不支持的 target: $TARGET（支持: workbuddy|claude|codex|xiaohongshu）" >&2; exit 1 ;;
-esac
+# 客户端专属主目录是否已存在(未安装则跳过,避免为不存在的客户端建目录)
+client_installed() {
+  case "$1" in
+    hermes) [[ -d "$HOME/.hermes" ]];;
+    kiro)   [[ -d "$HOME/.kiro" ]];;
+    qwen)   [[ -d "$HOME/.qwen" ]];;
+    cline)  [[ -d "$HOME/.cline" ]];;
+    grok)   [[ -d "$HOME/.grok" ]];;
+    *) return 0;;
+  esac
+}
+
+resolve_dir() {
+  case "$1" in
+    workbuddy) echo "$HOME/.workbuddy/skills";;
+    claude)    [[ "$SCOPE" == "project" ]] && echo ".claude/skills" || echo "$HOME/.claude/skills";;
+    codex|cursor|agents) echo "$HOME/.agents/skills";;
+    hermes) echo "$HOME/.hermes/skills";;
+    kiro)   echo "$HOME/.kiro/skills";;
+    qwen)   echo "$HOME/.qwen/skills";;
+    cline)  echo "$HOME/.cline/skills";;
+    grok)   echo "$HOME/.grok/skills";;
+    xiaohongshu) echo "$REPO_DIR/dist/xiaohongshu";;
+    *) echo "❌ 不支持的 target: $1（支持: workbuddy|claude|codex|cursor|agents|hermes|kiro|qwen|cline|grok|xiaohongshu|all）" >&2; exit 1;;
+  esac
+}
+
+TARGETS=()
+if [[ "$TARGET" == "all" ]]; then
+  TARGETS=(workbuddy claude agents hermes kiro qwen cline grok)
+else
+  TARGETS=("$TARGET")
+fi
 
 echo "📦 源: $SKILLS_DIR"
-echo "🎯 目标 ($TARGET): $TARGET_DIR"
-$DRY_RUN && echo "🔍 dry-run 模式：不会实际写入"
+[[ "$DRY_RUN" == true ]] && echo "🔍 dry-run 模式：不会实际写入"
 echo "---------------------------------------------------"
 
-# ---- 小红书特殊处理：产出 .skill/ 合规包 ----
-if [[ "$TARGET" == "xiaohongshu" ]]; then
-  mkdir -p "$TARGET_DIR"
+install_xiaohongshu() {
+  local xh_dest
+  xh_dest="$REPO_DIR/dist/xiaohongshu"
+  mkdir -p "$xh_dest"
   for skill_path in "$SKILLS_DIR"/*/; do
-    name="$(basename "$skill_path")"
-    dest="$TARGET_DIR/$name/.skill"
-    echo "  → .skill 包: $dest"
-    $DRY_RUN || { mkdir -p "$dest"; cp "$skill_path/SKILL.md" "$dest/SKILL.md"; }
+    local name="$(basename "$skill_path")"
+    local d="$xh_dest/$name/.skill"
+    echo "  → .skill 包: $d"
+    $DRY_RUN || { mkdir -p "$d"; cp "$skill_path/SKILL.md" "$d/SKILL.md"; }
   done
+  echo "  ✅ 小红书 .skill/ 包已生成于: $xh_dest（创作者上传到自己的小红书账号用）"
+}
+
+install_one() {
+  local tgt="$1"
+  if [[ "$tgt" == "xiaohongshu" ]]; then install_xiaohongshu; return; fi
+  if ! client_installed "$tgt"; then
+    echo "  ⏭  $tgt: 对应客户端未安装,跳过"
+    return
+  fi
+  local dest; dest="$(resolve_dir "$tgt")"
+  echo "🎯 目标 ($tgt): $dest"
+  mkdir -p "$dest"
+  local count=0
+  for skill_path in "$SKILLS_DIR"/*/; do
+    local name="$(basename "$skill_path")"
+    local d="$dest/$name"
+    if [[ -d "$d" && "$FORCE" != true ]]; then
+      echo "  ⏭  跳过(已存在,用 --force 覆盖): $name"
+      continue
+    fi
+    if $DRY_RUN; then
+      echo "  + 将复制: $name → $d"
+    else
+      rm -rf "$d"
+      cp -R "$skill_path" "$d"
+      echo "  ✓ 已安装: $name"
+    fi
+    count=$((count+1))
+  done
+  echo "  ✅ $tgt: $count 个 skill 已处理"
+}
+
+for t in "${TARGETS[@]}"; do
+  install_one "$t"
   echo "---------------------------------------------------"
-  echo "✅ 小红书 .skill/ 包已生成于: $TARGET_DIR"
-  echo "   下一步：用小红书 minitool-zip-builder 校验并打包（见 README / 步骤 6）。"
-  exit 0
-fi
-
-# ---- 常规分发（workbuddy / claude / codex） ----
-mkdir -p "$TARGET_DIR"
-
-count=0
-for skill_path in "$SKILLS_DIR"/*/; do
-  name="$(basename "$skill_path")"
-  dest="$TARGET_DIR/$name"
-  if [[ -d "$dest" && "$FORCE" != true ]]; then
-    echo "  ⏭  跳过（已存在，用 --force 覆盖）: $name"
-    continue
-  fi
-  if $DRY_RUN; then
-    echo "  + 将复制: $name → $dest"
-  else
-    rm -rf "$dest"
-    cp -R "$skill_path" "$dest"
-    echo "  ✓ 已安装: $name"
-  fi
-  count=$((count+1))
 done
 
-# ---- codex 适配层（注入 codex.md，让其弱 skill 支持能发现本集合） ----
-if [[ "$TARGET" == "codex" && "$DRY_RUN" != true ]]; then
-  CODEX_MD="$HOME/.codex/codex.md"
-  {
-    echo ""
-    echo "## Growth Flow Agent 内容获客技能集合（CC BY-NC 4.0 免费版）"
-    echo "以下 skill 位于 ~/.codex/skills/，按需加载对应目录的 SKILL.md："
-    for skill_path in "$SKILLS_DIR"/*/; do
-      n="$(basename "$skill_path")"
-      echo "- $n → 读取 ~/.codex/skills/$n/SKILL.md"
-    done
-    echo "路由中枢：先读 growth-content-hub 的 SKILL.md 判断意图，再加载对应领域 skill。"
-  } >> "$CODEX_MD"
-  echo "  ✓ 已向 $CODEX_MD 注入技能索引（如已存在则追加）"
-fi
-
-echo "---------------------------------------------------"
-echo "✅ 完成：$count 个 skill 已处理 → $TARGET_DIR"
-echo "   重启对应工具后，说'内容获客/起标题/不被推荐'等即可触发路由中枢。"
+echo "✅ 完成。重启对应工具后,说'内容获客/起标题/不被推荐'等即可触发路由中枢。"
