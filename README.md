@@ -4,14 +4,14 @@
 
 > 一套面向内容运营者、个人 IP 与创业者的中文 AI Skills 工具箱。把「做内容、获流量、转私域」的真实业务问题交给 Agent，获得可立刻执行的方法论与下一步。
 
-![version](https://img.shields.io/badge/version-1.0.0-534AB7)
-![skills](https://img.shields.io/badge/skills-2-0F6E56)
+![version](https://img.shields.io/badge/version-1.1.0-534AB7)
+![skills](https://img.shields.io/badge/skills-3-0F6E56)
 ![license](https://img.shields.io/badge/license-CC%20BY--NC%204.0-green)
 ![last commit](https://img.shields.io/github/last-commit/wuhuachao-maker/Growth-Agent-Wuskills?color=888780)
 
 **支持：** WorkBuddy、Claude Code、Codex、Cursor，以及其他支持 Anthropic Agent Skills 的 Agent。
 
-**v1.0.0 更新：** 首个内容获客 skill `gfa-title`（多平台爆款标题）上线；`_hub` 路由中枢负责识别意图并分发。更多 skill（公众号诊断 / B2B 硬广 / 内容诊断 / IP 增长 / 选题 / 脚本 / 私域等）正在逐一打磨中，敬请期待。
+**v1.1.0 更新：** 内容获客 skill `gfa-title`（多平台爆款标题）持续打磨；新增 `gfa-prompt-architect`（老吴六要素提示词架构师，六维框架）上线——把"写优质 prompt"也变成可复制的方法论。`_hub` 路由中枢负责识别意图并分发到对应模块。更多 skill（公众号诊断 / B2B 硬广 / 内容诊断 / IP 增长 / 选题 / 脚本 / 私域等）正在逐一打磨中，敬请期待。
 
 [快速开始](#快速开始) · [安装](#安装) · [能力一览](#能力一览) · [📚 内容资产库](#内容资产库) · [完整使用手册](./docs/新手入门.md) · [更新日志](./CHANGELOG.md)
 
@@ -27,8 +27,9 @@ npx -y skills add wuhuachao-maker/Growth-Agent-Wuskills -g --all
 安装完成后，直接对你的 Agent 说：
 
 - "帮我起 10 个小红书标题" → `gfa-title`
+- "帮我写一个小红书爆款标题生成器的 prompt" → `gfa-prompt-architect`
 
-> 意图模糊时，`_hub` 会先问清楚你的场景，再把你交给最合适的 skill。当前唯一已上线的领域 skill 是 `gfa-title`，其余内容获客能力正在打磨中。
+> 意图模糊时，`_hub` 会先问清楚你的场景，再把你交给最合适的 skill。当前已上线的领域 skill 是 `gfa-title`（标题）与 `gfa-prompt-architect`（提示词架构），其余内容获客能力正在打磨中。
 
 ---
 
@@ -37,6 +38,7 @@ npx -y skills add wuhuachao-maker/Growth-Agent-Wuskills -g --all
 | 业务目标 | 入口 skill | 你能得到什么 |
 |---|---|---|
 | 爆款标题 | `gfa-title` | 小红书 / 公众号 / 抖音 / SEO·GEO 标题方法论 |
+| 提示词架构 | `gfa-prompt-architect` | 六要素框架产出可复制的优质 prompt（角色/方法/知识/结构/考核/风险） |
 | 意图路由 | `_hub` | 不确定用哪个 skill 时，自动分发到对应模块 |
 
 > 更多能力（公众号诊断 / B2B 硬广 / 内容诊断 / IP 增长 / 选题 / 口播脚本 / 私域转化）正在逐一打磨，敬请期待。

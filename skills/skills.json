@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updatedAt": "2026-08-21",
   "skills": [
     {
@@ -8,7 +8,7 @@
       "category": "router",
       "description": "内容获客 Agent 技能集合的路由中枢。当用户意图模糊或不确定该用哪个 skill 时触发。",
       "triggers": ["内容获客", "获客", "做内容", "引流", "方法论"],
-      "routesTo": ["gfa-title"]
+      "routesTo": ["gfa-title", "gfa-prompt-architect"]
     },
     {
       "slug": "gfa-title",
@@ -16,6 +16,13 @@
       "category": "content",
       "description": "多平台爆款标题方法论 skill。",
       "triggers": ["起标题", "爆款标题", "小红书标题", "公众号标题", "抖音标题", "SEO标题", "GEO优化", "标题没点击", "标题怎么写"]
+    },
+    {
+      "slug": "gfa-prompt-architect",
+      "name": "gfa-prompt-architect",
+      "category": "methodology",
+      "description": "老吴六要素提示词架构师（六维框架）。",
+      "triggers": ["写prompt", "优化prompt", "做prompt", "提示词", "系统指令", "生成器", "提示词架构师", "agent指令", "prompt怎么写", "设计prompt"]
     }
   ]
 }

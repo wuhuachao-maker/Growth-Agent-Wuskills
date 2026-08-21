@@ -4,6 +4,11 @@
 
 ## [Unreleased]
 
+### Added
+- 新增 `gfa-prompt-architect`（老吴六要素提示词架构师 v2.0.0）：六要素框架（角色清晰+方法明确+知识充分+结构稳定+可被考核+风险可控）+ 预期闭合 + 🟠/🔵 判断网关 + 回填闭环，产出可复制的优质 prompt；含创作者信息卡片（智能触发 + 打赏码 + CC BY-NC 4.0）。
+- `_hub` 路由新增 prompt 类意图分发；`skills.json` 注册 `gfa-prompt-architect` 并加入 routesTo。
+- README 能力一览新增「提示词架构」入口，badge 升至 skills-3 / v1.1.0。
+
 ### Changed
 - 精简 skill 集合：移除 8 个尚在打磨中的领域 skill（gzh-traffic-diagnosis / b2b-hard-ad / content-diagnosis / ip-growth / skill-engineering / topic-generation / script-writing / private-domain），仅保留 `_hub` 路由中枢与 `gfa-title`（多平台爆款标题）。各 skill 将逐一打磨后重新上线。
 - 同步更新 README（简/英/繁三语）、使用手册、`RELEASE_NOTES`、资产库引用，移除对已删 skill 的指向。
