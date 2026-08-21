@@ -24,10 +24,10 @@
 - GitHub Actions CI：push/PR 自动跑校验。
 
 ### Changed
-- README 重写：删除面向普通用户的小红书相关内容；新增 curl 一键安装命令、安装目标速查表、技能清单、安装后流程图。
+- README 按主流多 skill 集合仓库风格重写：新增 hero 区、badges、语言切换、导航链接、最新更新亮点、能力一览表、工作原理 ASCII 流程图；移除「clone 后本地运行 bridge/install.sh」的开发者安装说明，改用 curl 一键命令与 `npx skills add` 作为用户安装入口。
 - 所有 skill 引流钩子统一加 UTM 参数（`utm_source=skill&utm_medium=<slug>&utm_campaign=free-skills`），支持按 skill 追踪商业版转化。
-- 脚本内部「小红书上传包」功能改名为中性的 `creator-upload`，不在用户可见帮助中暴露。
+- 脚本内部「创作者上传包」功能统一用中性的 `creator-upload` target 命名，不在用户可见帮助中暴露。
 
 ### Fixed
-- 修复 macOS 默认 bash 3.2 下 `install.sh --target xiaohongshu` 报 `dest: unbound variable` 的兼容性问题。
+- 修复 macOS 默认 bash 3.2 下 `install.sh` 特定 creator-upload target 报 `dest: unbound variable` 的兼容性问题。
 - 修复 `validate.mjs` 引流钩子校验仍使用旧占位域名 `growthflow.example.com` 导致全量失败的问题。

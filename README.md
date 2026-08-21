@@ -1,95 +1,141 @@
-# Growth Flow Agent · 内容获客技能集合（免费 · 多工具分发版）
+# Growth Flow Agent · 内容获客技能集合
 
-> 一套开源的「内容获客方法论」Agent 技能，覆盖**爆款标题、公众号流量诊断、B2B 硬广、内容诊断、IP 增长、Skill 工程、内容选题、口播脚本、私域转化**。
-> 这是 **Growth Flow Agent（GFA）内容获客系统**的**免费引流前端**——只开源方法论，产品壁垒（私有数据 / 自动化流水线 / license 校验 / 专有知识库）留在商业版。
+[简体中文](./README.md) · [English](./README.en.md) · [繁體中文](./README.zh-TW.md)
 
-## 这是什么
+> 一套面向内容运营者、个人 IP 与创业者的中文 AI Skills 工具箱。把「做内容、获流量、转私域」的真实业务问题交给 Agent，获得可立刻执行的方法论与下一步。
 
-- **免费、可一键安装**到主流 Agent 工具（WorkBuddy / Claude Code / Codex / Cursor 等，详见下表）。
-- 每个 skill 教你怎么「做内容获客」，但**不替你跑私有数据、不接付费 API、不开放 license 逻辑**。
-- 想拿到**全自动执行 + 你的私有数据/集成** → 用商业版。
+![version](https://img.shields.io/badge/version-1.0.0-534AB7)
+![skills](https://img.shields.io/badge/skills-10-0F6E56)
+![license](https://img.shields.io/badge/license-CC%20BY--NC%204.0-green)
+![last commit](https://img.shields.io/github/last-commit/wuhuachao-maker/Growth-Agent-Wuskills?color=888780)
 
-## 一键安装（给使用者）
+**支持：** WorkBuddy、Claude Code、Codex、Cursor，以及其他支持 Anthropic Agent Skills 的 Agent。
 
-### 方式 A：复制一条命令（推荐）
+**v1.0.0 更新：** 首批 10 个内容获客 skill 上线；`_hub` 路由中枢会根据你的问题自动匹配诊断/创作/转化流程，无需先判断该用哪个 skill。
 
-```bash
-# 装到 WorkBuddy
-curl -sL https://raw.githubusercontent.com/wuhuachao-maker/Growth-Agent-Wuskills/main/bridge/install.sh | bash -s -- --target workbuddy
+[快速开始](#快速开始) · [安装](#安装) · [能力一览](#能力一览) · [完整使用手册](./docs/新手入门.md) · [更新日志](./CHANGELOG.md)
 
-# 装到 Claude Code
-curl -sL https://raw.githubusercontent.com/wuhuachao-maker/Growth-Agent-Wuskills/main/bridge/install.sh | bash -s -- --target claude
+---
 
-# 一键装到所有已安装的客户端
-curl -sL https://raw.githubusercontent.com/wuhuachao-maker/Growth-Agent-Wuskills/main/bridge/install.sh | bash -s -- --target all
-```
-
-### 方式 B：本地运行（开发者/想先看效果）
+## 快速开始
 
 ```bash
-# 先看会装到哪，不实际改动
-bash bridge/install.sh --target all --dry-run
-
-# 正式安装
-bash bridge/install.sh --target all
+# 推荐：一键安装到所有支持的 Agent 客户端
+npx -y skills add wuhuachao-maker/Growth-Agent-Wuskills -g --all
 ```
 
-> 也支持 Node 版：`node bridge/install.mjs --target <name>`。
+安装完成后，直接对你的 Agent 说：
 
-### 支持的安装目标
-
-| target | 安装路径 | 覆盖的客户端 |
-|---|---|---|
-| `workbuddy` | `~/.workbuddy/skills/` | WorkBuddy |
-| `claude` | `~/.claude/skills/`（或项目级 `.claude/skills/`） | Claude Code |
-| `codex` / `cursor` / `agents` | `~/.agents/skills/` | Codex、Cursor、GitHub Copilot、Gemini CLI、Augment、Roo Code、OpenCode、OpenHands |
-| `hermes` | `~/.hermes/skills/` | Hermes Agent（仅当已安装时） |
-| `kiro` | `~/.kiro/skills/` | Kiro（仅当已安装时） |
-| `qwen` | `~/.qwen/skills/` | Qwen Code（仅当已安装时） |
-| `cline` | `~/.cline/skills/` | Cline（仅当已安装时） |
-| `grok` | `~/.grok/skills/` | Grok（仅当已安装时） |
-| `all` | 以上已安装客户端 | 一键全覆盖 |
-
-> 专属客户端目录不存在时会自动跳过，不会为没装的客户端建目录。
-
-## 安装后怎么用
-
-```mermaid
-%%{init: {"flowchart": {"htmlLabels": true, "curve": "basis"}}}%%
-flowchart LR
-    A[打开<br/>Agent 工具] --> B[说出<br/>内容需求]
-    B --> C{意图<br/>明确？}
-    C -->|是| D[命中领域 skill]
-    C -->|否| E[_hub<br/>路由中枢]
-    E --> D
-    D --> F[拿到方法论<br/>+ 可执行步骤]
-    F --> G[要自动执行？<br/>升级商业版]
-```
-
-例如：
 - "帮我起 10 个小红书标题" → `multi-platform-title`
 - "公众号推荐占比低怎么办" → `gzh-traffic-diagnosis`
+- "帮我写一条 B2B 硬广" → `b2b-hard-ad`
 - "这条短视频脚本怎么改" → `script-writing`
 - "不知道下周拍什么" → `topic-generation`
 
-## 技能清单
+> 意图模糊时，`_hub` 会先问清楚你的场景，再把你交给最合适的 skill。
 
-| skill | 一句话 | 触发词 |
+---
+
+## 能力一览
+
+| 业务目标 | 入口 skill | 你能得到什么 |
 |---|---|---|
-| `_hub` | 路由中枢，意图分发 | 内容获客 / 获客 / 起号 / 做内容 |
-| `multi-platform-title` | 多平台爆款标题方法论 | 起标题 / 爆款标题 / 小红书·公众号·抖音标题 / SEO·GEO |
-| `gzh-traffic-diagnosis` | 公众号流量诊断方法论 | 不被推荐 / 限流 / 数据好但不推 / 推荐占比低 |
-| `b2b-hard-ad` | B2B 硬广文案方法论 | B2B推文 / SaaS产品文案 / 留资转化 / AI Agent 推广 |
-| `content-diagnosis` | 内容质量诊断方法论 | 内容诊断 / 文案体检 / 这篇好不好 |
-| `ip-growth` | 个人 IP 增长方法论 | IP增长 / 起号 / 账号矩阵 / 涨粉路径 |
-| `skill-engineering` | Skill 工程方法论 | 做skill / 提示词工程 / Agent 工程 |
-| `topic-generation` | 内容选题引擎 | 没选题 / 选题库 / 做什么内容 / 下周选题 |
-| `script-writing` | 短视频口播脚本改稿 | 脚本怎么写 / 口播稿 / 短视频文案 / 开头怎么留人 |
-| `private-domain` | 私域转化文案 | 私域 / 朋友圈文案 / 社群转化 / 跟进话术 |
+| 爆款标题 | `multi-platform-title` | 小红书 / 公众号 / 抖音 / SEO·GEO 标题方法论 |
+| 公众号流量诊断 | `gzh-traffic-diagnosis` | 推荐占比低、数据好但不推等问题的排查清单 |
+| B2B 硬广文案 | `b2b-hard-ad` | SaaS / AI Agent 类产品的留资转化推文结构 |
+| 内容质量诊断 | `content-diagnosis` | 单篇内容的体检报告与修改方向 |
+| 个人 IP 增长 | `ip-growth` | 起号、账号矩阵、涨粉路径设计 |
+| Skill 工程 | `skill-engineering` | 把方法论沉淀为可复用 Agent Skill 的规范 |
+| 内容选题 | `topic-generation` | 可持续生产的选题库与内容日历 |
+| 口播脚本改稿 | `script-writing` | 开头留人、信息密度、口播流畅度优化 |
+| 私域转化文案 | `private-domain` | 朋友圈、社群、跟进话术与 SOP |
+| 意图路由 | `_hub` | 不确定用哪个 skill 时，自动分发到对应模块 |
 
-## 导流
+---
 
-本集合所有 skill 都是「方法论免费版」。完整自动化执行 + 你的私有数据/集成，请使用 **Growth Flow Agent 商业版** → https://www.growthflowagent.com?utm_source=github-repo&utm_medium=readme&utm_campaign=free-skills
+## 安装
+
+### 推荐：一条命令安装
+
+```bash
+# 安装到所有已支持的客户端（WorkBuddy / Claude / Codex / Cursor 等）
+npx -y skills add wuhuachao-maker/Growth-Agent-Wuskills -g --all
+```
+
+> 该命令基于 Vercel Skills CLI，会把 skill 集合安装到公共入口 `~/.agents/skills/`（Cursor / Codex / Claude / Copilot / Gemini 等读取此目录）。**WorkBuddy 用户请直接用下面的 curl 命令**，它会装到 WorkBuddy 专属目录 `~/.workbuddy/skills/`。
+
+### 按客户端安装
+
+如果你只想装到指定工具：
+
+**WorkBuddy**
+
+```bash
+curl -sL https://raw.githubusercontent.com/wuhuachao-maker/Growth-Agent-Wuskills/main/bridge/install.sh | bash -s -- --target workbuddy
+```
+
+**Claude Code**
+
+```bash
+curl -sL https://raw.githubusercontent.com/wuhuachao-maker/Growth-Agent-Wuskills/main/bridge/install.sh | bash -s -- --target claude
+```
+
+**Codex / Cursor / Agents 公共入口**
+
+```bash
+curl -sL https://raw.githubusercontent.com/wuhuachao-maker/Growth-Agent-Wuskills/main/bridge/install.sh | bash -s -- --target agents
+```
+
+**所有已安装的客户端**
+
+```bash
+curl -sL https://raw.githubusercontent.com/wuhuachao-maker/Growth-Agent-Wuskills/main/bridge/install.sh | bash -s -- --target all
+```
+
+### 更新
+
+对 Agent 说：
+
+```
+更新 Growth Flow Agent 技能集合
+```
+
+或重新运行上面的安装命令，已存在的本地数据不会被覆盖。
+
+---
+
+## Growth Flow Agent 技能集合怎样工作
+
+```
+你的真实业务问题
+        ↓
+  说出内容需求
+        ↓
+  意图是否明确？ ——是→ 命中对应领域 skill
+        ↓否
+   _hub 路由中枢
+        ↓
+  拿到方法论 + 可执行步骤
+        ↓
+  要自动执行？ → 升级 Growth Flow Agent 商业版
+```
+
+---
+
+## 完整使用手册
+
+更多使用示例、skill 触发词表、目录结构与贡献方式，见 [docs/新手入门.md](./docs/新手入门.md)。
+
+---
+
+## 作者与支持
+
+Growth Flow Agent 技能集合由 **老吴（Wu Huachao）** 创建与维护。
+
+- 商业版与更多自动化能力 → [https://www.growthflowagent.com](https://www.growthflowagent.com?utm_source=github-repo&utm_medium=readme&utm_campaign=free-skills)
+- 问题反馈 → 在仓库提交 [Issue](../../issues)
+
+---
 
 ## License
 

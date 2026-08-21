@@ -1,0 +1,8 @@
+{
+  "version": "1.0.0",
+  "date": "2026-08-21",
+  "highlight": "首批 10 个内容获客 Agent skill 上线，含自动路由中枢 _hub；支持 WorkBuddy / Claude Code / Codex / Cursor 等一键安装；所有 skill 内置 UTM 导流钩子，可追踪 Growth Flow Agent 商业版转化。",
+  "skills_count": 10,
+  "commercial_url": "https://www.growthflowagent.com?utm_source=github-repo&utm_medium=readme&utm_campaign=free-skills",
+  "changelog": "CHANGELOG.md"
+}
