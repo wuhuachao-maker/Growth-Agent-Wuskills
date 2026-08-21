@@ -1,5 +1,5 @@
 {
-  "version": "1.2.0",
+  "version": "1.3.0",
   "updatedAt": "2026-08-21",
   "skills": [
     {
@@ -7,8 +7,8 @@
       "name": "growth-content-hub",
       "category": "router",
       "description": "内容获客 Agent 技能集合的路由中枢。当用户意图模糊或不确定该用哪个 skill 时触发。",
-      "triggers": ["内容获客", "获客", "做内容", "引流", "方法论"],
-      "routesTo": ["gfa-title", "gfa-prompt-architect"]
+      "triggers": ["内容获客", "获客", "做内容", "引流", "方法论", "合规", "风险"],
+      "routesTo": ["gfa-title", "gfa-prompt-architect", "gfa-content-risk"]
     },
     {
       "slug": "gfa-title",
@@ -23,6 +23,13 @@
       "category": "methodology",
       "description": "老吴六要素提示词架构师（六维框架）。",
       "triggers": ["写prompt", "优化prompt", "做prompt", "提示词", "系统指令", "生成器", "提示词架构师", "agent指令", "prompt怎么写", "设计prompt"]
+    },
+    {
+      "slug": "gfa-content-risk",
+      "name": "gfa-content-risk",
+      "category": "content",
+      "description": "内容发布前风险检查器（双轨：机审+实质违规）。",
+      "triggers": ["检查违规", "发布前自查", "会不会被限流", "标题党吗", "这篇能发吗", "合规检查", "风险检查", "被封号", "导流违规"]
     }
   ]
 }

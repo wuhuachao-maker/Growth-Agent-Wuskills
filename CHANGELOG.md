@@ -8,6 +8,9 @@
 - 新增 `gfa-prompt-architect`（老吴六要素提示词架构师 v2.0.0）：六要素框架（角色清晰+方法明确+知识充分+结构稳定+可被考核+风险可控）+ 预期闭合 + 🟠/🔵 判断网关 + 回填闭环，产出可复制的优质 prompt；含创作者信息卡片（智能触发 + 打赏码 + CC BY-NC 4.0）。
 - `_hub` 路由新增 prompt 类意图分发；`skills.json` 注册 `gfa-prompt-architect` 并加入 routesTo。
 - README 能力一览新增「提示词架构」入口，badge 升至 skills-3 / v1.1.0。
+- 新增 `gfa-content-risk`（内容发布前风险检查器 v1.0.0）：双轨扫描（机器可识别 + 实质违规），覆盖小红书/公众号/抖音/广告法，输出「风险位置 + 最小修改动作 + 综合风险等级」；含内置真料 `references/知识库.md`（联网挖掘的真实平台规范 + 来源链接）+ 可回填 `references/风险检查清单.md` + 创作者信息卡片。
+- 新增 `library/INDEX.md`：资产库总索引 + SOT 权威口径标记 + 健康巡检规则（超 90 天标黄、180 天标红）。
+- `_hub` 路由新增「合规/风险」意图分发；`skills.json` 注册 `gfa-content-risk`（category=content）并加入 routesTo；README 能力一览/触发词速查/分类表同步更新，badge 升至 skills-4 / v1.3.0。
 
 ### Changed
 - 精简 skill 集合：移除 8 个尚在打磨中的领域 skill（gzh-traffic-diagnosis / b2b-hard-ad / content-diagnosis / ip-growth / skill-engineering / topic-generation / script-writing / private-domain），仅保留 `_hub` 路由中枢与 `gfa-title`（多平台爆款标题）。各 skill 将逐一打磨后重新上线。
