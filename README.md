@@ -4,16 +4,16 @@
 
 > 一套面向内容运营者、个人 IP 与创业者的中文 AI Skills 工具箱。把「做内容、获流量、转私域」的真实业务问题交给 Agent，获得可立刻执行的方法论与下一步。
 
-![version](https://img.shields.io/badge/version-1.1.0-534AB7)
+![version](https://img.shields.io/badge/version-1.2.0-534AB7)
 ![skills](https://img.shields.io/badge/skills-3-0F6E56)
 ![license](https://img.shields.io/badge/license-CC%20BY--NC%204.0-green)
 ![last commit](https://img.shields.io/github/last-commit/wuhuachao-maker/Growth-Agent-Wuskills?color=888780)
 
 **支持：** WorkBuddy、Claude Code、Codex、Cursor，以及其他支持 Anthropic Agent Skills 的 Agent。
 
-**v1.1.0 更新：** 内容获客 skill `gfa-title`（多平台爆款标题）持续打磨；新增 `gfa-prompt-architect`（老吴六要素提示词架构师，六维框架）上线——把"写优质 prompt"也变成可复制的方法论。`_hub` 路由中枢负责识别意图并分发到对应模块。更多 skill（公众号诊断 / B2B 硬广 / 内容诊断 / IP 增长 / 选题 / 脚本 / 私域等）正在逐一打磨中，敬请期待。
+**v1.2.0 更新：** 新增 `gfa-prompt-architect`（老吴六要素提示词架构师）——把"写优质 prompt"也变成可复制的六维方法论；仓库引入**技能分类体系**（物理扁平 + 逻辑三层分类），随 skill 增多可持续扩展。`_hub` 路由中枢负责识别意图并分发到对应模块。更多 skill（公众号诊断 / B2B 硬广 / 内容诊断 / IP 增长 / 选题 / 口播脚本 / 私域等）正在逐一打磨中，敬请期待。
 
-[快速开始](#快速开始) · [安装](#安装) · [能力一览](#能力一览) · [📚 内容资产库](#内容资产库) · [完整使用手册](./docs/新手入门.md) · [更新日志](./CHANGELOG.md)
+[快速开始](#快速开始) · [安装](#安装) · [能力一览](#能力一览) · [技能分类](#技能分类) · [触发词速查](#触发词速查) · [📚 内容资产库](#内容资产库) · [完整使用手册](./docs/新手入门.md) · [更新日志](./CHANGELOG.md)
 
 ---
 
@@ -27,7 +27,7 @@ npx -y skills add wuhuachao-maker/Growth-Agent-Wuskills -g --all
 安装完成后，直接对你的 Agent 说：
 
 - "帮我起 10 个小红书标题" → `gfa-title`
-- "帮我写一个小红书爆款标题生成器的 prompt" → `gfa-prompt-architect`
+- "帮我写一个小红书爆款笔记生成器的 prompt" → `gfa-prompt-architect`
 
 > 意图模糊时，`_hub` 会先问清楚你的场景，再把你交给最合适的 skill。当前已上线的领域 skill 是 `gfa-title`（标题）与 `gfa-prompt-architect`（提示词架构），其余内容获客能力正在打磨中。
 
@@ -42,6 +42,39 @@ npx -y skills add wuhuachao-maker/Growth-Agent-Wuskills -g --all
 | 意图路由 | `_hub` | 不确定用哪个 skill 时，自动分发到对应模块 |
 
 > 更多能力（公众号诊断 / B2B 硬广 / 内容诊断 / IP 增长 / 选题 / 口播脚本 / 私域转化）正在逐一打磨，敬请期待。
+
+---
+
+## 技能分类
+
+本仓库采用 **物理扁平 + 逻辑三层分类**，兼顾所有 Agent 的加载兼容性与未来扩展性：
+
+- **物理结构**：所有 skill 都放在 `skills/<slug>/` 扁平目录下，Agent 扫描此目录即可加载，**零兼容风险**（不嵌套子目录，避免部分客户端找不到 `SKILL.md`）。
+- **逻辑分类**：靠三层组织，新增 skill 只需在**三处注册**，无需改动物理结构：
+  1. `skills/skills.json` 的 `category` 字段
+  2. 本 README 的「能力一览」+「技能分类」表
+  3. `skills/_hub/SKILL.md` 的路由决策树
+
+### 当前分类
+
+| 分类 (category) | 说明 | 包含 skill |
+|---|---|---|
+| `content` | 内容获客类 | `gfa-title` |
+| `methodology` | 方法论 / 工具类 | `gfa-prompt-architect` |
+| `ops` | 通用工具类（校验 / 格式 / 分析） | （暂无） |
+| `router` | 路由中枢 | `_hub` |
+
+> 新增 skill 的标准动作（建目录 + 三处注册）见 [docs/如何增删skill.md](./docs/如何增删skill.md)。
+
+---
+
+## 触发词速查
+
+| 你说 | 触发的 skill |
+|---|---|
+| "帮我起 10 个小红书标题" / "爆款标题" / "公众号标题怎么写" / "SEO 标题" | `gfa-title` |
+| "帮我写一个 XX 生成器的 prompt" / "优化这个 prompt" / "提示词架构师" / "系统指令怎么写" | `gfa-prompt-architect` |
+| "我想做内容获客" / "帮我看看账号怎么涨粉"（意图模糊） | `_hub` 路由分发 |
 
 ---
 

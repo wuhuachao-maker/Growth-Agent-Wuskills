@@ -2,6 +2,18 @@
 
 > 本仓库的 Skill 采用 Anthropic Agent Skills 规范：每个 Skill 是一个目录，目录内必须包含 `SKILL.md`，顶部必须有 `name` / `description` / `version` frontmatter。
 
+## 技能分类约定（物理扁平 + 逻辑三层）
+
+本仓库**不嵌套子目录**，所有 skill 都放在 `skills/<slug>/` 下，确保所有 Agent 客户端都能扫描到 `SKILL.md`。分类靠以下三层逻辑组织，新增 skill 必须在三处同步注册：
+
+| 层 | 文件 | 改什么 |
+|---|---|---|
+| 1. 元信息分类 | `skills/skills.json` | 给新 skill 加一条，填 `category`（取值：`content` 内容获客 / `methodology` 方法论 / `ops` 通用工具 / `router` 路由） |
+| 2. 路由分发 | `skills/_hub/SKILL.md` | 路由决策树加一行 + `skills.json` 里 `_hub.routesTo` 加上新 slug |
+| 3. 文档呈现 | `README.md` | 「能力一览」+「技能分类」表加一行 |
+
+> 物理目录保持扁平，不要建 `skills/content/<slug>/` 这类嵌套——部分 Agent 客户端无法递归发现嵌套的 `SKILL.md`。
+
 ## 一、增加一个 Skill
 
 ### 1. 创建目录和文件
@@ -62,7 +74,7 @@ version: "1.0.0"
 {
   "slug": "<slug>",
   "name": "<slug>",
-  "category": "content | diagnosis | strategy | engineering | conversion | router",
+  "category": "content | methodology | ops | router",
   "description": "简短描述",
   "triggers": ["触发词1", "触发词2", "触发词3"]
 }
