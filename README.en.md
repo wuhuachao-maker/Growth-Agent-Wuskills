@@ -5,13 +5,13 @@
 > A Chinese AI Skills toolbox for content operators, personal IP builders, and entrepreneurs. Hand real business problems like content creation, traffic acquisition, and private-domain conversion to your Agent, and get actionable methodology plus the next step.
 
 ![version](https://img.shields.io/badge/version-1.0.0-534AB7)
-![skills](https://img.shields.io/badge/skills-10-0F6E56)
+![skills](https://img.shields.io/badge/skills-2-0F6E56)
 ![license](https://img.shields.io/badge/license-CC%20BY--NC%204.0-green)
 ![last commit](https://img.shields.io/github/last-commit/wuhuachao-maker/Growth-Agent-Wuskills?color=888780)
 
 **Supported on:** WorkBuddy, Claude Code, Codex, Cursor, and any other Agent that supports Anthropic Agent Skills.
 
-**v1.0.0 update:** First release with 10 content-acquisition skills; the `_hub` routing skill automatically matches diagnosis / creation / conversion workflows based on your question, so you don't have to pick a skill first.
+**v1.0.0 update:** First content-acquisition skill `multi-platform-title` (multi-platform viral titles) is live; the `_hub` routing core handles intent recognition and dispatch. More skills (WeChat diagnosis / B2B hard-sell / content diagnosis / IP growth / topic / script / private-domain) are being polished one by one — stay tuned.
 
 [Quick start](#quick-start) · [Install](#install) · [Capabilities](#capabilities) · [Full manual](./docs/GETTING_STARTED.en.md) · [Changelog](./CHANGELOG.md)
 
@@ -27,12 +27,8 @@ npx -y skills add wuhuachao-maker/Growth-Agent-Wuskills -g --all
 After installation, just tell your Agent:
 
 - "Give me 10 Xiaohongshu titles" → `multi-platform-title`
-- "My WeChat Official Account recommendation ratio dropped" → `gzh-traffic-diagnosis`
-- "Write a B2B hard-sell post for me" → `b2b-hard-ad`
-- "Help me fix this short-video script" → `script-writing`
-- "I don't know what to shoot next week" → `topic-generation`
 
-> When your intent is vague, `_hub` will clarify the scenario first and then route you to the best skill.
+> When your intent is vague, `_hub` will clarify the scenario first and then route you to the best skill. Currently `multi-platform-title` is the only live domain skill; other content-acquisition capabilities are being polished.
 
 ---
 
@@ -41,15 +37,9 @@ After installation, just tell your Agent:
 | Goal | Entry skill | What you get |
 |---|---|---|
 | Viral titles | `multi-platform-title` | Title methodology for Xiaohongshu, WeChat Official Account, Douyin, SEO, GEO |
-| WeChat traffic diagnosis | `gzh-traffic-diagnosis` | Checklist for low recommendation ratio, shadow-ban suspicions, etc. |
-| B2B hard-sell copy | `b2b-hard-ad` | Lead-gen post structure for SaaS / AI Agent products |
-| Content quality check | `content-diagnosis` | One-page diagnosis and revision direction |
-| Personal IP growth | `ip-growth` | Account launch, matrix design, follower-growth path |
-| Skill engineering | `skill-engineering` | Turn methodology into reusable Agent Skills |
-| Topic generation | `topic-generation` | Sustainable topic library and content calendar |
-| Script polishing | `script-writing` | Hook, information density, spoken-flow optimization |
-| Private-domain conversion | `private-domain` | Moments, community, follow-up copy and SOP |
 | Intent routing | `_hub` | Auto-dispatch when you are unsure which skill to use |
+
+> More capabilities (WeChat diagnosis / B2B hard-sell / content diagnosis / IP growth / topic / script / private-domain) are being polished one by one — stay tuned.
 
 ---
 
@@ -116,8 +106,6 @@ Your real business problem
       _hub routing core
             ↓
     Get methodology + executable steps
-            ↓
-    Need automation? → Upgrade to Growth Flow Agent Commercial
 ```
 
 ---
@@ -132,11 +120,10 @@ More examples, the full trigger-word table, directory structure, and contributio
 
 Growth Flow Agent skill collection is created and maintained by **Wu Huachao (老吴)**.
 
-- Commercial version and more automation → [https://www.growthflowagent.com](https://www.growthflowagent.com?utm_source=github-repo&utm_medium=readme&utm_campaign=free-skills)
 - Feedback → open an [Issue](../../issues)
 
 ---
 
 ## License
 
-**CC BY-NC 4.0**. Free to install and free for personal/non-commercial use; **commercial use and rebranding/reselling are prohibited**. Commercial licensing is available on request. See [LICENSE](./LICENSE).
+**CC BY-NC 4.0**. Free to install and free for personal/non-commercial use; **commercial use and rebranding/reselling are prohibited**; commercial use requires the author's authorization. See [LICENSE](./LICENSE).

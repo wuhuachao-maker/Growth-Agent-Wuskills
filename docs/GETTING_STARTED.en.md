@@ -12,7 +12,6 @@
 - [Skill directory](#skill-directory)
 - [Common scenarios](#common-scenarios)
 - [Update and uninstall](#update-and-uninstall)
-- [Commercial version](#commercial-version)
 - [FAQ](#faq)
 
 ---
@@ -22,8 +21,6 @@
 Describe your real content / traffic / conversion problem to your Agent. It will call the matching skill and give you an actionable methodology plus the next step.
 
 All skills are **methodology free editions**: they teach you how, give you templates, and diagnose for you; but they will not process your private data, connect to your paid APIs, or expose license logic.
-
-For **full automation + private data integration + commercial licensing**, see [Growth Flow Agent Commercial](https://www.growthflowagent.com?utm_source=github-docs&utm_medium=manual&utm_campaign=free-skills).
 
 ---
 
@@ -76,11 +73,6 @@ After installation, describe your problem in chat. The Agent will match the trig
 | You say | Skill triggered |
 |---|---|
 | "Give me 10 Xiaohongshu titles" | `multi-platform-title` |
-| "My WeChat account recommendation ratio dropped" | `gzh-traffic-diagnosis` |
-| "Write a B2B hard-sell post for me" | `b2b-hard-ad` |
-| "Help me fix this short-video script" | `script-writing` |
-| "I don't know what to shoot next week" | `topic-generation` |
-| "I want private-domain conversion" | `private-domain` |
 
 ### Route via _hub
 
@@ -100,14 +92,8 @@ If you are unsure which skill to use, just say:
 |---|---|---|
 | `_hub` | Routing core, intent dispatch | content acquisition / acquisition / grow account / create content |
 | `multi-platform-title` | Viral title methodology | titles / viral titles / Xiaohongshu·WeChat·Douyin titles / SEO·GEO |
-| `gzh-traffic-diagnosis` | WeChat traffic diagnosis | not recommended / shadow ban / good data but not pushed / low recommendation ratio |
-| `b2b-hard-ad` | B2B hard-sell copy methodology | B2B post / SaaS product copy / lead conversion / AI Agent promotion |
-| `content-diagnosis` | Content quality diagnosis | content diagnosis / copy check / is this good |
-| `ip-growth` | Personal IP growth | IP growth / grow account / account matrix / follower path |
-| `skill-engineering` | Skill engineering methodology | build skill / prompt engineering / Agent engineering |
-| `topic-generation` | Content topic engine | no topics / topic library / what content / next week topics |
-| `script-writing` | Short-video script polish | how to write script / spoken script / short-video copy / hook opening |
-| `private-domain` | Private-domain conversion | private domain / Moments copy / community conversion / follow-up script |
+
+> More skills (WeChat diagnosis / B2B hard-sell / content diagnosis / IP growth / topic / script / private-domain) are being polished one by one — stay tuned.
 
 ---
 
@@ -120,26 +106,9 @@ You: Give me 10 Xiaohongshu titles about "sourcing from 1688 for Taiwan e-commer
 Agent (multi-platform-title): 10 titles + SEO/GEO keyword layering for each
 ```
 
-### Scenario 2: WeChat traffic suddenly drops
+### More scenarios coming
 
-```
-You: My WeChat recommendation ratio fell from 60% to 10%, diagnose it
-Agent (gzh-traffic-diagnosis): Checklist (title, cover, open rate, engagement, account weight)
-```
-
-### Scenario 3: writing a SaaS product tweet
-
-```
-You: Write a B2B hard-sell post for an AI Agent product
-Agent (b2b-hard-ad): Structure (pain point → solution → proof → CTA) + sample copy
-```
-
-### Scenario 4: don't know what to shoot next week
-
-```
-You: I don't know what to shoot next week
-Agent (_hub or topic-generation): Ask about your niche, persona, monetization product, then give a 30-day topic library
-```
+WeChat traffic diagnosis / B2B hard-sell / content diagnosis / IP growth / topic generation / script polishing / private-domain conversion are being polished one by one. Until each goes live, `_hub` will point you to it.
 
 ---
 
@@ -171,21 +140,6 @@ If you installed via `npx skills add`, delete the `Growth-Agent-Wuskills` symlin
 
 ---
 
-## Commercial version
-
-Free skills provide **methodology + diagnosis + steps**.
-
-If you need:
-
-- Real account data integration
-- Automated publishing, collection, analysis
-- Private knowledge base and license authorization
-- Team collaboration and permission control
-
-Use [Growth Flow Agent Commercial](https://www.growthflowagent.com?utm_source=github-docs&utm_medium=manual&utm_campaign=free-skills).
-
----
-
 ## FAQ
 
 **Q: My Agent doesn't respond after install.**
@@ -197,7 +151,3 @@ Use [Growth Flow Agent Commercial](https://www.growthflowagent.com?utm_source=gi
 **Q: Can I modify these skills for personal use?**
 
 Yes, but only for personal / non-commercial use, and you must keep the CC BY-NC 4.0 declaration. Commercial use requires author authorization.
-
-**Q: What's the difference between free and commercial versions?**
-
-Free = methodology + manual execution steps. Commercial = methodology + automation + private data + licensing.

@@ -2,6 +2,12 @@
 
 所有版本按时间倒序排列。
 
+## [Unreleased]
+
+### Changed
+- 精简 skill 集合：移除 8 个尚在打磨中的领域 skill（gzh-traffic-diagnosis / b2b-hard-ad / content-diagnosis / ip-growth / skill-engineering / topic-generation / script-writing / private-domain），仅保留 `_hub` 路由中枢与 `multi-platform-title`（多平台爆款标题）。各 skill 将逐一打磨后重新上线。
+- 同步更新 README（简/英/繁三语）、使用手册、`RELEASE_NOTES`、资产库引用，移除对已删 skill 的指向。
+
 ## [1.0.0] — 2026-08-21
 
 ### Added

@@ -8,7 +8,7 @@
       "category": "router",
       "description": "内容获客 Agent 技能集合的路由中枢。当用户意图模糊或不确定该用哪个 skill 时触发。",
       "triggers": ["内容获客", "获客", "做内容", "引流", "方法论"],
-      "routesTo": ["multi-platform-title", "gzh-traffic-diagnosis", "b2b-hard-ad", "content-diagnosis", "ip-growth", "skill-engineering", "topic-generation", "script-writing", "private-domain"]
+      "routesTo": ["multi-platform-title"]
     },
     {
       "slug": "multi-platform-title",
@@ -16,62 +16,6 @@
       "category": "content",
       "description": "多平台爆款标题方法论 skill。",
       "triggers": ["起标题", "爆款标题", "小红书标题", "公众号标题", "抖音标题", "SEO标题", "GEO优化", "标题没点击", "标题怎么写"]
-    },
-    {
-      "slug": "gzh-traffic-diagnosis",
-      "name": "gzh-traffic-diagnosis",
-      "category": "diagnosis",
-      "description": "公众号流量诊断方法论 skill。",
-      "triggers": ["公众号没流量", "不被推荐", "数据好但不推", "限流", "推荐占比低", "流量诊断"]
-    },
-    {
-      "slug": "b2b-hard-ad",
-      "name": "b2b-hard-ad",
-      "category": "content",
-      "description": "B2B 硬广文案方法论 skill。",
-      "triggers": ["B2B推文", "公众号硬广", "SaaS产品文案", "留资转化", "AI Agent 推广", "产品文案"]
-    },
-    {
-      "slug": "content-diagnosis",
-      "name": "content-diagnosis",
-      "category": "diagnosis",
-      "description": "内容质量诊断方法论 skill。",
-      "triggers": ["内容诊断", "这篇好不好", "为什么没流量", "诊断文案质量", "标题体检", "文案体检"]
-    },
-    {
-      "slug": "ip-growth",
-      "name": "ip-growth",
-      "category": "strategy",
-      "description": "个人 IP 增长方法论 skill。",
-      "triggers": ["IP增长", "个人IP", "账号矩阵", "涨粉路径", "内容体系", "起号"]
-    },
-    {
-      "slug": "skill-engineering",
-      "name": "skill-engineering",
-      "category": "engineering",
-      "description": "Skill 工程方法论 skill。",
-      "triggers": ["做skill", "提示词工程", "Agent工程", "写个技能", "skill工程"]
-    },
-    {
-      "slug": "topic-generation",
-      "name": "topic-generation",
-      "category": "strategy",
-      "description": "内容选题引擎 skill。",
-      "triggers": ["没选题", "选题库", "做什么内容", "选题方向", "内容规划", "下周选题"]
-    },
-    {
-      "slug": "script-writing",
-      "name": "script-writing",
-      "category": "content",
-      "description": "短视频/口播脚本改稿 skill。",
-      "triggers": ["脚本怎么写", "口播稿", "短视频文案", "这段怎么念更自然", "开头怎么留人", "口播脚本"]
-    },
-    {
-      "slug": "private-domain",
-      "name": "private-domain",
-      "category": "conversion",
-      "description": "私域转化文案 skill。",
-      "triggers": ["私域", "朋友圈文案", "社群转化", "怎么催单", "跟进话术", "社群发售"]
     }
   ]
 }

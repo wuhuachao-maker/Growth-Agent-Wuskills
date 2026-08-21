@@ -4,9 +4,9 @@
 
 ## Growth Flow Agent · 免费内容获客 skill 集合 v1.0.0
 
-一套面向内容运营者、个人 IP 与创业者的中文 AI Skills 工具箱，覆盖爆款标题、公众号流量诊断、B2B 硬广、内容诊断、IP 增长、Skill 工程、内容选题、口播脚本、私域转化。
+一套面向内容运营者、个人 IP 与创业者的中文 AI Skills 工具箱，首发 `multi-platform-title`（多平台爆款标题），其余内容获客能力正在逐一打磨中。
 
-这是 **Growth Flow Agent（GFA）内容获客系统**的免费引流前端——只开源方法论，全自动执行 + 私有数据集成请使用商业版。
+本集合开源方法论，帮助内容运营者、个人 IP 与创业者直接上手；不接私有数据、不跑付费 API。
 
 ---
 
@@ -23,12 +23,7 @@ npx -y skills add wuhuachao-maker/Growth-Agent-Wuskills -g --all
 重启你的 Agent 工具，然后说：
 
 - "帮我起 10 个小红书标题" → `multi-platform-title`
-- "公众号推荐占比低怎么办" → `gzh-traffic-diagnosis`
-- "帮我写一条 B2B 硬广" → `b2b-hard-ad`
-- "这条短视频脚本怎么改" → `script-writing`
-- "不知道下周拍什么" → `topic-generation`
-- "想做私域转化" → `private-domain`
-- 意图模糊时 → `_hub` 路由中枢会帮你匹配
+- 意图模糊时 → `_hub` 路由中枢会帮你匹配（当前仅 `multi-platform-title` 已上线，其余能力打磨中）
 
 ---
 
@@ -37,20 +32,12 @@ npx -y skills add wuhuachao-maker/Growth-Agent-Wuskills -g --all
 | skill | 用途 |
 |---|---|
 | `_hub` | 路由中枢 |
-| `multi-platform-title` | 多平台爆款标题 |
-| `gzh-traffic-diagnosis` | 公众号流量诊断 |
-| `b2b-hard-ad` | B2B 硬广文案 |
-| `content-diagnosis` | 内容质量诊断 |
-| `ip-growth` | 个人 IP 增长 |
-| `skill-engineering` | Skill 工程 |
-| `topic-generation` | 内容选题 |
-| `script-writing` | 口播脚本改稿 |
-| `private-domain` | 私域转化文案 |
+| `multi-platform-title` | 多平台爆款标题（当前唯一已上线的领域 skill） |
+
+> 公众号诊断 / B2B 硬广 / 内容诊断 / IP 增长 / 选题 / 口播脚本 / 私域转化等能力正在逐一打磨，敬请期待。
 
 ---
 
 ### License
 
 CC BY-NC 4.0：免费个人/非商业使用，禁止商用与改标转卖。
-
-想了解更多自动化能力 → [Growth Flow Agent 商业版](https://www.growthflowagent.com?utm_source=github-release&utm_medium=release-notes&utm_campaign=free-skills)

@@ -1,17 +1,17 @@
-# Growth Flow Agent · 内容获客技能集合
+# Growth Flow Skill · 内容获客技能集合
 
 [简体中文](./README.md) · [English](./README.en.md) · [繁體中文](./README.zh-TW.md)
 
 > 一套面向内容运营者、个人 IP 与创业者的中文 AI Skills 工具箱。把「做内容、获流量、转私域」的真实业务问题交给 Agent，获得可立刻执行的方法论与下一步。
 
 ![version](https://img.shields.io/badge/version-1.0.0-534AB7)
-![skills](https://img.shields.io/badge/skills-10-0F6E56)
+![skills](https://img.shields.io/badge/skills-2-0F6E56)
 ![license](https://img.shields.io/badge/license-CC%20BY--NC%204.0-green)
 ![last commit](https://img.shields.io/github/last-commit/wuhuachao-maker/Growth-Agent-Wuskills?color=888780)
 
 **支持：** WorkBuddy、Claude Code、Codex、Cursor，以及其他支持 Anthropic Agent Skills 的 Agent。
 
-**v1.0.0 更新：** 首批 10 个内容获客 skill 上线；`_hub` 路由中枢会根据你的问题自动匹配诊断/创作/转化流程，无需先判断该用哪个 skill。
+**v1.0.0 更新：** 首个内容获客 skill `multi-platform-title`（多平台爆款标题）上线；`_hub` 路由中枢负责识别意图并分发。更多 skill（公众号诊断 / B2B 硬广 / 内容诊断 / IP 增长 / 选题 / 脚本 / 私域等）正在逐一打磨中，敬请期待。
 
 [快速开始](#快速开始) · [安装](#安装) · [能力一览](#能力一览) · [📚 内容资产库](#内容资产库) · [完整使用手册](./docs/新手入门.md) · [更新日志](./CHANGELOG.md)
 
@@ -27,12 +27,8 @@ npx -y skills add wuhuachao-maker/Growth-Agent-Wuskills -g --all
 安装完成后，直接对你的 Agent 说：
 
 - "帮我起 10 个小红书标题" → `multi-platform-title`
-- "公众号推荐占比低怎么办" → `gzh-traffic-diagnosis`
-- "帮我写一条 B2B 硬广" → `b2b-hard-ad`
-- "这条短视频脚本怎么改" → `script-writing`
-- "不知道下周拍什么" → `topic-generation`
 
-> 意图模糊时，`_hub` 会先问清楚你的场景，再把你交给最合适的 skill。
+> 意图模糊时，`_hub` 会先问清楚你的场景，再把你交给最合适的 skill。当前唯一已上线的领域 skill 是 `multi-platform-title`，其余内容获客能力正在打磨中。
 
 ---
 
@@ -41,15 +37,9 @@ npx -y skills add wuhuachao-maker/Growth-Agent-Wuskills -g --all
 | 业务目标 | 入口 skill | 你能得到什么 |
 |---|---|---|
 | 爆款标题 | `multi-platform-title` | 小红书 / 公众号 / 抖音 / SEO·GEO 标题方法论 |
-| 公众号流量诊断 | `gzh-traffic-diagnosis` | 推荐占比低、数据好但不推等问题的排查清单 |
-| B2B 硬广文案 | `b2b-hard-ad` | SaaS / AI Agent 类产品的留资转化推文结构 |
-| 内容质量诊断 | `content-diagnosis` | 单篇内容的体检报告与修改方向 |
-| 个人 IP 增长 | `ip-growth` | 起号、账号矩阵、涨粉路径设计 |
-| Skill 工程 | `skill-engineering` | 把方法论沉淀为可复用 Agent Skill 的规范 |
-| 内容选题 | `topic-generation` | 可持续生产的选题库与内容日历 |
-| 口播脚本改稿 | `script-writing` | 开头留人、信息密度、口播流畅度优化 |
-| 私域转化文案 | `private-domain` | 朋友圈、社群、跟进话术与 SOP |
 | 意图路由 | `_hub` | 不确定用哪个 skill 时，自动分发到对应模块 |
+
+> 更多能力（公众号诊断 / B2B 硬广 / 内容诊断 / IP 增长 / 选题 / 口播脚本 / 私域转化）正在逐一打磨，敬请期待。
 
 ---
 
@@ -97,14 +87,14 @@ curl -sL https://raw.githubusercontent.com/wuhuachao-maker/Growth-Agent-Wuskills
 对 Agent 说：
 
 ```
-更新 Growth Flow Agent 技能集合
+更新 Growth Flow Skill 技能集合
 ```
 
 或重新运行上面的安装命令，已存在的本地数据不会被覆盖。
 
 ---
 
-## Growth Flow Agent 技能集合怎样工作
+## Growth Flow Skill 技能集合怎样工作
 
 ```
 你的真实业务问题
@@ -116,8 +106,6 @@ curl -sL https://raw.githubusercontent.com/wuhuachao-maker/Growth-Agent-Wuskills
    _hub 路由中枢
         ↓
   拿到方法论 + 可执行步骤
-        ↓
-  要自动执行？ → 升级 Growth Flow Agent 商业版
 ```
 
 ---
@@ -144,9 +132,8 @@ curl -sL https://raw.githubusercontent.com/wuhuachao-maker/Growth-Agent-Wuskills
 
 ## 作者与支持
 
-Growth Flow Agent 技能集合由 **老吴（Wu Huachao）** 创建与维护。
+Growth Flow Skill 技能集合由 老吴获客笔记 公众号 创建与维护。
 
-- 商业版与更多自动化能力 → [https://www.growthflowagent.com](https://www.growthflowagent.com?utm_source=github-repo&utm_medium=readme&utm_campaign=free-skills)
 - 问题反馈 → 在仓库提交 [Issue](../../issues)
 
 ---
