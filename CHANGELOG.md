@@ -18,6 +18,11 @@
   - `private-domain`：私域转化文案
 - 多工具分发脚本：`bridge/install.sh`、`bridge/install.mjs`、`bridge/install-interactive.sh`。
 - 交互式安装引导，降低非技术用户门槛。
+- 新增 `library/` 内容资产库（非 Agent Skill，不随安装进入 Agent）：
+  - `library/concepts/内容获客高频概念词典.md`：15 个核心术语统一口径
+  - `library/cases/爆款标题案例库.md`：三平台标题机制级拆解
+  - `library/templates/内容诊断检查清单.md`：五维体检表 + 评分卡
+- 新增 `docs/如何增删skill.md`：增删 Skill 与知识库资产的实操手册。
 - 安装脚本支持 `--uninstall` 卸载。
 - `bridge/validate.mjs`：校验 frontmatter、UTM 钩子、CC BY-NC 声明、技能清单一致性、触发词冲突、hub 路由覆盖。
 - `skills/skills.json`：机器可读的技能清单与触发词表。
