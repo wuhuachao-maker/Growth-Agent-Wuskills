@@ -1,4 +1,4 @@
-# Growth Flow Agent · Content Acquisition Skill Collection
+# Growth Flow Skill · Content Acquisition Skill Collection
 
 [简体中文](./README.md) · [English](./README.en.md) · [繁體中文](./README.zh-TW.md)
 
@@ -11,7 +11,7 @@
 
 **Supported on:** WorkBuddy, Claude Code, Codex, Cursor, and any other Agent that supports Anthropic Agent Skills.
 
-**v1.0.0 update:** First content-acquisition skill `multi-platform-title` (multi-platform viral titles) is live; the `_hub` routing core handles intent recognition and dispatch. More skills (WeChat diagnosis / B2B hard-sell / content diagnosis / IP growth / topic / script / private-domain) are being polished one by one — stay tuned.
+**v1.0.0 update:** First content-acquisition skill `gfa-title` (multi-platform viral titles) is live; the `_hub` routing core handles intent recognition and dispatch. More skills (WeChat diagnosis / B2B hard-sell / content diagnosis / IP growth / topic / script / private-domain) are being polished one by one — stay tuned.
 
 [Quick start](#quick-start) · [Install](#install) · [Capabilities](#capabilities) · [Full manual](./docs/GETTING_STARTED.en.md) · [Changelog](./CHANGELOG.md)
 
@@ -26,9 +26,9 @@ npx -y skills add wuhuachao-maker/Growth-Agent-Wuskills -g --all
 
 After installation, just tell your Agent:
 
-- "Give me 10 Xiaohongshu titles" → `multi-platform-title`
+- "Give me 10 Xiaohongshu titles" → `gfa-title`
 
-> When your intent is vague, `_hub` will clarify the scenario first and then route you to the best skill. Currently `multi-platform-title` is the only live domain skill; other content-acquisition capabilities are being polished.
+> When your intent is vague, `_hub` will clarify the scenario first and then route you to the best skill. Currently `gfa-title` is the only live domain skill; other content-acquisition capabilities are being polished.
 
 ---
 
@@ -36,7 +36,7 @@ After installation, just tell your Agent:
 
 | Goal | Entry skill | What you get |
 |---|---|---|
-| Viral titles | `multi-platform-title` | Title methodology for Xiaohongshu, WeChat Official Account, Douyin, SEO, GEO |
+| Viral titles | `gfa-title` | Title methodology for Xiaohongshu, WeChat Official Account, Douyin, SEO, GEO |
 | Intent routing | `_hub` | Auto-dispatch when you are unsure which skill to use |
 
 > More capabilities (WeChat diagnosis / B2B hard-sell / content diagnosis / IP growth / topic / script / private-domain) are being polished one by one — stay tuned.
@@ -87,7 +87,7 @@ curl -sL https://raw.githubusercontent.com/wuhuachao-maker/Growth-Agent-Wuskills
 Tell your Agent:
 
 ```
-Update Growth Flow Agent skill collection
+Update Growth Flow Skill skill collection
 ```
 
 Or re-run the install command above. Existing local data will not be overwritten.
@@ -118,7 +118,7 @@ More examples, the full trigger-word table, directory structure, and contributio
 
 ## Author & support
 
-Growth Flow Agent skill collection is created and maintained by **Wu Huachao (老吴)**.
+Growth Flow Skill skill collection is created and maintained by **老吴获客笔记 公众号**.
 
 - Feedback → open an [Issue](../../issues)
 

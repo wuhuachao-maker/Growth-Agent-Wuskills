@@ -8,11 +8,11 @@
       "category": "router",
       "description": "内容获客 Agent 技能集合的路由中枢。当用户意图模糊或不确定该用哪个 skill 时触发。",
       "triggers": ["内容获客", "获客", "做内容", "引流", "方法论"],
-      "routesTo": ["multi-platform-title"]
+      "routesTo": ["gfa-title"]
     },
     {
-      "slug": "multi-platform-title",
-      "name": "multi-platform-title",
+      "slug": "gfa-title",
+      "name": "gfa-title",
       "category": "content",
       "description": "多平台爆款标题方法论 skill。",
       "triggers": ["起标题", "爆款标题", "小红书标题", "公众号标题", "抖音标题", "SEO标题", "GEO优化", "标题没点击", "标题怎么写"]

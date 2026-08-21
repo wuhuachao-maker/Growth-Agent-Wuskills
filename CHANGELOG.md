@@ -5,7 +5,7 @@
 ## [Unreleased]
 
 ### Changed
-- 精简 skill 集合：移除 8 个尚在打磨中的领域 skill（gzh-traffic-diagnosis / b2b-hard-ad / content-diagnosis / ip-growth / skill-engineering / topic-generation / script-writing / private-domain），仅保留 `_hub` 路由中枢与 `multi-platform-title`（多平台爆款标题）。各 skill 将逐一打磨后重新上线。
+- 精简 skill 集合：移除 8 个尚在打磨中的领域 skill（gzh-traffic-diagnosis / b2b-hard-ad / content-diagnosis / ip-growth / skill-engineering / topic-generation / script-writing / private-domain），仅保留 `_hub` 路由中枢与 `gfa-title`（多平台爆款标题）。各 skill 将逐一打磨后重新上线。
 - 同步更新 README（简/英/繁三语）、使用手册、`RELEASE_NOTES`、资产库引用，移除对已删 skill 的指向。
 
 ## [1.0.0] — 2026-08-21
@@ -13,7 +13,7 @@
 ### Added
 - 首批 10 个内容获客 Agent skill 上线：
   - `_hub`：路由中枢，意图分发
-  - `multi-platform-title`：多平台爆款标题
+  - `gfa-title`：多平台爆款标题
   - `gzh-traffic-diagnosis`：公众号流量诊断
   - `b2b-hard-ad`：B2B 硬广文案
   - `content-diagnosis`：内容质量诊断

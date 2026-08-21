@@ -1,4 +1,4 @@
-# Growth Flow Agent · 內容獲客技能集合
+# Growth Flow Skill · 內容獲客技能集合
 
 [简体中文](./README.md) · [English](./README.en.md) · [繁體中文](./README.zh-TW.md)
 
@@ -11,7 +11,7 @@
 
 **支持：** WorkBuddy、Claude Code、Codex、Cursor，以及其他支持 Anthropic Agent Skills 的 Agent。
 
-**v1.0.0 更新：** 首個內容獲客 skill `multi-platform-title`（多平台爆款標題）上線；`_hub` 路由中枢負責識別意圖並分發。更多 skill（公眾號診斷 / B2B 硬廣 / 內容診斷 / IP 增長 / 選題 / 腳本 / 私域等）正在逐一打磨中，敬請期待。
+**v1.0.0 更新：** 首個內容獲客 skill `gfa-title`（多平台爆款標題）上線；`_hub` 路由中枢負責識別意圖並分發。更多 skill（公眾號診斷 / B2B 硬廣 / 內容診斷 / IP 增長 / 選題 / 腳本 / 私域等）正在逐一打磨中，敬請期待。
 
 [快速開始](#快速開始) · [安裝](#安裝) · [能力一覽](#能力一覽) · [完整使用手冊](./docs/新手入門.md) · [更新日誌](./CHANGELOG.md)
 
@@ -26,9 +26,9 @@ npx -y skills add wuhuachao-maker/Growth-Agent-Wuskills -g --all
 
 安裝完成後，直接對你的 Agent 說：
 
-- "幫我起 10 個小紅書標題" → `multi-platform-title`
+- "幫我起 10 個小紅書標題" → `gfa-title`
 
-> 意圖模糊時，`_hub` 會先問清楚你的場景，再把你交給最合適的 skill。當前唯一已上線的領域 skill 是 `multi-platform-title`，其餘內容獲客能力正在打磨中。
+> 意圖模糊時，`_hub` 會先問清楚你的場景，再把你交給最合適的 skill。當前唯一已上線的領域 skill 是 `gfa-title`，其餘內容獲客能力正在打磨中。
 
 ---
 
@@ -36,7 +36,7 @@ npx -y skills add wuhuachao-maker/Growth-Agent-Wuskills -g --all
 
 | 業務目標 | 入口 skill | 你能得到什麼 |
 |---|---|---|
-| 爆款標題 | `multi-platform-title` | 小紅書 / 公眾號 / 抖音 / SEO·GEO 標題方法論 |
+| 爆款標題 | `gfa-title` | 小紅書 / 公眾號 / 抖音 / SEO·GEO 標題方法論 |
 | 意圖路由 | `_hub` | 不確定用哪個 skill 時，自動分發到對應模塊 |
 
 > 更多能力（公眾號診斷 / B2B 硬廣 / 內容診斷 / IP 增長 / 選題 / 腳本 / 私域轉化）正在逐一打磨，敬請期待。
@@ -87,14 +87,14 @@ curl -sL https://raw.githubusercontent.com/wuhuachao-maker/Growth-Agent-Wuskills
 對 Agent 說：
 
 ```
-更新 Growth Flow Agent 技能集合
+更新 Growth Flow Skill 技能集合
 ```
 
 或重新運行上面的安裝命令，已存在的本地數據不會被覆蓋。
 
 ---
 
-## Growth Flow Agent 技能集合怎樣工作
+## Growth Flow Skill 技能集合怎樣工作
 
 ```
 你的真實業務問題
@@ -106,8 +106,6 @@ curl -sL https://raw.githubusercontent.com/wuhuachao-maker/Growth-Agent-Wuskills
    _hub 路由中枢
         ↓
   拿到方法論 + 可執行步驟
-        ↓
-  要自動執行？ → 升級 Growth Flow Agent 商業版
 ```
 
 ---
@@ -120,7 +118,7 @@ curl -sL https://raw.githubusercontent.com/wuhuachao-maker/Growth-Agent-Wuskills
 
 ## 作者與支持
 
-Growth Flow Agent 技能集合由 **老吳（Wu Huachao）** 創建與維護。
+Growth Flow Skill 技能集合由 **老吳獲客筆記 公眾號** 創建與維護。
 
 - 問題反饋 → 在倉庫提交 [Issue](../../issues)
 

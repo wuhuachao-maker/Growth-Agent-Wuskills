@@ -11,7 +11,7 @@
 
 **支持：** WorkBuddy、Claude Code、Codex、Cursor，以及其他支持 Anthropic Agent Skills 的 Agent。
 
-**v1.0.0 更新：** 首个内容获客 skill `multi-platform-title`（多平台爆款标题）上线；`_hub` 路由中枢负责识别意图并分发。更多 skill（公众号诊断 / B2B 硬广 / 内容诊断 / IP 增长 / 选题 / 脚本 / 私域等）正在逐一打磨中，敬请期待。
+**v1.0.0 更新：** 首个内容获客 skill `gfa-title`（多平台爆款标题）上线；`_hub` 路由中枢负责识别意图并分发。更多 skill（公众号诊断 / B2B 硬广 / 内容诊断 / IP 增长 / 选题 / 脚本 / 私域等）正在逐一打磨中，敬请期待。
 
 [快速开始](#快速开始) · [安装](#安装) · [能力一览](#能力一览) · [📚 内容资产库](#内容资产库) · [完整使用手册](./docs/新手入门.md) · [更新日志](./CHANGELOG.md)
 
@@ -26,9 +26,9 @@ npx -y skills add wuhuachao-maker/Growth-Agent-Wuskills -g --all
 
 安装完成后，直接对你的 Agent 说：
 
-- "帮我起 10 个小红书标题" → `multi-platform-title`
+- "帮我起 10 个小红书标题" → `gfa-title`
 
-> 意图模糊时，`_hub` 会先问清楚你的场景，再把你交给最合适的 skill。当前唯一已上线的领域 skill 是 `multi-platform-title`，其余内容获客能力正在打磨中。
+> 意图模糊时，`_hub` 会先问清楚你的场景，再把你交给最合适的 skill。当前唯一已上线的领域 skill 是 `gfa-title`，其余内容获客能力正在打磨中。
 
 ---
 
@@ -36,7 +36,7 @@ npx -y skills add wuhuachao-maker/Growth-Agent-Wuskills -g --all
 
 | 业务目标 | 入口 skill | 你能得到什么 |
 |---|---|---|
-| 爆款标题 | `multi-platform-title` | 小红书 / 公众号 / 抖音 / SEO·GEO 标题方法论 |
+| 爆款标题 | `gfa-title` | 小红书 / 公众号 / 抖音 / SEO·GEO 标题方法论 |
 | 意图路由 | `_hub` | 不确定用哪个 skill 时，自动分发到对应模块 |
 
 > 更多能力（公众号诊断 / B2B 硬广 / 内容诊断 / IP 增长 / 选题 / 口播脚本 / 私域转化）正在逐一打磨，敬请期待。

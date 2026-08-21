@@ -1,6 +1,6 @@
-# Growth Flow Agent Getting Started
+# Growth Flow Skill Getting Started
 
-> Complete manual for the [Growth Flow Agent content acquisition skill collection](../README.en.md).
+> Complete manual for the [Growth Flow Skill content acquisition skill collection](../README.en.md).
 
 ---
 
@@ -72,7 +72,7 @@ After installation, describe your problem in chat. The Agent will match the trig
 
 | You say | Skill triggered |
 |---|---|
-| "Give me 10 Xiaohongshu titles" | `multi-platform-title` |
+| "Give me 10 Xiaohongshu titles" | `gfa-title` |
 
 ### Route via _hub
 
@@ -91,7 +91,7 @@ If you are unsure which skill to use, just say:
 | skill | One-liner | Trigger words |
 |---|---|---|
 | `_hub` | Routing core, intent dispatch | content acquisition / acquisition / grow account / create content |
-| `multi-platform-title` | Viral title methodology | titles / viral titles / Xiaohongshu·WeChat·Douyin titles / SEO·GEO |
+| `gfa-title` | Viral title methodology | titles / viral titles / Xiaohongshu·WeChat·Douyin titles / SEO·GEO |
 
 > More skills (WeChat diagnosis / B2B hard-sell / content diagnosis / IP growth / topic / script / private-domain) are being polished one by one — stay tuned.
 
@@ -103,7 +103,7 @@ If you are unsure which skill to use, just say:
 
 ```
 You: Give me 10 Xiaohongshu titles about "sourcing from 1688 for Taiwan e-commerce"
-Agent (multi-platform-title): 10 titles + SEO/GEO keyword layering for each
+Agent (gfa-title): 10 titles + SEO/GEO keyword layering for each
 ```
 
 ### More scenarios coming
@@ -125,7 +125,7 @@ npx -y skills add wuhuachao-maker/Growth-Agent-Wuskills -g --all
 Or tell your Agent:
 
 ```
-Update Growth Flow Agent skill collection
+Update Growth Flow Skill skill collection
 ```
 
 ### Uninstall

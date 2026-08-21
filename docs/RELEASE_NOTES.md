@@ -2,9 +2,9 @@
 
 > 复制以下内容到 GitHub Release 描述框即可。
 
-## Growth Flow Agent · 免费内容获客 skill 集合 v1.0.0
+## Growth Flow Skill · 免费内容获客 skill 集合 v1.0.0
 
-一套面向内容运营者、个人 IP 与创业者的中文 AI Skills 工具箱，首发 `multi-platform-title`（多平台爆款标题），其余内容获客能力正在逐一打磨中。
+一套面向内容运营者、个人 IP 与创业者的中文 AI Skills 工具箱，首发 `gfa-title`（多平台爆款标题），其余内容获客能力正在逐一打磨中。
 
 本集合开源方法论，帮助内容运营者、个人 IP 与创业者直接上手；不接私有数据、不跑付费 API。
 
@@ -22,8 +22,8 @@ npx -y skills add wuhuachao-maker/Growth-Agent-Wuskills -g --all
 
 重启你的 Agent 工具，然后说：
 
-- "帮我起 10 个小红书标题" → `multi-platform-title`
-- 意图模糊时 → `_hub` 路由中枢会帮你匹配（当前仅 `multi-platform-title` 已上线，其余能力打磨中）
+- "帮我起 10 个小红书标题" → `gfa-title`
+- 意图模糊时 → `_hub` 路由中枢会帮你匹配（当前仅 `gfa-title` 已上线，其余能力打磨中）
 
 ---
 
@@ -32,7 +32,7 @@ npx -y skills add wuhuachao-maker/Growth-Agent-Wuskills -g --all
 | skill | 用途 |
 |---|---|
 | `_hub` | 路由中枢 |
-| `multi-platform-title` | 多平台爆款标题（当前唯一已上线的领域 skill） |
+| `gfa-title` | 多平台爆款标题（当前唯一已上线的领域 skill） |
 
 > 公众号诊断 / B2B 硬广 / 内容诊断 / IP 增长 / 选题 / 口播脚本 / 私域转化等能力正在逐一打磨，敬请期待。
 
