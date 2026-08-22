@@ -16,3 +16,5 @@ jobs:
           node-version: "20"
       - name: Validate all skills
         run: node bridge/validate.mjs --strict
+      - name: Library health check
+        run: node bridge/check_library.mjs

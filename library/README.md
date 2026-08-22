@@ -3,6 +3,7 @@
 > 本目录是 **内容获客的知识资产**，不是 Anthropic Agent Skills。
 > 它不会被 `bridge/validate.mjs` 扫描，也不会被安装脚本当作 Skill 安装。
 > 它用于：给 Skill 提供参考资料、给使用者系统学习、做 SEO/GEO 内容沉淀。
+> 最后更新：2026-08-22
 
 ## 目录结构
 
