@@ -1,6 +1,7 @@
 ---
 name: gfa-title
 version: 1.2.0
+visibility: public
 description: "多平台爆款标题方法论 skill（含案例库）。当用户要起标题 / 写爆款标题 / 优化标题，或说'小红书标题 / 公众号标题 / 抖音标题 / SEO标题 / GEO优化 / 标题没点击 / 标题怎么写'，或给了一篇内容想配高点击标题时触发。基于标题心理学 + 三平台流量机制 + SEO/GEO 双层可发现性，调用 references/title_logic.md 案例库产出可被审计、可优化的标题。不替用户跑付费 API、不接私有数据。"
 ---
 
