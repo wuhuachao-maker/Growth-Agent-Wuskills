@@ -4,14 +4,14 @@
 
 > A Chinese AI Skills toolbox for content operators, personal IP builders, and entrepreneurs. Hand real business problems like content creation, traffic acquisition, and private-domain conversion to your Agent, and get actionable methodology plus the next step.
 
-![version](https://img.shields.io/badge/version-1.0.0-534AB7)
-![skills](https://img.shields.io/badge/skills-2-0F6E56)
+![version](https://img.shields.io/badge/version-1.4.0-534AB7)
+![skills](https://img.shields.io/badge/skills-5-0F6E56)
 ![license](https://img.shields.io/badge/license-CC%20BY--NC%204.0-green)
 ![last commit](https://img.shields.io/github/last-commit/wuhuachao-maker/Growth-Agent-Wuskills?color=888780)
 
 **Supported on:** WorkBuddy, Claude Code, Codex, Cursor, and any other Agent that supports Anthropic Agent Skills.
 
-**v1.0.0 update:** First content-acquisition skill `gfa-title` (multi-platform viral titles) is live; the `_hub` routing core handles intent recognition and dispatch. More skills (WeChat diagnosis / B2B hard-sell / content diagnosis / IP growth / topic / script / private-domain) are being polished one by one — stay tuned.
+**v1.4.0 update:** `gfa-geo` (Generative Engine Optimization rewriter) is live — rewrites articles/notes/copy so ChatGPT, Perplexity, and Google AI Overviews are more likely to cite them. Based on the Princeton GEO study: conversational statistics + source footnotes + answer-first structure + platform templates (FAQ/HowTo), every delivery includes a plain-language "technical checklist". Supports web search for real mainstream-media citations (never fabricates). More skills (WeChat diagnosis / B2B hard-sell / content diagnosis / IP growth / topic / script / private-domain) are being polished one by one — stay tuned.
 
 [Quick start](#quick-start) · [Install](#install) · [Capabilities](#capabilities) · [Full manual](./docs/GETTING_STARTED.en.md) · [Changelog](./CHANGELOG.md)
 
@@ -27,8 +27,11 @@ npx -y skills add wuhuachao-maker/Growth-Agent-Wuskills -g --all
 After installation, just tell your Agent:
 
 - "Give me 10 Xiaohongshu titles" → `gfa-title`
+- "Write me a prompt for a Xiaohongshu note generator" → `gfa-prompt-architect`
+- "Will this note get flagged / help me self-check compliance" → `gfa-content-risk`
+- "Rewrite this article so AI engines are more likely to cite it" → `gfa-geo`
 
-> When your intent is vague, `_hub` will clarify the scenario first and then route you to the best skill. Currently `gfa-title` is the only live domain skill; other content-acquisition capabilities are being polished.
+> When your intent is vague, `_hub` will clarify the scenario first and then route you to the best skill. Currently live domain skills: `gfa-title` (titles), `gfa-prompt-architect` (prompt architecture), `gfa-content-risk` (content risk check), `gfa-geo` (GEO rewriting); other content-acquisition capabilities are being polished.
 
 ---
 
@@ -37,6 +40,9 @@ After installation, just tell your Agent:
 | Goal | Entry skill | What you get |
 |---|---|---|
 | Viral titles | `gfa-title` | Title methodology for Xiaohongshu, WeChat Official Account, Douyin, SEO, GEO |
+| Prompt architecture | `gfa-prompt-architect` | Six-element framework producing copyable high-quality prompts (role/method/knowledge/structure/assessment/risk) |
+| Content risk check | `gfa-content-risk` | Pre-publish dual-track scan (machine-check + substantive violation), risk location + minimal fix + risk level |
+| GEO rewriting | `gfa-geo` | Rewrite articles per the Princeton GEO mechanism to raise citation rates in ChatGPT / Perplexity / AI Overviews; conversational stats + source footnotes + platform templates + plain-language tech checklist |
 | Intent routing | `_hub` | Auto-dispatch when you are unsure which skill to use |
 
 > More capabilities (WeChat diagnosis / B2B hard-sell / content diagnosis / IP growth / topic / script / private-domain) are being polished one by one — stay tuned.

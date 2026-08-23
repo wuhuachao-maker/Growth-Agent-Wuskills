@@ -88,7 +88,7 @@ function validateFile(file, manifestMap) {
   }
   const { name, description, version } = fm.data;
 
-  const allowedKeys = new Set(["name", "description", "version"]);
+  const allowedKeys = new Set(["name", "description", "version", "visibility", "agent_created"]);
   const extraKeys = Object.keys(fm.data).filter((k) => !allowedKeys.has(k));
   if (extraKeys.length) {
     issues.push(`frontmatter 含未知字段: ${extraKeys.join(", ")}`);

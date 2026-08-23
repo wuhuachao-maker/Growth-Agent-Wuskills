@@ -5,12 +5,9 @@
 ## [Unreleased]
 
 ### Added
-- 新增 `gfa-prompt-architect`（老吴六要素提示词架构师 v2.0.0）：六要素框架（角色清晰+方法明确+知识充分+结构稳定+可被考核+风险可控）+ 预期闭合 + 🟠/🔵 判断网关 + 回填闭环，产出可复制的优质 prompt；含创作者信息卡片（智能触发 + 打赏码 + CC BY-NC 4.0）。
-- `_hub` 路由新增 prompt 类意图分发；`skills.json` 注册 `gfa-prompt-architect` 并加入 routesTo。
-- README 能力一览新增「提示词架构」入口，badge 升至 skills-3 / v1.1.0。
-- 新增 `gfa-content-risk`（内容发布前风险检查器 v1.0.0）：双轨扫描（机器可识别 + 实质违规），覆盖小红书/公众号/抖音/广告法，输出「风险位置 + 最小修改动作 + 综合风险等级」；含内置真料 `references/知识库.md`（联网挖掘的真实平台规范 + 来源链接）+ 可回填 `references/风险检查清单.md` + 创作者信息卡片。
-- 新增 `library/INDEX.md`：资产库总索引 + SOT 权威口径标记 + 健康巡检规则（超 90 天标黄、180 天标红）。
-- `_hub` 路由新增「合规/风险」意图分发；`skills.json` 注册 `gfa-content-risk`（category=content）并加入 routesTo；README 能力一览/触发词速查/分类表同步更新，badge 升至 skills-4 / v1.3.0。
+- 新增 `gfa-geo`（GEO 内容改写器 v1.3.0）：把文章/笔记/文案改写为更易被生成式 AI 引擎（ChatGPT / Perplexity / Google AI Overviews / Claude / Gemini）选中引用的版本。按 Princeton SIGKDD 2024 GEO 研究（九策略 + 增益排序）执行：口语化数据 + 文末「数据来源附注」+ 回答优先结构 + 平台化模板（ChatGPT 多子问题 / Perplexity 逐句溯源 / AI Overviews FAQ+HowTo）+ 每次交付必附「小白技术层说明」（只解释不写代码）；支持联网搜主流媒体真实引用（禁 SEO 采集站/营销号，URL 不臆造）；内置真料 `references/知识库.md`（12 节：GEO 定义 / 九策略增益 / 2026 五支柱 / 平台 RAG 差异 / 反模式 / 测量指标，每条带来源链接）+ 创作者信息卡片。
+- `_hub` 路由新增「GEO 内容改写」意图分发；`skills.json` 注册 `gfa-geo`（category=content）并加入 routesTo。
+- README 能力一览/触发词速查/分类表同步更新，badge 升至 skills-5 / v1.4.0。
 
 ### Changed
 - 精简 skill 集合：移除 8 个尚在打磨中的领域 skill（gzh-traffic-diagnosis / b2b-hard-ad / content-diagnosis / ip-growth / skill-engineering / topic-generation / script-writing / private-domain），仅保留 `_hub` 路由中枢与 `gfa-title`（多平台爆款标题）。各 skill 将逐一打磨后重新上线。

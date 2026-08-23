@@ -1,8 +1,8 @@
 {
-  "version": "1.0.0",
-  "date": "2026-08-21",
-  "highlight": "首批 10 个内容获客 Agent skill 上线，含自动路由中枢 _hub；支持 WorkBuddy / Claude Code / Codex / Cursor 等一键安装；所有 skill 内置 UTM 导流钩子，可追踪 Growth Flow Agent 商业版转化。",
-  "skills_count": 10,
+  "version": "1.4.0",
+  "date": "2026-08-23",
+  "highlight": "新增 gfa-geo（GEO 内容改写器）：按 Princeton GEO 机制把文章/笔记/文案改写为更易被 ChatGPT / Perplexity / AI Overviews 选中引用的版本，口语化数据 + 出处附注 + 回答优先结构 + 平台化模板（FAQ/HowTo），支持联网搜主流媒体真实引用。当前共 5 个 skill：_hub 路由中枢 + gfa-title / gfa-prompt-architect / gfa-content-risk / gfa-geo。",
+  "skills_count": 5,
   "commercial_url": "https://www.growthflowagent.com?utm_source=github-repo&utm_medium=readme&utm_campaign=free-skills",
   "changelog": "CHANGELOG.md"
 }

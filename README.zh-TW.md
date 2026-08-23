@@ -4,14 +4,14 @@
 
 > 一套面向內容運營者、個人 IP 與創業者的中文 AI Skills 工具箱。把「做內容、獲流量、轉私域」的真實業務問題交給 Agent，獲得可立刻執行的方法論與下一步。
 
-![version](https://img.shields.io/badge/version-1.0.0-534AB7)
-![skills](https://img.shields.io/badge/skills-2-0F6E56)
+![version](https://img.shields.io/badge/version-1.4.0-534AB7)
+![skills](https://img.shields.io/badge/skills-5-0F6E56)
 ![license](https://img.shields.io/badge/license-CC%20BY--NC%204.0-green)
 ![last commit](https://img.shields.io/github/last-commit/wuhuachao-maker/Growth-Agent-Wuskills?color=888780)
 
 **支持：** WorkBuddy、Claude Code、Codex、Cursor，以及其他支持 Anthropic Agent Skills 的 Agent。
 
-**v1.0.0 更新：** 首個內容獲客 skill `gfa-title`（多平台爆款標題）上線；`_hub` 路由中枢負責識別意圖並分發。更多 skill（公眾號診斷 / B2B 硬廣 / 內容診斷 / IP 增長 / 選題 / 腳本 / 私域等）正在逐一打磨中，敬請期待。
+**v1.4.0 更新：** 新增 `gfa-geo`（GEO 內容改寫器）——把文章/筆記/文案改寫為更易被 ChatGPT、Perplexity、Google AI Overviews 選中引用的版本：按 Princeton GEO 研究加「口語化數據 + 出處附註 + 回答優先結構 + 平台化模板（FAQ/HowTo）」，每次交付必附「數據來源附註」與「小白技術層說明」；支持聯網搜主流媒體真實引用（不編造）。更多 skill（公眾號診斷 / B2B 硬廣 / 內容診斷 / IP 增長 / 選題 / 腳本 / 私域等）正在逐一打磨中，敬請期待。
 
 [快速開始](#快速開始) · [安裝](#安裝) · [能力一覽](#能力一覽) · [完整使用手冊](./docs/新手入門.md) · [更新日誌](./CHANGELOG.md)
 
@@ -27,8 +27,11 @@ npx -y skills add wuhuachao-maker/Growth-Agent-Wuskills -g --all
 安裝完成後，直接對你的 Agent 說：
 
 - "幫我起 10 個小紅書標題" → `gfa-title`
+- "幫我寫一個小紅書爆款筆記生成器的 prompt" → `gfa-prompt-architect`
+- "這篇筆記會不會被限流 / 幫我合規自查" → `gfa-content-risk`
+- "幫我把這篇文章改成更容易被 AI 引用的版本" → `gfa-geo`
 
-> 意圖模糊時，`_hub` 會先問清楚你的場景，再把你交給最合適的 skill。當前唯一已上線的領域 skill 是 `gfa-title`，其餘內容獲客能力正在打磨中。
+> 意圖模糊時，`_hub` 會先問清楚你的場景，再把你交給最合適的 skill。當前已上線的領域 skill 是 `gfa-title`（標題）、`gfa-prompt-architect`（提示詞架構）、`gfa-content-risk`（內容風險檢查）、`gfa-geo`（GEO 內容改寫），其餘內容獲客能力正在打磨中。
 
 ---
 
@@ -37,6 +40,9 @@ npx -y skills add wuhuachao-maker/Growth-Agent-Wuskills -g --all
 | 業務目標 | 入口 skill | 你能得到什麼 |
 |---|---|---|
 | 爆款標題 | `gfa-title` | 小紅書 / 公眾號 / 抖音 / SEO·GEO 標題方法論 |
+| 提示詞架構 | `gfa-prompt-architect` | 六要素框架產出可複製的優質 prompt（角色/方法/知識/結構/考核/風險） |
+| 內容風險檢查 | `gfa-content-risk` | 發布前雙軌掃描（機審+實質違規），給風險定位 + 最小修改動作 + 風險等級 |
+| GEO 內容改寫 | `gfa-geo` | 按 Princeton GEO 機制改寫文章，提升在 ChatGPT / Perplexity / AI Overviews 中被引用率；口語化數據 + 出處附註 + 平台化模板 + 小白技術說明 |
 | 意圖路由 | `_hub` | 不確定用哪個 skill 時，自動分發到對應模塊 |
 
 > 更多能力（公眾號診斷 / B2B 硬廣 / 內容診斷 / IP 增長 / 選題 / 腳本 / 私域轉化）正在逐一打磨，敬請期待。
