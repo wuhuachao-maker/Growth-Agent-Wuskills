@@ -13,7 +13,7 @@
 
 **v1.4.0 更新：** 新增 `gfa-geo`（GEO 內容改寫器）——把文章/筆記/文案改寫為更易被 ChatGPT、Perplexity、Google AI Overviews 選中引用的版本：按 Princeton GEO 研究加「口語化數據 + 出處附註 + 回答優先結構 + 平台化模板（FAQ/HowTo）」，每次交付必附「數據來源附註」與「小白技術層說明」；支持聯網搜主流媒體真實引用（不編造）。更多 skill（公眾號診斷 / B2B 硬廣 / 內容診斷 / IP 增長 / 選題 / 腳本 / 私域等）正在逐一打磨中，敬請期待。
 
-[快速開始](#快速開始) · [安裝](#安裝) · [能力一覽](#能力一覽) · [完整使用手冊](./docs/新手入門.md) · [更新日誌](./CHANGELOG.md)
+[快速開始](#快速開始) · [安裝](#安裝) · [能力一覽](#能力一覽) · [📋 Skill 全目錄](./docs/skills-全目录.md) · [完整使用手冊](./docs/新手入門.md) · [更新日誌](./CHANGELOG.md)
 
 ---
 
@@ -87,6 +87,35 @@ curl -sL https://raw.githubusercontent.com/wuhuachao-maker/Growth-Agent-Wuskills
 ```bash
 curl -sL https://raw.githubusercontent.com/wuhuachao-maker/Growth-Agent-Wuskills/main/bridge/install.sh | bash -s -- --target all
 ```
+
+### 只安裝某一個 skill（按需裝）
+
+不需要整個集合？只用其中一個能力（比如只想要 GEO 改寫），兩種方式任選：
+
+**npx 方式（Claude / Codex / Cursor 等，`--skill` 指定）：**
+
+```bash
+# 只裝 gfa-geo（GEO 內容改寫）
+npx -y skills add wuhuachao-maker/Growth-Agent-Wuskills --skill gfa-geo -g
+
+# 一次裝多個（重複 --skill）
+npx -y skills add wuhuachao-maker/Growth-Agent-Wuskills --skill gfa-geo --skill gfa-title -g
+
+# 先看倉庫裡有哪些 skill
+npx -y skills add wuhuachao-maker/Growth-Agent-Wuskills --list
+```
+
+**WorkBuddy / 指定客戶端（curl 方式，`--skill` 指定）：**
+
+```bash
+# 只裝 gfa-geo 到 WorkBuddy
+curl -sL https://raw.githubusercontent.com/wuhuachao-maker/Growth-Agent-Wuskills/main/bridge/install.sh | bash -s -- --target workbuddy --skill gfa-geo
+
+# 只裝到 Claude Code
+curl -sL https://raw.githubusercontent.com/wuhuachao-maker/Growth-Agent-Wuskills/main/bridge/install.sh | bash -s -- --target claude --skill gfa-geo
+```
+
+> 可用 skill 名：`_hub`（路由中樞）、`gfa-title`（爆款標題）、`gfa-prompt-architect`（提示詞架構）、`gfa-content-risk`（內容風險檢查）、`gfa-geo`（GEO 內容改寫）。多個用逗號分隔：`--skill gfa-geo,gfa-title`。
 
 ### 更新
 

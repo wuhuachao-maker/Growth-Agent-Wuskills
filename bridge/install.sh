@@ -13,6 +13,7 @@
 #   bash bridge/install.sh --target workbuddy --dry-run   # 只显示会装到哪,不改动
 #   bash bridge/install.sh --target workbuddy --force     # 覆盖已存在的同名 skill
 #   bash bridge/install.sh --target workbuddy --uninstall # 卸载已安装的同名 skill
+#   bash bridge/install.sh --target workbuddy --skill gfa-geo   # 只安装/卸载指定 skill(可多个,逗号分隔)
 #
 # 交互式安装(对非技术用户更友好):
 #   bash bridge/install-interactive.sh
@@ -27,6 +28,7 @@ REPO_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 SKILLS_DIR="$REPO_DIR/skills"
 
 TARGET=""
+SKILL=""
 DRY_RUN=false
 FORCE=false
 UNINSTALL=false
@@ -40,6 +42,7 @@ usage() {
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --target) TARGET="${2:-}"; shift 2;;
+    --skill) SKILL="${2:-}"; shift 2;;
     --dry-run) DRY_RUN=true; shift;;
     --force) FORCE=true; shift;;
     --uninstall) UNINSTALL=true; shift;;
@@ -91,12 +94,25 @@ echo "📦 源: $SKILLS_DIR"
 [[ "$UNINSTALL" == true ]] && echo "🗑 uninstall 模式：将删除已安装的同名 skill"
 echo "---------------------------------------------------"
 
+# 判断某个 skill 是否应被处理: 未指定 --skill 时全部处理; 指定时按逗号分隔匹配
+skill_selected() {
+  local name="$1"
+  [[ -z "$SKILL" ]] && return 0
+  local s
+  IFS=',' read -ra wanted <<< "$SKILL"
+  for s in "${wanted[@]}"; do
+    [[ "$s" == "$name" ]] && return 0
+  done
+  return 1
+}
+
 package_upload_bundle() {
   local upload_dest
   upload_dest="$REPO_DIR/dist/upload"
   mkdir -p "$upload_dest"
   for skill_path in "$SKILLS_DIR"/*/; do
     local name="$(basename "$skill_path")"
+    skill_selected "$name" || continue
     local d="$upload_dest/$name/.skill"
     echo "  → .skill 包: $d"
     $DRY_RUN || { mkdir -p "$d"; cp "$skill_path/SKILL.md" "$d/SKILL.md"; }
@@ -115,6 +131,7 @@ uninstall_one() {
   local count=0
   for skill_path in "$SKILLS_DIR"/*/; do
     local name="$(basename "$skill_path")"
+    skill_selected "$name" || continue
     local d="$dest/$name"
     if [[ ! -d "$d" ]]; then
       echo "  ⏭  未安装: $name"
@@ -144,6 +161,7 @@ install_one() {
   local count=0
   for skill_path in "$SKILLS_DIR"/*/; do
     local name="$(basename "$skill_path")"
+    skill_selected "$name" || continue
     local d="$dest/$name"
     if [[ -d "$d" && "$FORCE" != true ]]; then
       echo "  ⏭  跳过(已存在,用 --force 覆盖): $name"

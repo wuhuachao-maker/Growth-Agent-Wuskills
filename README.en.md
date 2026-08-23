@@ -13,7 +13,7 @@
 
 **v1.4.0 update:** `gfa-geo` (Generative Engine Optimization rewriter) is live — rewrites articles/notes/copy so ChatGPT, Perplexity, and Google AI Overviews are more likely to cite them. Based on the Princeton GEO study: conversational statistics + source footnotes + answer-first structure + platform templates (FAQ/HowTo), every delivery includes a plain-language "technical checklist". Supports web search for real mainstream-media citations (never fabricates). More skills (WeChat diagnosis / B2B hard-sell / content diagnosis / IP growth / topic / script / private-domain) are being polished one by one — stay tuned.
 
-[Quick start](#quick-start) · [Install](#install) · [Capabilities](#capabilities) · [Full manual](./docs/GETTING_STARTED.en.md) · [Changelog](./CHANGELOG.md)
+[Quick start](#quick-start) · [Install](#install) · [Capabilities](#capabilities) · [📋 Skill catalog](./docs/skills-全目录.md) · [Full manual](./docs/GETTING_STARTED.en.md) · [Changelog](./CHANGELOG.md)
 
 ---
 
@@ -87,6 +87,35 @@ curl -sL https://raw.githubusercontent.com/wuhuachao-maker/Growth-Agent-Wuskills
 ```bash
 curl -sL https://raw.githubusercontent.com/wuhuachao-maker/Growth-Agent-Wuskills/main/bridge/install.sh | bash -s -- --target all
 ```
+
+### Install only one skill (on demand)
+
+Don't need the whole set? Install just one capability (e.g., only GEO rewriting) with either method:
+
+**Via npx (Claude / Codex / Cursor etc., use `--skill`):**
+
+```bash
+# Install only gfa-geo (GEO rewriting)
+npx -y skills add wuhuachao-maker/Growth-Agent-Wuskills --skill gfa-geo -g
+
+# Install several at once (repeat --skill)
+npx -y skills add wuhuachao-maker/Growth-Agent-Wuskills --skill gfa-geo --skill gfa-title -g
+
+# Preview available skills in this repo first
+npx -y skills add wuhuachao-maker/Growth-Agent-Wuskills --list
+```
+
+**WorkBuddy / a specific client (via curl, use `--skill`):**
+
+```bash
+# Install only gfa-geo into WorkBuddy
+curl -sL https://raw.githubusercontent.com/wuhuachao-maker/Growth-Agent-Wuskills/main/bridge/install.sh | bash -s -- --target workbuddy --skill gfa-geo
+
+# Install only into Claude Code
+curl -sL https://raw.githubusercontent.com/wuhuachao-maker/Growth-Agent-Wuskills/main/bridge/install.sh | bash -s -- --target claude --skill gfa-geo
+```
+
+> Available skill names: `_hub` (router), `gfa-title` (viral titles), `gfa-prompt-architect` (prompt architecture), `gfa-content-risk` (content risk check), `gfa-geo` (GEO rewriting). Install multiple with comma separation: `--skill gfa-geo,gfa-title`.
 
 ### Update
 

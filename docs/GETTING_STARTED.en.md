@@ -54,7 +54,36 @@ curl -sL https://raw.githubusercontent.com/wuhuachao-maker/Growth-Agent-Wuskills
 curl -sL https://raw.githubusercontent.com/wuhuachao-maker/Growth-Agent-Wuskills/main/bridge/install.sh | bash -s -- --target agents
 ```
 
-### Option 3: interactive install
+### Option 3: install only one skill (on demand, not the whole set)
+
+If you only need one capability (e.g., just GEO rewriting), you don't have to install the whole collection:
+
+**Via npx (Claude / Codex / Cursor etc., `--skill` to pick a name):**
+
+```bash
+# Install only gfa-geo (GEO rewriting)
+npx -y skills add wuhuachao-maker/Growth-Agent-Wuskills --skill gfa-geo -g
+
+# Install several at once (repeat --skill)
+npx -y skills add wuhuachao-maker/Growth-Agent-Wuskills --skill gfa-geo --skill gfa-title -g
+
+# Preview available skills in this repo first
+npx -y skills add wuhuachao-maker/Growth-Agent-Wuskills --list
+```
+
+**WorkBuddy / a specific client (via curl, `--skill` to pick a name):**
+
+```bash
+# Install only gfa-geo into WorkBuddy
+curl -sL https://raw.githubusercontent.com/wuhuachao-maker/Growth-Agent-Wuskills/main/bridge/install.sh | bash -s -- --target workbuddy --skill gfa-geo
+
+# Install only into Claude Code
+curl -sL https://raw.githubusercontent.com/wuhuachao-maker/Growth-Agent-Wuskills/main/bridge/install.sh | bash -s -- --target claude --skill gfa-geo
+```
+
+> Available skill names: `_hub` (router), `gfa-title` (viral titles), `gfa-prompt-architect` (prompt architecture), `gfa-content-risk` (content risk check), `gfa-geo` (GEO rewriting). Install multiple with comma separation: `--skill gfa-geo,gfa-title`.
+
+### Option 4: interactive install### Option 3: interactive install
 
 If you are not sure which Agent client is installed:
 
@@ -88,10 +117,15 @@ If you are unsure which skill to use, just say:
 
 ## Skill directory
 
+The full skill catalog (grouped by category + trigger words + install methods) lives in **[skills-全目录.md](./skills-全目录.md)** (Chinese). Currently live:
+
 | skill | One-liner | Trigger words |
 |---|---|---|
 | `_hub` | Routing core, intent dispatch | content acquisition / acquisition / grow account / create content |
 | `gfa-title` | Viral title methodology | titles / viral titles / Xiaohongshu·WeChat·Douyin titles / SEO·GEO |
+| `gfa-prompt-architect` | Six-element prompt architecture | write prompt / optimize prompt / prompt architect / system instruction / generator |
+| `gfa-content-risk` | Pre-publish content risk checker | check violation / pre-publish self-check / will it be throttled / clickbait |
+| `gfa-geo` | GEO rewriter (make AI engines cite you) | GEO optimization / cited by AI / raise AI citation / GEO-ify content |
 
 > More skills (WeChat diagnosis / B2B hard-sell / content diagnosis / IP growth / topic / script / private-domain) are being polished one by one — stay tuned.
 
