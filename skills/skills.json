@@ -15,6 +15,8 @@
       "name": "gfa-title",
       "category": "content",
       "description": "多平台爆款标题方法论 skill。",
+      "audience": "需要为公众号、小红书、抖音提高标题点击率的内容创作者与运营人员。",
+      "example": "请使用 gfa-title，为这篇关于 AI Agent 获客的文章生成 10 个公众号标题。",
       "triggers": ["起标题", "爆款标题", "小红书标题", "公众号标题", "抖音标题", "SEO标题", "GEO标题优化", "标题没点击", "标题怎么写"]
     },
     {
@@ -22,6 +24,8 @@
       "name": "gfa-prompt-architect",
       "category": "methodology",
       "description": "老吴六要素提示词架构师（六维框架）。",
+      "audience": "需要把模糊需求整理成稳定、可复用提示词的产品经理、运营人员与 Agent 使用者。",
+      "example": "请使用 gfa-prompt-architect，把我的客服回复需求整理成一份可复用提示词。",
       "triggers": ["写prompt", "优化prompt", "做prompt", "提示词", "系统指令", "生成器", "提示词架构师", "agent指令", "prompt怎么写", "设计prompt"]
     },
     {
@@ -29,6 +33,8 @@
       "name": "gfa-content-risk",
       "category": "content",
       "description": "内容发布前风险检查器（双轨：机审+实质违规）。",
+      "audience": "准备发布公众号、社交媒体或营销内容，希望提前发现表达风险的创作者与品牌团队。",
+      "example": "请使用 gfa-content-risk，检查下面这篇文章的发布风险，并标出需要修改的位置。",
       "triggers": ["检查违规", "发布前自查", "会不会被限流", "标题党吗", "这篇能发吗", "合规检查", "风险检查", "被封号", "导流违规"]
     },
     {
@@ -36,6 +42,8 @@
       "name": "gfa-geo",
       "category": "content",
       "description": "GEO 内容改写器（生成式引擎优化）：把文章/笔记/文案改写为更易被 ChatGPT、Perplexity、Google AI Overviews 引用复述的版本。",
+      "audience": "希望内容更容易被 AI 搜索、答案引擎引用和理解的内容团队、品牌与独立创作者。",
+      "example": "请使用 gfa-geo，把这篇产品介绍改成更适合 AI 搜索引用的版本。",
       "triggers": ["GEO优化", "生成式引擎优化", "让AI能搜到", "被AI引用", "搜索可发现性改写", "AI搜索可见性", "提升AI引用率", "内容GEO化", "让ChatGPT推荐"]
     }
   ]
