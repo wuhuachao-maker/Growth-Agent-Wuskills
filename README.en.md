@@ -4,14 +4,14 @@
 
 > A Chinese AI Skills toolbox for content operators, personal IP builders, and entrepreneurs. Hand real business problems like content creation, traffic acquisition, and private-domain conversion to your Agent, and get actionable methodology plus the next step.
 
-![version](https://img.shields.io/badge/version-1.4.0-534AB7)
-![skills](https://img.shields.io/badge/skills-5-0F6E56)
+![version](https://img.shields.io/badge/version-1.5.0-534AB7)
+![skills](https://img.shields.io/badge/skills-6-0F6E56)
 ![license](https://img.shields.io/badge/license-CC%20BY--NC%204.0-green)
 ![last commit](https://img.shields.io/github/last-commit/wuhuachao-maker/Growth-Agent-Wuskills?color=888780)
 
 **Supported on:** WorkBuddy, Claude Code, Codex, Cursor, and any other Agent that supports Anthropic Agent Skills.
 
-**v1.4.0 update:** `gfa-geo` (Generative Engine Optimization rewriter) is live — rewrites articles/notes/copy so ChatGPT, Perplexity, and Google AI Overviews are more likely to cite them. Based on the Princeton GEO study: conversational statistics + source footnotes + answer-first structure + platform templates (FAQ/HowTo), every delivery includes a plain-language "technical checklist". Supports web search for real mainstream-media citations (never fabricates). More skills (WeChat diagnosis / B2B hard-sell / content diagnosis / IP growth / topic / script / private-domain) are being polished one by one — stay tuned.
+**v1.5.0 update:** `gfa-position` (IP positioning stress-test) is live — uses six gates (context specificity / alternatives / switch equation / verifiable differentiation / falsification / evidence) to push personal/IP/account positioning until it breaks, then tells you which gate failed + what answer you owe + a narrowing direction, without writing the positioning for you. Built on JTBD four forces + switch equation, positioning theory (with its critiques), and anti-essentialism. More skills (WeChat diagnosis / B2B hard-sell / content diagnosis / IP growth / topic / script / private-domain) are being polished one by one — stay tuned.
 
 [Quick start](#quick-start) · [Install](#install) · [Capabilities](#capabilities) · [📋 Skill catalog](./docs/skills-全目录.md) · [Full manual](./docs/GETTING_STARTED.en.md) · [Changelog](./CHANGELOG.md)
 
@@ -30,8 +30,9 @@ After installation, just tell your Agent:
 - "Write me a prompt for a Xiaohongshu note generator" → `gfa-prompt-architect`
 - "Will this note get flagged / help me self-check compliance" → `gfa-content-risk`
 - "Rewrite this article so AI engines are more likely to cite it" → `gfa-geo`
+- "What is my positioning / run an IP positioning stress-test on me" → `gfa-position`
 
-> When your intent is vague, `_hub` will clarify the scenario first and then route you to the best skill. Currently live domain skills: `gfa-title` (titles), `gfa-prompt-architect` (prompt architecture), `gfa-content-risk` (content risk check), `gfa-geo` (GEO rewriting); other content-acquisition capabilities are being polished.
+> When your intent is vague, `_hub` will clarify the scenario first and then route you to the best skill. Currently live domain skills: `gfa-title` (titles), `gfa-prompt-architect` (prompt architecture), `gfa-content-risk` (content risk check), `gfa-geo` (GEO rewriting), `gfa-position` (IP positioning stress-test); other content-acquisition capabilities are being polished.
 
 ---
 
@@ -43,6 +44,7 @@ After installation, just tell your Agent:
 | Prompt architecture | `gfa-prompt-architect` | Six-element framework producing copyable high-quality prompts (role/method/knowledge/structure/assessment/risk) |
 | Content risk check | `gfa-content-risk` | Pre-publish dual-track scan (machine-check + substantive violation), risk location + minimal fix + risk level |
 | GEO rewriting | `gfa-geo` | Rewrite articles per the Princeton GEO mechanism to raise citation rates in ChatGPT / Perplexity / AI Overviews; conversational stats + source footnotes + platform templates + plain-language tech checklist |
+| IP positioning stress-test | `gfa-position` | Six-gate pressure test on personal/IP/account positioning — which gate fails, what answer you owe, and a narrowing direction; built on JTBD four forces + positioning theory |
 | Intent routing | `_hub` | Auto-dispatch when you are unsure which skill to use |
 
 > More capabilities (WeChat diagnosis / B2B hard-sell / content diagnosis / IP growth / topic / script / private-domain) are being polished one by one — stay tuned.
@@ -115,7 +117,7 @@ curl -sL https://raw.githubusercontent.com/wuhuachao-maker/Growth-Agent-Wuskills
 curl -sL https://raw.githubusercontent.com/wuhuachao-maker/Growth-Agent-Wuskills/main/bridge/install.sh | bash -s -- --target claude --skill gfa-geo
 ```
 
-> Available skill names: `_hub` (router), `gfa-title` (viral titles), `gfa-prompt-architect` (prompt architecture), `gfa-content-risk` (content risk check), `gfa-geo` (GEO rewriting). Install multiple with comma separation: `--skill gfa-geo,gfa-title`.
+> Available skill names: `_hub` (router), `gfa-title` (viral titles), `gfa-prompt-architect` (prompt architecture), `gfa-content-risk` (content risk check), `gfa-geo` (GEO rewriting), `gfa-position` (IP positioning stress-test). Install multiple with comma separation: `--skill gfa-geo,gfa-title`.
 
 ### Update
 

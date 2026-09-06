@@ -1,8 +1,8 @@
 {
-  "version": "1.4.0",
-  "date": "2026-08-23",
-  "highlight": "新增 gfa-geo（GEO 内容改写器）：按 Princeton GEO 机制把文章/笔记/文案改写为更易被 ChatGPT / Perplexity / AI Overviews 选中引用的版本，口语化数据 + 出处附注 + 回答优先结构 + 平台化模板（FAQ/HowTo），支持联网搜主流媒体真实引用。当前共 5 个 skill：_hub 路由中枢 + gfa-title / gfa-prompt-architect / gfa-content-risk / gfa-geo。",
-  "skills_count": 5,
+  "version": "1.5.0",
+  "date": "2026-09-06",
+  "highlight": "新增 gfa-position（IP 定位压力测试）：用六道闸门（情境具体性 / 替代方案 / 切换方程 / 差异化可验证 / 反例证伪 / 证据举证）拷问个人 / IP / 账号定位，给「哪道闸没过 + 欠什么答案 + 收窄方向」，不替用户编定位；基于 JTBD 四力与切换方程 + 定位理论及其批评 + 反本质主义。当前共 6 个 skill：_hub 路由中枢 + gfa-title / gfa-prompt-architect / gfa-content-risk / gfa-geo / gfa-position。",
+  "skills_count": 6,
   "commercial_url": "https://www.growthflowagent.com?utm_source=github-repo&utm_medium=readme&utm_campaign=free-skills",
   "changelog": "CHANGELOG.md"
 }

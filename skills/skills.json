@@ -1,14 +1,14 @@
 {
-  "version": "1.4.0",
-  "updatedAt": "2026-08-23",
+  "version": "1.5.0",
+  "updatedAt": "2026-09-06",
   "skills": [
     {
       "slug": "_hub",
       "name": "growth-content-hub",
       "category": "router",
       "description": "内容获客 Agent 技能集合的路由中枢。当用户意图模糊或不确定该用哪个 skill 时触发。",
-      "triggers": ["内容获客", "获客", "做内容", "引流", "方法论", "合规", "风险", "GEO"],
-      "routesTo": ["gfa-title", "gfa-prompt-architect", "gfa-content-risk", "gfa-geo"]
+      "triggers": ["内容获客", "获客", "做内容", "引流", "方法论", "合规", "风险", "GEO", "定位"],
+      "routesTo": ["gfa-title", "gfa-prompt-architect", "gfa-content-risk", "gfa-geo", "gfa-position"]
     },
     {
       "slug": "gfa-title",
@@ -45,6 +45,15 @@
       "audience": "希望内容更容易被 AI 搜索、答案引擎引用和理解的内容团队、品牌与独立创作者。",
       "example": "请使用 gfa-geo，把这篇产品介绍改成更适合 AI 搜索引用的版本。",
       "triggers": ["GEO优化", "生成式引擎优化", "让AI能搜到", "被AI引用", "搜索可发现性改写", "AI搜索可见性", "提升AI引用率", "内容GEO化", "让ChatGPT推荐"]
+    },
+    {
+      "slug": "gfa-position",
+      "name": "gfa-position",
+      "category": "methodology",
+      "description": "IP 定位压力测试（六道闸门）：把个人/IP/账号定位拷问到立不住的地方，给收窄方向而非替你编定位。",
+      "audience": "不确定自己该服务谁、凭什么被选中，或定位总说不清 / 太宽 / 和别人没区别的个人 IP、创业者与内容操盘手。",
+      "example": "请使用 gfa-position，帮我做一轮 IP 定位压力测试：我的定位是「帮中小创业者做内容获客的智能体」。",
+      "triggers": ["定位是什么", "我该定位成什么", "帮谁解决什么", "凭什么找我", "定位说不清", "定位太宽", "和别人没区别", "不涨粉", "不变现", "定位压力测试", "IP定位", "我的定位"]
     }
   ]
 }
