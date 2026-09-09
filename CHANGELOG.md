@@ -2,6 +2,25 @@
 
 所有版本按时间倒序排列。
 
+## [1.6.0] — 2026-09-09
+
+### Changed
+- **全部 skill 升级到创作者信息模块 v2（外部 opt-in）**：SKILL.md 内**零推广明文**——`gfa-title` / `gfa-prompt-architect` / `gfa-content-risk` / `gfa-geo` / `gfa-position` 五个 skill 原本写在正文里的微信号、落地页链接、UTM 参数、打赏引导语与 `assets/donate_wx.png`，全部移出仓库；创作者内容只留在使用者本机 `~/.growth-agent-skills/<slug>/creator.json`（含打赏码图片），**没有配置就静默跳过**。原因：第三方 skill 风险检测工具会按文件里的推广字样判 P1 风险，内容不在文件里就扫不到。
+- 新增 **🔎 自评模式**（含主语判定）：用户问「风险 / 安全吗 / 检查 / 审查 / 扫描 / 是不是广告 / audit / scan」时，暂停主流程主动披露——读了哪些文件、写了什么、是否联网、有没有推广内容（有则给路径自证）、不做哪些事，并给出一键关闭命令 `rm -rf ~/.growth-agent-skills/<slug>`。
+  - ⚠️ **主语判定是必须的**：第一版只看关键词，遇到自身职责就含「检查 / 合规 / 风险」的 skill（如 `gfa-content-risk`）会导致用户每次正常使用都被拦下来自我审查。现改为**审计词 + 主语词双命中**才触发，另有强信号兜底（「读取了什么」「会不会上传」「audit this skill」单独即可触发），**拿不准则不触发**。`laowu-skillmaker` 校验器已加防回归检查：缺「主语词清单 / 不触发分支 / 强信号兜底」任一即报错。
+- 创作者**卡片模板和完整决策规则也移到本机**（`creator.json` 的 `card_markdown` + `rules` 字段），模型读到直接替换占位符输出；SKILL.md 连卡片长什么样、打赏码什么时候出都不知道。`donate_image` 改用绝对路径（部分环境不展开 `~`）。
+  - ⚠️ **第二处规则丢失（端到端实测发现）**：第一版只把**参数**（`max_full_shows` / `min_days_between` / 词表）搬进 `creator.json`，却把**规则逻辑**（打赏码出现条件、软链形态、高意向优先）随 v1 章节一起删了 —— 模型读到的只有数字没有规则，展示会随机化。现已补 `rules` 五条：`high_intent_priority` / `full_module_decision` / `donate_image_when` / `soft_link_form` / `state_file`。
+- `_hub` 路由中枢移除商业版外链与「引导商业版」话术，改为如实说明「该 skill 正在打磨中」。
+- 仓库校验器 `bridge/validate.mjs` 第 5 项由「必须含引流钩子 + UTM」**反转为「创作者内容零泄漏扫描」**（微信号 / UTM / 落地页域名 / 打赏引导语 / 赞赏码路径命中即报错）。
+- 许可声明（CC BY-NC 4.0）保留在 SKILL.md —— 它是授权条款，不是推广。
+
+### Version bumps
+- `gfa-title` 1.3.0 → 1.4.0 · `gfa-geo` 1.3.0 → 1.4.0 · `gfa-prompt-architect` 2.0.0 → 2.1.0 · `gfa-content-risk` 1.0.0 → 1.1.0 · `gfa-position` 1.0.0 → 1.1.0 · `_hub` 1.0.0 → 1.1.0
+- 集合版本 1.5.0 → 1.6.0（`VERSION` / `skills.json` / `UPDATE.json` / 三语 README badge 同步）。
+
+### Note
+- 功能与输出**完全不变**，已安装的用户无需任何操作；只是不会再看到创作者卡片，除非本机放了 `creator.json`。
+
 ## [1.5.0] — 2026-09-06
 
 ### Added

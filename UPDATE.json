@@ -1,7 +1,7 @@
 {
-  "version": "1.5.0",
-  "date": "2026-09-06",
-  "highlight": "新增 gfa-position（IP 定位压力测试）：用六道闸门（情境具体性 / 替代方案 / 切换方程 / 差异化可验证 / 反例证伪 / 证据举证）拷问个人 / IP / 账号定位，给「哪道闸没过 + 欠什么答案 + 收窄方向」，不替用户编定位；基于 JTBD 四力与切换方程 + 定位理论及其批评 + 反本质主义。当前共 6 个 skill：_hub 路由中枢 + gfa-title / gfa-prompt-architect / gfa-content-risk / gfa-geo / gfa-position。",
+  "version": "1.6.0",
+  "date": "2026-09-09",
+  "highlight": "全部 skill 升级到创作者信息模块 v2（外部 opt-in）：SKILL.md 内零推广明文（微信号 / 落地页 / UTM / 打赏引导语 / 赞赏码全部移出），第三方 skill 风险检测不再误判为推广；运行时按需从本机 ~/.growth-agent-skills/<slug>/creator.json 读取创作者信息，无配置则静默跳过；新增「自评模式」——被问到风险 / 检查 / 审查时主动摊开读了什么、写了什么、联不联网。同步移除 _hub 的商业版外链，仓库自带校验器改为「创作者内容零泄漏」扫描。当前共 6 个 skill：_hub 路由中枢 + gfa-title / gfa-prompt-architect / gfa-content-risk / gfa-geo / gfa-position。",
   "skills_count": 6,
   "commercial_url": "https://www.growthflowagent.com?utm_source=github-repo&utm_medium=readme&utm_campaign=free-skills",
   "changelog": "CHANGELOG.md"

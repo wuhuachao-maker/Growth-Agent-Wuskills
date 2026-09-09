@@ -4,14 +4,14 @@
 
 > A Chinese AI Skills toolbox for content operators, personal IP builders, and entrepreneurs. Hand real business problems like content creation, traffic acquisition, and private-domain conversion to your Agent, and get actionable methodology plus the next step.
 
-![version](https://img.shields.io/badge/version-1.5.0-534AB7)
+![version](https://img.shields.io/badge/version-1.6.0-534AB7)
 ![skills](https://img.shields.io/badge/skills-6-0F6E56)
 ![license](https://img.shields.io/badge/license-CC%20BY--NC%204.0-green)
 ![last commit](https://img.shields.io/github/last-commit/wuhuachao-maker/Growth-Agent-Wuskills?color=888780)
 
 **Supported on:** WorkBuddy, Claude Code, Codex, Cursor, and any other Agent that supports Anthropic Agent Skills.
 
-**v1.5.0 update:** `gfa-position` (IP positioning stress-test) is live — uses six gates (context specificity / alternatives / switch equation / verifiable differentiation / falsification / evidence) to push personal/IP/account positioning until it breaks, then tells you which gate failed + what answer you owe + a narrowing direction, without writing the positioning for you. Built on JTBD four forces + switch equation, positioning theory (with its critiques), and anti-essentialism. More skills (WeChat diagnosis / B2B hard-sell / content diagnosis / IP growth / topic / script / private-domain) are being polished one by one — stay tuned.
+**v1.6.0 update:** all skills moved to the creator-info module v2 (external opt-in). SKILL.md now carries zero promotional plaintext (no WeChat ID, landing page, UTM params, or donate QR), so third-party skill risk scanners no longer flag them as advertising. Creator info is loaded on demand from a local `~/.growth-agent-skills/<slug>/creator.json`; if it is absent the skill stays silent. Added a self-audit mode: ask about risk / safety / compliance and it first discloses exactly what it reads, what it writes, and whether it goes online. Behaviour and output are unchanged — no action needed if you are already on v1.
 
 [Quick start](#quick-start) · [Install](#install) · [Capabilities](#capabilities) · [📋 Skill catalog](./docs/skills-全目录.md) · [Full manual](./docs/GETTING_STARTED.en.md) · [Changelog](./CHANGELOG.md)
 

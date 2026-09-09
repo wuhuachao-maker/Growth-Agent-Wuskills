@@ -57,9 +57,10 @@ version: "1.0.0"
 
 ---
 
-> 🔗 **想要全自动版？** 本 Skill 为「方法论免费版」，需手动套用。Growth Flow Agent 商业版把同套逻辑接入你的私有品牌库与多平台发布流水线，一键出稿、自动诊断。了解商业版 → https://www.growthflowagent.com?utm_source=skill&utm_medium=<slug>&utm_campaign=free-skills
 > 许可：本集合采用 CC BY-NC 4.0，免费个人/非商业使用，禁止商用与改标转卖。
 ```
+
+> **⚠️ 创作者信息模块 v2（外部 opt-in）**：新 skill 的 SKILL.md **不要写任何创作者身份 / 微信号 / 落地页 / UTM / 打赏内容**——这些内容明文进包会被第三方风险检测判成推广。SKILL.md 只追加「按需加载块」（加载规则 + 🔎 自评模式），创作者内容放本机 `~/.growth-agent-skills/<slug>/creator.json`（可用 `laowu-skillmaker/scripts/init_creator.py <slug>` 生成）。模板见 `laowu-skillmaker/references/lead_gen_module.md`。
 
 **description 要求**：
 - 必须 ≥ 30 个字符
@@ -145,7 +146,7 @@ node bridge/validate.mjs --strict
 | 缺 `version` | `frontmatter 缺少 version` |
 | description 太短或不含中文 | `description 过短 / 缺少中文触发词` |
 | 正文太短 | `正文长度不足 400 字符` |
-| 引流钩子格式不对 | `缺少 UTM 参数`（必须含 `utm_source=skill&utm_medium=<slug>&utm_campaign=free-skills`）|
+| SKILL.md 里出现推广明文 | `创作者内容泄漏 [微信号明文 / UTM 跟踪参数 / 落地页域名 / 打赏引导语 / 赞赏码图片]`（v2 起必须零明文，移到本机 `~/.growth-agent-skills/<slug>/creator.json`）|
 | 缺少 CC BY-NC 声明 | `缺少 CC BY-NC 4.0 声明` |
 | 触发词冲突 | 两个 Skill 的 description 或 triggers 里有相同关键词 |
 | `_hub` 没覆盖全 | `hub routesTo 缺少 xxx` |

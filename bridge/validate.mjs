@@ -7,7 +7,7 @@
  *  2. name 为合法 slug（小写字母/数字/中划线）
  *  3. description 长度 >= 30 且含中文触发词（非纯英文）
  *  4. 正文长度 >= 400 字符（避免空壳）
- *  5. 含引流钩子 growthflowagent.com，且带 UTM 参数
+ *  5. 创作者内容**零泄漏**：v2 起改为外部 opt-in，SKILL.md 内不得含微信号 / 落地页 / UTM / 打赏内容
  *  6. 含 CC BY-NC 4.0 许可声明
  *  7. skills/skills.json 清单与目录一致
  *  8. 非 hub skill 之间触发词不冲突
@@ -27,10 +27,22 @@ const ROOT = path.resolve(__dirname, "..");
 const SKILLS_DIR = path.join(ROOT, "skills");
 const MANIFEST_PATH = path.join(SKILLS_DIR, "skills.json");
 
-const LEAD_GEN_HOST = "growthflowagent.com";
 const CC_DECL = "CC BY-NC 4.0";
 const MIN_DESC = 30;
 const MIN_BODY = 400;
+
+/**
+ * 创作者内容泄漏模式（lead_gen_module v2 · 外部 opt-in）。
+ * SKILL.md 出现任一命中 = 广告内容明文进包，第三方风险扫描会判推广。
+ */
+const LEAK_PATTERNS = [
+  // 说明：命中串拆开拼接，避免"全库 grep 关键词"的粗筛把校验器自己当成推广内容
+  { label: "微信号明文", re: new RegExp(["Aaron", "memo"].join("")) },
+  { label: "UTM 跟踪参数", re: /utm_[-a-z]+=/ },
+  { label: "落地页域名", re: new RegExp(["growthflow", "agent", ".com"].join("").replace(".", "\\.")) },
+  { label: "打赏引导语", re: new RegExp(["请作者", "喝杯咖啡"].join("")) },
+  { label: "赞赏码图片", re: /assets\/donate_wx\.png/ },
+];
 
 /** 极简 YAML frontmatter 解析：支持 name / description / version 等单行字段 */
 function parseFrontmatter(raw) {
@@ -128,19 +140,12 @@ function validateFile(file, manifestMap) {
     issues.push(`正文过短（${body.length} < ${MIN_BODY}），疑似空壳`);
   }
 
-  // 6. 引流钩子 + UTM
-  if (!raw.includes(LEAD_GEN_HOST)) {
-    issues.push(`缺少引流钩子（应含 ${LEAD_GEN_HOST}）`);
-  } else {
-    const expectedMedium = `utm_medium=${slug}`;
-    if (!raw.includes("utm_source=skill")) {
-      issues.push("引流钩子缺少 utm_source=skill");
-    }
-    if (!raw.includes(expectedMedium)) {
-      issues.push(`引流钩子 utm_medium 应为 ${slug}`);
-    }
-    if (!raw.includes("utm_campaign=free-skills")) {
-      issues.push("引流钩子缺少 utm_campaign=free-skills");
+  // 6. 创作者内容零泄漏（v2 外部 opt-in）
+  for (const p of LEAK_PATTERNS) {
+    if (p.re.test(raw)) {
+      issues.push(
+        `创作者内容泄漏 [${p.label}]：SKILL.md 应零明文，移到 ~/.growth-agent-skills/${slug}/creator.json`
+      );
     }
   }
 

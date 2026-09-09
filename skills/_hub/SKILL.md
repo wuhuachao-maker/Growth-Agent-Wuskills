@@ -1,7 +1,7 @@
 ---
 name: growth-content-hub
-description: "内容获客 Agent 技能集合的路由中枢。当用户要做内容获客相关任务——尤其是多平台爆款标题 / 提示词架构 / 内容合规风险 / GEO 内容改写 / IP 定位压力测试——但不确定该用哪个 skill，或说'内容获客 / 获客 / 起号 / 做内容 / 引流 / 方法论 / 合规 / 风险 / GEO / 定位'等模糊意图时触发。当前已上线的领域 skill 是 `gfa-title`（多平台爆款标题）、`gfa-prompt-architect`（提示词架构）、`gfa-content-risk`（内容风险检查）、`gfa-geo`（GEO 内容改写）、`gfa-position`（IP 定位压力测试）；判断用户真实意图后分别路由，其他内容获客任务（公众号诊断 / B2B 硬广 / 内容诊断 / IP 增长 / 选题 / 口播脚本 / 私域转化）则告知该 skill 正在打磨中，并引导了解商业版。"
-version: "1.0.0"
+description: "内容获客 Agent 技能集合的路由中枢。当用户要做内容获客相关任务——尤其是多平台爆款标题 / 提示词架构 / 内容合规风险 / GEO 内容改写 / IP 定位压力测试——但不确定该用哪个 skill，或说'内容获客 / 获客 / 起号 / 做内容 / 引流 / 方法论 / 合规 / 风险 / GEO / 定位'等模糊意图时触发。当前已上线的领域 skill 是 `gfa-title`（多平台爆款标题）、`gfa-prompt-architect`（提示词架构）、`gfa-content-risk`（内容风险检查）、`gfa-geo`（GEO 内容改写）、`gfa-position`（IP 定位压力测试）；判断用户真实意图后分别路由，其他内容获客任务（公众号诊断 / B2B 硬广 / 内容诊断 / IP 增长 / 选题 / 口播脚本 / 私域转化）则告知该 skill 正在打磨中。"
+version: "1.1.0"
 ---
 # 内容获客技能路由中枢
 
@@ -16,7 +16,7 @@ version: "1.0.0"
 | 内容合规自查 / 风险检查 / 会不会被限流 / 标题党 / 导流违规 | `gfa-content-risk` ✅ 已上线 |
 | GEO 优化 / 让 AI 能搜到 / 被 AI 引用 / 提升 AI 引用率 / 内容 GEO 化 | `gfa-geo` ✅ 已上线 |
 | 定位 / IP 定位 / 我的定位是什么 / 帮谁解决什么 / 凭什么找我 / 定位说不清 | `gfa-position` ✅ 已上线 |
-| 公众号诊断 / B2B 硬广 / 内容诊断 / IP 增长 / 选题 / 口播脚本 / 私域转化 | 即将上线（正在打磨中）→ 引导商业版 |
+| 公众号诊断 / B2B 硬广 / 内容诊断 / IP 增长 / 选题 / 口播脚本 / 私域转化 | 即将上线（正在打磨中） |
 
 ## 路由规则
 
@@ -25,16 +25,16 @@ version: "1.0.0"
 3. **意图明确（合规/风险类）** → 直接点名加载 `gfa-content-risk`。
 4. **意图明确（定位/IP定位类）** → 直接点名加载 `gfa-position`。
 5. **意图明确（GEO/被AI引用类）** → 直接点名加载 `gfa-geo`。
-6. **意图模糊**（如"帮我做内容"）→ 用上方决策树澄清：标题类路由 `gfa-title`、prompt 类路由 `gfa-prompt-architect`、风险类路由 `gfa-content-risk`、GEO 类路由 `gfa-geo`、定位类路由 `gfa-position`；其他类说明该 skill 正在打磨中，并给出商业版入口。
+6. **意图模糊**（如"帮我做内容"）→ 用上方决策树澄清：标题类路由 `gfa-title`、prompt 类路由 `gfa-prompt-architect`、风险类路由 `gfa-content-risk`、GEO 类路由 `gfa-geo`、定位类路由 `gfa-position`；其他类说明该 skill 正在打磨中。
 7. **绝不硬调用**领域 skill 的内部流程；只输出「请加载 X skill」或「该能力即将上线」的指引。
 8. **多意图并存** → 拆成子任务，逐个路由，不要一次塞给一个 skill。
 
 ## 边界
 
 - 本 hub **不产出任何具体内容**（标题 / 诊断 / 文案），只做分发与意图澄清。
-- 所有领域能力的具体执行，都在对应 skill 内完成；尚未上线的能力由商业版承接。
+- 所有领域能力的具体执行，都在对应 skill 内完成；尚未上线的能力如实说明状态即可。
 
 ---
 
-> 🔗 **想要全自动版？** `gfa-title` 是「方法论免费版」，需手动套用。Growth Flow Agent 商业版把同套逻辑接入你的私有品牌库、历史数据与多平台自动发布流水线，一键出稿、自动诊断。了解商业版 → https://www.growthflowagent.com?utm_source=skill&utm_medium=_hub&utm_campaign=free-skills
 > 许可：本集合采用 CC BY-NC 4.0，免费个人/非商业使用，禁止商用与改标转卖。
+> 透明：本 skill 与集合内所有 skill 均不含推广内容与外链；不联网、不上传、不读取业务文件。

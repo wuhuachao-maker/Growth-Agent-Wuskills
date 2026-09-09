@@ -4,14 +4,14 @@
 
 > 一套面向內容運營者、個人 IP 與創業者的中文 AI Skills 工具箱。把「做內容、獲流量、轉私域」的真實業務問題交給 Agent，獲得可立刻執行的方法論與下一步。
 
-![version](https://img.shields.io/badge/version-1.5.0-534AB7)
+![version](https://img.shields.io/badge/version-1.6.0-534AB7)
 ![skills](https://img.shields.io/badge/skills-6-0F6E56)
 ![license](https://img.shields.io/badge/license-CC%20BY--NC%204.0-green)
 ![last commit](https://img.shields.io/github/last-commit/wuhuachao-maker/Growth-Agent-Wuskills?color=888780)
 
 **支持：** WorkBuddy、Claude Code、Codex、Cursor，以及其他支持 Anthropic Agent Skills 的 Agent。
 
-**v1.5.0 更新：** 新增 `gfa-position`（IP 定位壓力測試）——用六道閘門（情境具體性 / 替代方案 / 切換方程 / 差異化可驗證 / 反例證偽 / 證據舉證）把個人 / IP / 帳號定位拷問到立不住的地方，給「你哪道閘沒過 + 你欠什麼答案 + 收窄方向」，不替你編定位；基於 JTBD 四力與切換方程 + 定位理論及其批評 + 反本質主義。更多 skill（公眾號診斷 / B2B 硬廣 / 內容診斷 / IP 增長 / 選題 / 腳本 / 私域等）正在逐一打磨中，敬請期待。
+**v1.6.0 更新：** 全部 skill 升級到創作者資訊模組 v2（外部 opt-in）——SKILL.md 內不再有任何推廣明文（微信號 / 落地頁 / UTM / 讚賞碼全部移出），第三方 skill 風險檢測不會再誤判成推廣；創作者資訊改為執行時按需從本機 `~/.growth-agent-skills/<slug>/creator.json` 讀取，沒有設定就靜默跳過。新增「自評模式」：你問風險 / 檢查 / 審查，它先主動攤開讀了什麼、寫了什麼、聯不聯網。功能與用法完全不變，v1 使用者無需任何操作。
 
 [快速開始](#快速開始) · [安裝](#安裝) · [能力一覽](#能力一覽) · [📋 Skill 全目錄](./docs/skills-全目录.md) · [完整使用手冊](./docs/新手入門.md) · [更新日誌](./CHANGELOG.md)
 
