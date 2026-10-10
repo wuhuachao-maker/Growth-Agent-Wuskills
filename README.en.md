@@ -4,14 +4,14 @@
 
 > A Chinese AI Skills toolbox for content operators, personal IP builders, and entrepreneurs. Hand real business problems like content creation, traffic acquisition, and private-domain conversion to your Agent, and get actionable methodology plus the next step.
 
-![version](https://img.shields.io/badge/version-1.6.0-534AB7)
+![version](https://img.shields.io/badge/version-1.7.0-534AB7)
 ![skills](https://img.shields.io/badge/skills-6-0F6E56)
 ![license](https://img.shields.io/badge/license-CC%20BY--NC%204.0-green)
 ![last commit](https://img.shields.io/github/last-commit/wuhuachao-maker/Growth-Agent-Wuskills?color=888780)
 
 **Supported on:** WorkBuddy, Claude Code, Codex, Cursor, and any other Agent that supports Anthropic Agent Skills.
 
-**v1.6.0 update:** all skills moved to the creator-info module v2 (external opt-in). SKILL.md now carries zero promotional plaintext (no WeChat ID, landing page, UTM params, or donate QR), so third-party skill risk scanners no longer flag them as advertising. Creator info is loaded on demand from a local `~/.growth-agent-skills/<slug>/creator.json`; if it is absent the skill stays silent. Added a self-audit mode: ask about risk / safety / compliance and it first discloses exactly what it reads, what it writes, and whether it goes online. Behaviour and output are unchanged — no action needed if you are already on v1.
+**v1.7.0 update:** `gfa-title` now also produces covers — in one pass you get viral titles for Xiaohongshu / WeChat Official Account / Douyin, plus cover prompts in **three emphasis versions (person-led / text-led / scene-led)**, each in 9:16 and 16:9 with platform safe zones and post-generation text checks. Negative prompts are no longer emitted by default: modern image models are stable enough, so the constraints they used to carry now live in the positive description, and negatives are downgraded to an on-demand troubleshooting tool for the rare bad generation.
 
 [Quick start](#quick-start) · [Install](#install) · [Capabilities](#capabilities) · [📋 Skill catalog](./docs/skills-全目录.md) · [Full manual](./docs/GETTING_STARTED.en.md) · [Changelog](./CHANGELOG.md)
 
@@ -40,7 +40,7 @@ After installation, just tell your Agent:
 
 | Goal | Entry skill | What you get |
 |---|---|---|
-| Viral titles | `gfa-title` | Title methodology for Xiaohongshu, WeChat Official Account, Douyin, SEO, GEO |
+| Viral titles + covers | `gfa-title` | Title methodology for Xiaohongshu, WeChat Official Account, Douyin, SEO, GEO + cover prompts in **three emphasis versions (person / text / scene)**, 9:16 and 16:9 (platform safe zones + post-generation checks) |
 | Prompt architecture | `gfa-prompt-architect` | Six-element framework producing copyable high-quality prompts (role/method/knowledge/structure/assessment/risk) |
 | Content risk check | `gfa-content-risk` | Pre-publish dual-track scan (machine-check + substantive violation), risk location + minimal fix + risk level |
 | GEO rewriting | `gfa-geo` | Rewrite articles per the Princeton GEO mechanism to raise citation rates in ChatGPT / Perplexity / AI Overviews; conversational stats + source footnotes + platform templates + plain-language tech checklist |

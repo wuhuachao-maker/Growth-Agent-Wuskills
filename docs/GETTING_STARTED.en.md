@@ -81,7 +81,7 @@ curl -sL https://raw.githubusercontent.com/wuhuachao-maker/Growth-Agent-Wuskills
 curl -sL https://raw.githubusercontent.com/wuhuachao-maker/Growth-Agent-Wuskills/main/bridge/install.sh | bash -s -- --target claude --skill gfa-geo
 ```
 
-> Available skill names: `_hub` (router), `gfa-title` (viral titles), `gfa-prompt-architect` (prompt architecture), `gfa-content-risk` (content risk check), `gfa-geo` (GEO rewriting). Install multiple with comma separation: `--skill gfa-geo,gfa-title`.
+> Available skill names: `_hub` (router), `gfa-title` (viral titles + covers), `gfa-prompt-architect` (prompt architecture), `gfa-content-risk` (content risk check), `gfa-geo` (GEO rewriting). Install multiple with comma separation: `--skill gfa-geo,gfa-title`.
 
 ### Option 4: interactive install### Option 3: interactive install
 
@@ -122,7 +122,7 @@ The full skill catalog (grouped by category + trigger words + install methods) l
 | skill | One-liner | Trigger words |
 |---|---|---|
 | `_hub` | Routing core, intent dispatch | content acquisition / acquisition / grow account / create content |
-| `gfa-title` | Viral title methodology | titles / viral titles / Xiaohongshu·WeChat·Douyin titles / SEO·GEO |
+| `gfa-title` | Viral title + cover methodology | titles / viral titles / Xiaohongshu·WeChat·Douyin titles / SEO·GEO / covers |
 | `gfa-prompt-architect` | Six-element prompt architecture | write prompt / optimize prompt / prompt architect / system instruction / generator |
 | `gfa-content-risk` | Pre-publish content risk checker | check violation / pre-publish self-check / will it be throttled / clickbait |
 | `gfa-geo` | GEO rewriter (make AI engines cite you) | GEO optimization / cited by AI / raise AI citation / GEO-ify content |

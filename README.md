@@ -4,14 +4,14 @@
 
 > 一套面向内容运营者、个人 IP 与创业者的中文 AI Skills 工具箱。把「做内容、获流量、转私域」的真实业务问题交给 Agent，获得可立刻执行的方法论与下一步。
 
-![version](https://img.shields.io/badge/version-1.6.0-534AB7)
+![version](https://img.shields.io/badge/version-1.7.0-534AB7)
 ![skills](https://img.shields.io/badge/skills-6-0F6E56)
 ![license](https://img.shields.io/badge/license-CC%20BY--NC%204.0-green)
 ![last commit](https://img.shields.io/github/last-commit/wuhuachao-maker/Growth-Agent-Wuskills?color=888780)
 
 **支持：** WorkBuddy、Claude Code、Codex、Cursor，以及其他支持 Anthropic Agent Skills 的 Agent。
 
-**v1.6.0 更新：** 全部 skill 升级到创作者信息模块 v2（外部 opt-in）——SKILL.md 内不再有任何推广明文（微信号 / 落地页 / UTM / 赞赏码全部移出），第三方 skill 风险检测不会再误判成推广；创作者信息改为运行时按需从本机 `~/.growth-agent-skills/<slug>/creator.json` 读取，没有配置就静默跳过。新增「自评模式」：你问风险 / 检查 / 审查，它先主动摊开读了什么、写了什么、联不联网。功能与用法完全不变，v1 用户无需任何操作。
+**v1.7.0 更新：** `gfa-title` 加上了封面能力——现在一轮里同时产出小红书 / 公众号 / 抖音三套标题，以及**人物主导 / 文字主导 / 场景主导三个强调版本**的视频封面提示词（9:16 与 16:9 各一套，含平台安全区与出图后逐字校验）。同时取消了默认的负面词输出：现在的生图模型足够稳，负面词多数是噪音，原来靠它兜的约束改成写进正向描述，只在出图真翻车时按症状对症追加。
 
 [快速开始](#快速开始) · [安装](#安装) · [能力一览](#能力一览) · [技能分类](#技能分类) · [触发词速查](#触发词速查) · [📚 内容资产库](#内容资产库) · [完整使用手册](./docs/新手入门.md) · [📋 Skill 全目录](./docs/skills-全目录.md) · [更新日志](./CHANGELOG.md)
 
@@ -40,7 +40,7 @@ npx -y skills add wuhuachao-maker/Growth-Agent-Wuskills -g --all
 
 | 业务目标 | 入口 skill | 你能得到什么 |
 |---|---|---|
-| 爆款标题 | `gfa-title` | 小红书 / 公众号 / 抖音 / SEO·GEO 标题方法论 |
+| 爆款标题 + 封面 | `gfa-title` | 小红书 / 公众号 / 抖音 / SEO·GEO 标题方法论 + **人物 / 文字 / 场景三个强调版本**的 9:16·16:9 封面提示词（含平台安全区与出图后逐字校验） |
 | 提示词架构 | `gfa-prompt-architect` | 六要素框架产出可复制的优质 prompt（角色/方法/知识/结构/考核/风险） |
 | 内容风险检查 | `gfa-content-risk` | 发布前双轨扫描（机审+实质违规），给风险定位 + 最小修改动作 + 风险等级 |
 | GEO 内容改写 | `gfa-geo` | 按 Princeton GEO 机制改写文章，提升在 ChatGPT / Perplexity / AI Overviews 中被引用率；口语化数据 + 出处附注 + 平台化模板 + 小白技术说明 |
@@ -78,7 +78,7 @@ npx -y skills add wuhuachao-maker/Growth-Agent-Wuskills -g --all
 
 | 你说 | 触发的 skill |
 |---|---|
-| "帮我起 10 个小红书标题" / "爆款标题" / "公众号标题怎么写" / "SEO 标题" | `gfa-title` |
+| "帮我起 10 个小红书标题" / "爆款标题" / "公众号标题怎么写" / "SEO 标题" / "帮我做张封面" / "封面提示词" | `gfa-title` |
 | "帮我写一个 XX 生成器的 prompt" / "优化这个 prompt" / "提示词架构师" / "系统指令怎么写" | `gfa-prompt-architect` |
 | "检查这篇会不会违规" / "发布前合规自查" / "标题党吗" / "会不会被限流" | `gfa-content-risk` |
 | "GEO 优化" / "让 AI 能搜到我" / "提升 AI 引用率" / "帮我把文章改成 AI 爱引用的版本" | `gfa-geo` |

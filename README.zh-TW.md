@@ -4,14 +4,14 @@
 
 > 一套面向內容運營者、個人 IP 與創業者的中文 AI Skills 工具箱。把「做內容、獲流量、轉私域」的真實業務問題交給 Agent，獲得可立刻執行的方法論與下一步。
 
-![version](https://img.shields.io/badge/version-1.6.0-534AB7)
+![version](https://img.shields.io/badge/version-1.7.0-534AB7)
 ![skills](https://img.shields.io/badge/skills-6-0F6E56)
 ![license](https://img.shields.io/badge/license-CC%20BY--NC%204.0-green)
 ![last commit](https://img.shields.io/github/last-commit/wuhuachao-maker/Growth-Agent-Wuskills?color=888780)
 
 **支持：** WorkBuddy、Claude Code、Codex、Cursor，以及其他支持 Anthropic Agent Skills 的 Agent。
 
-**v1.6.0 更新：** 全部 skill 升級到創作者資訊模組 v2（外部 opt-in）——SKILL.md 內不再有任何推廣明文（微信號 / 落地頁 / UTM / 讚賞碼全部移出），第三方 skill 風險檢測不會再誤判成推廣；創作者資訊改為執行時按需從本機 `~/.growth-agent-skills/<slug>/creator.json` 讀取，沒有設定就靜默跳過。新增「自評模式」：你問風險 / 檢查 / 審查，它先主動攤開讀了什麼、寫了什麼、聯不聯網。功能與用法完全不變，v1 使用者無需任何操作。
+**v1.7.0 更新：** `gfa-title` 加上了封面能力——現在一輪裡同時產出小紅書 / 公眾號 / 抖音三套標題，以及**人物主導 / 文字主導 / 場景主導三個強調版本**的影片封面提示詞（9:16 與 16:9 各一套，含平台安全區與出圖後逐字校驗）。同時取消了預設的負面詞輸出：現在的生圖模型足夠穩，負面詞多數是噪音，原本靠它兜的約束改成寫進正向描述，只在出圖真翻車時按症狀對症追加。
 
 [快速開始](#快速開始) · [安裝](#安裝) · [能力一覽](#能力一覽) · [📋 Skill 全目錄](./docs/skills-全目录.md) · [完整使用手冊](./docs/新手入門.md) · [更新日誌](./CHANGELOG.md)
 
@@ -40,7 +40,7 @@ npx -y skills add wuhuachao-maker/Growth-Agent-Wuskills -g --all
 
 | 業務目標 | 入口 skill | 你能得到什麼 |
 |---|---|---|
-| 爆款標題 | `gfa-title` | 小紅書 / 公眾號 / 抖音 / SEO·GEO 標題方法論 |
+| 爆款標題 + 封面 | `gfa-title` | 小紅書 / 公眾號 / 抖音 / SEO·GEO 標題方法論 + **人物 / 文字 / 場景三個強調版本**的 9:16·16:9 封面提示詞（含平台安全區與出圖後逐字校驗） |
 | 提示詞架構 | `gfa-prompt-architect` | 六要素框架產出可複製的優質 prompt（角色/方法/知識/結構/考核/風險） |
 | 內容風險檢查 | `gfa-content-risk` | 發布前雙軌掃描（機審+實質違規），給風險定位 + 最小修改動作 + 風險等級 |
 | GEO 內容改寫 | `gfa-geo` | 按 Princeton GEO 機制改寫文章，提升在 ChatGPT / Perplexity / AI Overviews 中被引用率；口語化數據 + 出處附註 + 平台化模板 + 小白技術說明 |

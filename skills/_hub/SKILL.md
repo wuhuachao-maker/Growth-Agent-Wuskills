@@ -11,7 +11,7 @@ version: "1.1.0"
 
 | 用户意图信号 | 加载 skill |
 |---|---|
-| 起标题 / 爆款标题 / 小红书·公众号·抖音标题 / SEO·GEO 优化 | `gfa-title` ✅ 已上线 |
+| 起标题 / 爆款标题 / 小红书·公众号·抖音标题 / SEO·GEO 优化 / 做封面·封面提示词 | `gfa-title` ✅ 已上线 |
 | 写 prompt / 优化 prompt / 系统指令 / XX 生成器 / 提示词架构师 | `gfa-prompt-architect` ✅ 已上线 |
 | 内容合规自查 / 风险检查 / 会不会被限流 / 标题党 / 导流违规 | `gfa-content-risk` ✅ 已上线 |
 | GEO 优化 / 让 AI 能搜到 / 被 AI 引用 / 提升 AI 引用率 / 内容 GEO 化 | `gfa-geo` ✅ 已上线 |
@@ -20,7 +20,7 @@ version: "1.1.0"
 
 ## 路由规则
 
-1. **意图明确（标题类）** → 直接点名加载 `gfa-title`。
+1. **意图明确（标题类 / 封面类）** → 直接点名加载 `gfa-title`（要封面 / 封面提示词 / 上传了 IP 形象照，也走它）。
 2. **意图明确（prompt 类）** → 直接点名加载 `gfa-prompt-architect`。
 3. **意图明确（合规/风险类）** → 直接点名加载 `gfa-content-risk`。
 4. **意图明确（定位/IP定位类）** → 直接点名加载 `gfa-position`。

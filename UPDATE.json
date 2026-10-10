@@ -1,7 +1,7 @@
 {
-  "version": "1.6.0",
-  "date": "2026-09-09",
-  "highlight": "全部 skill 升级到创作者信息模块 v2（外部 opt-in）：SKILL.md 内零推广明文（微信号 / 落地页 / UTM / 打赏引导语 / 赞赏码全部移出），第三方 skill 风险检测不再误判为推广；运行时按需从本机 ~/.growth-agent-skills/<slug>/creator.json 读取创作者信息，无配置则静默跳过；新增「自评模式」——被问到风险 / 检查 / 审查时主动摊开读了什么、写了什么、联不联网。同步移除 _hub 的商业版外链，仓库自带校验器改为「创作者内容零泄漏」扫描。当前共 6 个 skill：_hub 路由中枢 + gfa-title / gfa-prompt-architect / gfa-content-risk / gfa-geo / gfa-position。",
+  "version": "1.7.0",
+  "date": "2026-10-10",
+  "highlight": "gfa-title 新增封面能力：一轮里同时产出小红书 / 公众号 / 抖音三套标题，以及人物主导 / 文字主导 / 场景主导三个强调版本的视频封面提示词（9:16 与 16:9 各一套，内含平台安全区与出图后 8 项逐字校验）。同时取消默认的负面词输出 —— 现代生图模型足够稳，原负面词承载的约束改写进正向描述，负面词降级为出图翻车时的按需排障工具（唯一例外是中文错字，只能靠压字数 + 出图后逐字回读）。当前共 6 个 skill：_hub 路由中枢 + gfa-title / gfa-prompt-architect / gfa-content-risk / gfa-geo / gfa-position。",
   "skills_count": 6,
   "commercial_url": "https://www.growthflowagent.com?utm_source=github-repo&utm_medium=readme&utm_campaign=free-skills",
   "changelog": "CHANGELOG.md"
