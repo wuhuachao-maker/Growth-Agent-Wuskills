@@ -4,12 +4,14 @@
 
 > A Chinese AI Skills toolbox for content operators, personal IP builders, and entrepreneurs. Hand real business problems like content creation, traffic acquisition, and private-domain conversion to your Agent, and get actionable methodology plus the next step.
 
-![version](https://img.shields.io/badge/version-1.7.0-534AB7)
-![skills](https://img.shields.io/badge/skills-6-0F6E56)
+![version](https://img.shields.io/badge/version-1.3.0-534AB7)
+![skills](https://img.shields.io/badge/skills-7-0F6E56)
 ![license](https://img.shields.io/badge/license-CC%20BY--NC%204.0-green)
 ![last commit](https://img.shields.io/github/last-commit/wuhuachao-maker/Growth-Agent-Wuskills?color=888780)
 
 **Supported on:** WorkBuddy, Claude Code, Codex, Cursor, and any other Agent that supports Anthropic Agent Skills.
+
+**v1.3.0 update (synced with the new skill version):** Added `gfa-gzh-format` (WeChat article formatter) — turn plain text into WeChat-ready inline-styled HTML; the AI reads the article first to mark headings / bold / quotes (drop-test / standalone-test, no random tagging), with one-click copy. Default crimson, 8 user-selectable themes, never auto-picked by the AI; a source-text snapshot gate rejects rendering if any character changes during markup.
 
 **v1.7.0 update:** `gfa-title` now also produces covers — in one pass you get viral titles for Xiaohongshu / WeChat Official Account / Douyin, plus cover prompts in **three emphasis versions (person-led / text-led / scene-led)**, each in 9:16 and 16:9 with platform safe zones and post-generation text checks. Negative prompts are no longer emitted by default: modern image models are stable enough, so the constraints they used to carry now live in the positive description, and negatives are downgraded to an on-demand troubleshooting tool for the rare bad generation.
 
@@ -31,8 +33,9 @@ After installation, just tell your Agent:
 - "Will this note get flagged / help me self-check compliance" → `gfa-content-risk`
 - "Rewrite this article so AI engines are more likely to cite it" → `gfa-geo`
 - "What is my positioning / run an IP positioning stress-test on me" → `gfa-position`
+- "Format this text for WeChat Official Account / one-click copy layout" → `gfa-gzh-format`
 
-> When your intent is vague, `_hub` will clarify the scenario first and then route you to the best skill. Currently live domain skills: `gfa-title` (titles), `gfa-prompt-architect` (prompt architecture), `gfa-content-risk` (content risk check), `gfa-geo` (GEO rewriting), `gfa-position` (IP positioning stress-test); other content-acquisition capabilities are being polished.
+> When your intent is vague, `_hub` will clarify the scenario first and then route you to the best skill. Currently live domain skills: `gfa-title` (titles), `gfa-prompt-architect` (prompt architecture), `gfa-content-risk` (content risk check), `gfa-geo` (GEO rewriting), `gfa-position` (IP positioning stress-test), `gfa-gzh-format` (WeChat article formatting); other content-acquisition capabilities are being polished.
 
 ---
 
@@ -45,6 +48,7 @@ After installation, just tell your Agent:
 | Content risk check | `gfa-content-risk` | Pre-publish dual-track scan (machine-check + substantive violation), risk location + minimal fix + risk level |
 | GEO rewriting | `gfa-geo` | Rewrite articles per the Princeton GEO mechanism to raise citation rates in ChatGPT / Perplexity / AI Overviews; conversational stats + source footnotes + platform templates + plain-language tech checklist |
 | IP positioning stress-test | `gfa-position` | Six-gate pressure test on personal/IP/account positioning — which gate fails, what answer you owe, and a narrowing direction; built on JTBD four forces + positioning theory |
+| WeChat article formatting | `gfa-gzh-format` | Plain text → WeChat-ready inline-styled HTML; AI reads the article to mark headings/bold/quotes, one-click copy, source text byte-for-byte unchanged; default crimson with 8 themes user-selectable |
 | Intent routing | `_hub` | Auto-dispatch when you are unsure which skill to use |
 
 > More capabilities (WeChat diagnosis / B2B hard-sell / content diagnosis / IP growth / topic / script / private-domain) are being polished one by one — stay tuned.
@@ -117,7 +121,7 @@ curl -sL https://raw.githubusercontent.com/wuhuachao-maker/Growth-Agent-Wuskills
 curl -sL https://raw.githubusercontent.com/wuhuachao-maker/Growth-Agent-Wuskills/main/bridge/install.sh | bash -s -- --target claude --skill gfa-geo
 ```
 
-> Available skill names: `_hub` (router), `gfa-title` (viral titles), `gfa-prompt-architect` (prompt architecture), `gfa-content-risk` (content risk check), `gfa-geo` (GEO rewriting), `gfa-position` (IP positioning stress-test). Install multiple with comma separation: `--skill gfa-geo,gfa-title`.
+> Available skill names: `_hub` (router), `gfa-title` (viral titles), `gfa-prompt-architect` (prompt architecture), `gfa-content-risk` (content risk check), `gfa-geo` (GEO rewriting), `gfa-position` (IP positioning stress-test), `gfa-gzh-format` (WeChat article formatting). Install multiple with comma separation: `--skill gfa-geo,gfa-title`.
 
 ### Update
 

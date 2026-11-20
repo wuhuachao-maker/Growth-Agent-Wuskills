@@ -1,8 +1,8 @@
 {
-  "version": "1.7.0",
-  "date": "2026-10-10",
-  "highlight": "gfa-title 新增封面能力：一轮里同时产出小红书 / 公众号 / 抖音三套标题，以及人物主导 / 文字主导 / 场景主导三个强调版本的视频封面提示词（9:16 与 16:9 各一套，内含平台安全区与出图后 8 项逐字校验）。同时取消默认的负面词输出 —— 现代生图模型足够稳，原负面词承载的约束改写进正向描述，负面词降级为出图翻车时的按需排障工具（唯一例外是中文错字，只能靠压字数 + 出图后逐字回读）。当前共 6 个 skill：_hub 路由中枢 + gfa-title / gfa-prompt-architect / gfa-content-risk / gfa-geo / gfa-position。",
-  "skills_count": 6,
+  "version": "1.3.0",
+  "date": "2026-11-20",
+  "highlight": "新增 gfa-gzh-format（公众号排版美化助手）：纯文本 → 公众号行内样式图文，AI 先理解文章再标二级标题 / 加粗 / 引用（删掉测试 / 独立测试，杜绝乱贴标签），一键复制且标注预览不进剪贴板；默认正红、8 套配色由用户选、AI 不自选色；原文快照闭环校验——打标记改字直接拒渲染（对抗测试已验证）；加粗用主题红字，标注清单放在正文区外并设为不可选中。当前共 7 个 skill：_hub 路由中枢 + gfa-title / gfa-prompt-architect / gfa-content-risk / gfa-geo / gfa-position / gfa-gzh-format。",
+  "skills_count": 7,
   "commercial_url": "https://www.growthflowagent.com?utm_source=github-repo&utm_medium=readme&utm_campaign=free-skills",
   "changelog": "CHANGELOG.md"
 }

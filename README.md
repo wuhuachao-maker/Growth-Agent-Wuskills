@@ -4,12 +4,14 @@
 
 > 一套面向内容运营者、个人 IP 与创业者的中文 AI Skills 工具箱。把「做内容、获流量、转私域」的真实业务问题交给 Agent，获得可立刻执行的方法论与下一步。
 
-![version](https://img.shields.io/badge/version-1.7.0-534AB7)
-![skills](https://img.shields.io/badge/skills-6-0F6E56)
+![version](https://img.shields.io/badge/version-1.3.0-534AB7)
+![skills](https://img.shields.io/badge/skills-7-0F6E56)
 ![license](https://img.shields.io/badge/license-CC%20BY--NC%204.0-green)
 ![last commit](https://img.shields.io/github/last-commit/wuhuachao-maker/Growth-Agent-Wuskills?color=888780)
 
 **支持：** WorkBuddy、Claude Code、Codex、Cursor，以及其他支持 Anthropic Agent Skills 的 Agent。
+
+**v1.3.0 更新（与新增 skill 版本同步）：** 新增 `gfa-gzh-format`（公众号排版美化助手）——纯文本排成公众号行内样式图文，AI 先读懂文章再标二级标题 / 加粗 / 引用（删掉测试 / 独立测试，杜绝乱贴标签），一键复制；默认正红、8 套配色由用户选、AI 不自选色；原文快照闭环校验，打标记改字直接拒渲染。
 
 **v1.7.0 更新：** `gfa-title` 加上了封面能力——现在一轮里同时产出小红书 / 公众号 / 抖音三套标题，以及**人物主导 / 文字主导 / 场景主导三个强调版本**的视频封面提示词（9:16 与 16:9 各一套，含平台安全区与出图后逐字校验）。同时取消了默认的负面词输出：现在的生图模型足够稳，负面词多数是噪音，原来靠它兜的约束改成写进正向描述，只在出图真翻车时按症状对症追加。
 
@@ -31,8 +33,9 @@ npx -y skills add wuhuachao-maker/Growth-Agent-Wuskills -g --all
 - "这篇笔记会不会被限流 / 帮我合规自查" → `gfa-content-risk`
 - "帮我把这篇文章改成更容易被 AI 引用的版本" → `gfa-geo`
 - "我的定位是什么 / 帮我做 IP 定位压力测试" → `gfa-position`
+- "帮我把这篇文章排成公众号格式 / 一键复制排版" → `gfa-gzh-format`
 
-> 意图模糊时，`_hub` 会先问清楚你的场景，再把你交给最合适的 skill。当前已上线的领域 skill 是 `gfa-title`（标题）、`gfa-prompt-architect`（提示词架构）、`gfa-content-risk`（内容风险检查）、`gfa-geo`（GEO 内容改写）、`gfa-position`（IP 定位压力测试），其余内容获客能力正在打磨中。
+> 意图模糊时，`_hub` 会先问清楚你的场景，再把你交给最合适的 skill。当前已上线的领域 skill 是 `gfa-title`（标题）、`gfa-prompt-architect`（提示词架构）、`gfa-content-risk`（内容风险检查）、`gfa-geo`（GEO 内容改写）、`gfa-position`（IP 定位压力测试）、`gfa-gzh-format`（公众号排版美化），其余内容获客能力正在打磨中。
 
 ---
 
@@ -45,6 +48,7 @@ npx -y skills add wuhuachao-maker/Growth-Agent-Wuskills -g --all
 | 内容风险检查 | `gfa-content-risk` | 发布前双轨扫描（机审+实质违规），给风险定位 + 最小修改动作 + 风险等级 |
 | GEO 内容改写 | `gfa-geo` | 按 Princeton GEO 机制改写文章，提升在 ChatGPT / Perplexity / AI Overviews 中被引用率；口语化数据 + 出处附注 + 平台化模板 + 小白技术说明 |
 | IP 定位压力测试 | `gfa-position` | 六道闸门拷问个人 / IP / 账号定位，给"哪道闸没过 + 欠什么答案 + 收窄方向"，不替你编定位；基于 JTBD 四力 + 定位理论 |
+| 公众号排版美化 | `gfa-gzh-format` | 纯文本 → 公众号行内样式图文，AI 理解文章后标小标题 / 加粗 / 引用，一键复制、原文逐字不改；默认正红，8 套配色可选 |
 | 意图路由 | `_hub` | 不确定用哪个 skill 时，自动分发到对应模块 |
 
 > 更多能力（公众号诊断 / B2B 硬广 / 内容诊断 / IP 增长 / 选题 / 口播脚本 / 私域转化）正在逐一打磨，敬请期待。
@@ -67,7 +71,7 @@ npx -y skills add wuhuachao-maker/Growth-Agent-Wuskills -g --all
 |---|---|---|
 | `content` | 内容获客类 | `gfa-title`、`gfa-content-risk`、`gfa-geo` |
 | `methodology` | 方法论 / 工具类 | `gfa-prompt-architect`、`gfa-position` |
-| `ops` | 通用工具类（校验 / 格式 / 分析） | （暂无） |
+| `ops` | 通用工具类（校验 / 格式 / 分析） | `gfa-gzh-format` |
 | `router` | 路由中枢 | `_hub` |
 
 > 新增 skill 的标准动作（建目录 + 三处注册）见 [docs/如何增删skill.md](./docs/如何增删skill.md)。
@@ -83,6 +87,7 @@ npx -y skills add wuhuachao-maker/Growth-Agent-Wuskills -g --all
 | "检查这篇会不会违规" / "发布前合规自查" / "标题党吗" / "会不会被限流" | `gfa-content-risk` |
 | "GEO 优化" / "让 AI 能搜到我" / "提升 AI 引用率" / "帮我把文章改成 AI 爱引用的版本" | `gfa-geo` |
 | "我的定位是什么" / "我该定位成什么" / "帮谁解决什么" / "凭什么找我" / "定位说不清" | `gfa-position` |
+| "公众号排版" / "把这篇文章排成公众号格式" / "一键复制排版" / "微信图文美化" | `gfa-gzh-format` |
 | "我想做内容获客" / "帮我看看账号怎么涨粉"（意图模糊） | `_hub` 路由分发 |
 
 ---
@@ -153,7 +158,7 @@ curl -sL https://raw.githubusercontent.com/wuhuachao-maker/Growth-Agent-Wuskills
 curl -sL https://raw.githubusercontent.com/wuhuachao-maker/Growth-Agent-Wuskills/main/bridge/install.sh | bash -s -- --target claude --skill gfa-geo
 ```
 
-> 可用 skill 名：`_hub`（路由中枢）、`gfa-title`（爆款标题）、`gfa-prompt-architect`（提示词架构）、`gfa-content-risk`（内容风险检查）、`gfa-geo`（GEO 内容改写）、`gfa-position`（IP 定位压力测试）。多个用逗号分隔：`--skill gfa-geo,gfa-title`。
+> 可用 skill 名：`_hub`（路由中枢）、`gfa-title`（爆款标题）、`gfa-prompt-architect`（提示词架构）、`gfa-content-risk`（内容风险检查）、`gfa-geo`（GEO 内容改写）、`gfa-position`（IP 定位压力测试）、`gfa-gzh-format`（公众号排版美化）。多个用逗号分隔：`--skill gfa-geo,gfa-title`。
 
 ### 更新
 
