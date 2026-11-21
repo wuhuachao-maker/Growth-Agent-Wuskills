@@ -1,8 +1,8 @@
 {
-  "version": "1.3.0",
+  "version": "1.4.0",
   "date": "2026-11-20",
-  "highlight": "新增 gfa-gzh-format（公众号排版美化助手）：纯文本 → 公众号行内样式图文，AI 先理解文章再标二级标题 / 加粗 / 引用（删掉测试 / 独立测试，杜绝乱贴标签），一键复制且标注预览不进剪贴板；默认正红、8 套配色由用户选、AI 不自选色；原文快照闭环校验——打标记改字直接拒渲染（对抗测试已验证）；加粗用主题红字，标注清单放在正文区外并设为不可选中。当前共 7 个 skill：_hub 路由中枢 + gfa-title / gfa-prompt-architect / gfa-content-risk / gfa-geo / gfa-position / gfa-gzh-format。",
-  "skills_count": 7,
+  "highlight": "新增 gfa-ip-story（个人 IP 故事挖掘与成文）：把真实资料变成不虚构的故事长文。资料优先自动抽字段并标注出处，先出主线三选一 + 人物内核三选一让用户拍板，确认后才写正文；逐句回指原文验真，指认不出来就标待核实；只出长文 / 简介，不产出口播稿。当前共 8 个 skill：_hub 路由中枢 + gfa-title / gfa-prompt-architect / gfa-content-risk / gfa-geo / gfa-position / gfa-gzh-format / gfa-ip-story。",
+  "skills_count": 8,
   "commercial_url": "https://www.growthflowagent.com?utm_source=github-repo&utm_medium=readme&utm_campaign=free-skills",
   "changelog": "CHANGELOG.md"
 }

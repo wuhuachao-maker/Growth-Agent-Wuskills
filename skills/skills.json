@@ -1,5 +1,5 @@
 {
-  "version": "1.3.0",
+  "version": "1.4.0",
   "updatedAt": "2026-11-20",
   "skills": [
     {
@@ -8,7 +8,7 @@
       "category": "router",
       "description": "内容获客 Agent 技能集合的路由中枢。当用户意图模糊或不确定该用哪个 skill 时触发。",
       "triggers": ["内容获客", "获客", "做内容", "引流", "方法论", "合规", "风险", "GEO", "定位"],
-      "routesTo": ["gfa-title", "gfa-prompt-architect", "gfa-content-risk", "gfa-geo", "gfa-position", "gfa-gzh-format"]
+      "routesTo": ["gfa-title", "gfa-prompt-architect", "gfa-content-risk", "gfa-geo", "gfa-position", "gfa-gzh-format", "gfa-ip-story"]
     },
     {
       "slug": "gfa-title",
@@ -63,6 +63,15 @@
       "audience": "需要把纯文本快速排成可直接粘贴公众号后台图文的创作者、运营人员与内容团队，尤其是要在手机上获得良好阅读节奏、又要求原文一字不改的场景。",
       "example": "请使用 gfa-gzh-format，把下面这篇文章排成公众号格式：先理解文章再标小标题 / 加粗 / 引用，用默认红色，我要一键复制。",
       "triggers": ["公众号排版", "排版成公众号", "微信图文美化", "纯文本排版", "文章排版", "一键复制排版", "弄成能发公众号的样子", "公众号格式", "推文排版", "图文排版"]
+    },
+    {
+      "slug": "gfa-ip-story",
+      "name": "gfa-ip-story",
+      "category": "content",
+      "description": "个人 IP 故事挖掘与成文：资料优先自动抽取字段并标注出处，两段式阶段锁先定主线与内核，再写不虚构的长文 / 简介，逐句回指验真。不产出口播脚本。",
+      "audience": "有真实经历与素材、想写成个人 IP 故事 / 人物介绍 / 公众号自述，但担心写成简历、散文或鸡汤的创业者、个人 IP 与内容创作者。",
+      "example": "请使用 gfa-ip-story，根据我提供的这几篇公开随笔，挖一个我的 IP 故事主线，先别急着写。",
+      "triggers": ["挖我的故事", "写个人故事", "IP故事", "我的经历怎么讲", "把这份资料写成故事", "个人简介", "人物介绍", "个人IP叙事"]
     }
   ]
 }

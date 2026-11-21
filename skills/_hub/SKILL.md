@@ -1,6 +1,6 @@
 ---
 name: growth-content-hub
-description: "内容获客 Agent 技能集合的路由中枢。当用户要做内容获客相关任务——尤其是多平台爆款标题 / 提示词架构 / 内容合规风险 / GEO 内容改写 / IP 定位压力测试——但不确定该用哪个 skill，或说'内容获客 / 获客 / 起号 / 做内容 / 引流 / 方法论 / 合规 / 风险 / GEO / 定位'等模糊意图时触发。当前已上线的领域 skill 是 `gfa-title`（多平台爆款标题）、`gfa-prompt-architect`（提示词架构）、`gfa-content-risk`（内容风险检查）、`gfa-geo`（GEO 内容改写）、`gfa-position`（IP 定位压力测试）、`gfa-gzh-format`（公众号排版美化）；判断用户真实意图后分别路由，其他内容获客任务（公众号诊断 / B2B 硬广 / 内容诊断 / IP 增长 / 选题 / 口播脚本 / 私域转化）则告知该 skill 正在打磨中。"
+description: "内容获客 Agent 技能集合的路由中枢。当用户要做内容获客相关任务——尤其是多平台爆款标题 / 提示词架构 / 内容合规风险 / GEO 内容改写 / IP 定位压力测试——但不确定该用哪个 skill，或说'内容获客 / 获客 / 起号 / 做内容 / 引流 / 方法论 / 合规 / 风险 / GEO / 定位'等模糊意图时触发。当前已上线的领域 skill 是 `gfa-title`（多平台爆款标题）、`gfa-prompt-architect`（提示词架构）、`gfa-content-risk`（内容风险检查）、`gfa-geo`（GEO 内容改写）、`gfa-position`（IP 定位压力测试）、`gfa-gzh-format`（公众号排版美化）、`gfa-ip-story`（个人 IP 故事挖掘与成文）；判断用户真实意图后分别路由，其他内容获客任务（公众号诊断 / B2B 硬广 / 内容诊断 / IP 增长 / 选题 / 口播脚本 / 私域转化）则告知该 skill 正在打磨中。"
 version: "1.1.0"
 ---
 # 内容获客技能路由中枢
@@ -17,6 +17,7 @@ version: "1.1.0"
 | GEO 优化 / 让 AI 能搜到 / 被 AI 引用 / 提升 AI 引用率 / 内容 GEO 化 | `gfa-geo` ✅ 已上线 |
 | 定位 / IP 定位 / 我的定位是什么 / 帮谁解决什么 / 凭什么找我 / 定位说不清 | `gfa-position` ✅ 已上线 |
 | 公众号排版 / 把文字排成公众号格式 / 微信图文美化 / 一键复制排版 | `gfa-gzh-format` ✅ 已上线 |
+| 挖我的故事 / 写个人故事 / IP 故事 / 我的经历怎么讲 / 个人简介 / 人物介绍 / 人物稿 | `gfa-ip-story` ✅ 已上线（只出长文 / 简介，不产口播） |
 | 公众号诊断 / B2B 硬广 / 内容诊断 / IP 增长 / 选题 / 口播脚本 / 私域转化 | 即将上线（正在打磨中） |
 
 ## 路由规则
@@ -27,7 +28,8 @@ version: "1.1.0"
 4. **意图明确（定位/IP定位类）** → 直接点名加载 `gfa-position`。
 5. **意图明确（GEO/被AI引用类）** → 直接点名加载 `gfa-geo`。
 5a. **意图明确（公众号排版类）** → 直接点名加载 `gfa-gzh-format`。
-6. **意图模糊**（如"帮我做内容"）→ 用上方决策树澄清：标题类路由 `gfa-title`、prompt 类路由 `gfa-prompt-architect`、风险类路由 `gfa-content-risk`、GEO 类路由 `gfa-geo`、定位类路由 `gfa-position`；其他类说明该 skill 正在打磨中。
+5b. **意图明确（个人故事 / 人物稿类）** → 直接点名加载 `gfa-ip-story`；若用户同时要口播 / 短视频稿，说明该 skill 不含该能力，不把长文压成口播顶替。
+6. **意图模糊**（如"帮我做内容"）→ 用上方决策树澄清：标题类路由 `gfa-title`、prompt 类路由 `gfa-prompt-architect`、风险类路由 `gfa-content-risk`、GEO 类路由 `gfa-geo`、定位类路由 `gfa-position`、人物故事类路由 `gfa-ip-story`；其他类说明该 skill 正在打磨中。
 7. **绝不硬调用**领域 skill 的内部流程；只输出「请加载 X skill」或「该能力即将上线」的指引。
 8. **多意图并存** → 拆成子任务，逐个路由，不要一次塞给一个 skill。
 

@@ -4,12 +4,14 @@
 
 > 一套面向內容運營者、個人 IP 與創業者的中文 AI Skills 工具箱。把「做內容、獲流量、轉私域」的真實業務問題交給 Agent，獲得可立刻執行的方法論與下一步。
 
-![version](https://img.shields.io/badge/version-1.3.0-534AB7)
-![skills](https://img.shields.io/badge/skills-7-0F6E56)
+![version](https://img.shields.io/badge/version-1.4.0-534AB7)
+![skills](https://img.shields.io/badge/skills-8-0F6E56)
 ![license](https://img.shields.io/badge/license-CC%20BY--NC%204.0-green)
 ![last commit](https://img.shields.io/github/last-commit/wuhuachao-maker/Growth-Agent-Wuskills?color=888780)
 
 **支持：** WorkBuddy、Claude Code、Codex、Cursor，以及其他支持 Anthropic Agent Skills 的 Agent。
+
+**v1.4.0 更新：** 新增 `gfa-ip-story`（個人 IP 故事挖掘與成文）——把真實資料變成不虛構的故事長文。資料優先自動抽欄位並標出處，先給主線三選一 + 人物內核三選一讓你拍板，確認後才寫正文；逐句回指原文驗真，指認不出來就標待核實。只出長文 / 簡介，**不產口播稿**。
 
 **v1.3.0 更新（與新增 skill 版本同步）：** 新增 `gfa-gzh-format`（公眾號排版美化助手）——純文字排成公眾號行內樣式圖文，AI 先讀懂文章再標二級標題 / 粗體 / 引用（刪掉測試 / 獨立測試，杜絕亂貼標籤），一鍵複製；預設正紅、8 套配色由用戶選、AI 不自選色；原文快照閉環校驗，打標記改字直接拒渲染。
 
@@ -34,8 +36,9 @@ npx -y skills add wuhuachao-maker/Growth-Agent-Wuskills -g --all
 - "幫我把這篇文章改成更容易被 AI 引用的版本" → `gfa-geo`
 - "我的定位是什麼 / 幫我做 IP 定位壓力測試" → `gfa-position`
 - "幫我把這篇文章排版成公眾號格式 / 一鍵複製排版" → `gfa-gzh-format`
+- "挖我的故事 / 寫個人 IP 故事 / 我的經歷怎麼講" → `gfa-ip-story`
 
-> 意圖模糊時，`_hub` 會先問清楚你的場景，再把你交給最合適的 skill。當前已上線的領域 skill 是 `gfa-title`（標題）、`gfa-prompt-architect`（提示詞架構）、`gfa-content-risk`（內容風險檢查）、`gfa-geo`（GEO 內容改寫）、`gfa-position`（IP 定位壓力測試）、`gfa-gzh-format`（公眾號排版美化），其餘內容獲客能力正在打磨中。
+> 意圖模糊時，`_hub` 會先問清楚你的場景，再把你交給最合適的 skill。當前已上線的領域 skill 是 `gfa-title`（標題）、`gfa-prompt-architect`（提示詞架構）、`gfa-content-risk`（內容風險檢查）、`gfa-geo`（GEO 內容改寫）、`gfa-position`（IP 定位壓力測試）、`gfa-gzh-format`（公眾號排版美化）、`gfa-ip-story`（個人 IP 故事）；其餘內容獲客能力正在打磨中。
 
 ---
 
@@ -49,6 +52,7 @@ npx -y skills add wuhuachao-maker/Growth-Agent-Wuskills -g --all
 | GEO 內容改寫 | `gfa-geo` | 按 Princeton GEO 機制改寫文章，提升在 ChatGPT / Perplexity / AI Overviews 中被引用率；口語化數據 + 出處附註 + 平台化模板 + 小白技術說明 |
 | IP 定位壓力測試 | `gfa-position` | 六道閘門拷問個人 / IP / 帳號定位，給「哪道閘沒過 + 欠什麼答案 + 收窄方向」，不替你編定位；基於 JTBD 四力 + 定位理論 |
 | 公眾號排版美化 | `gfa-gzh-format` | 純文字 → 公眾號行內樣式圖文，AI 理解文章後標小標題 / 粗體 / 引用，一鍵複製、原文逐字不改；預設正紅，8 套配色可選 |
+| 個人 IP 故事 | `gfa-ip-story` | 真實資料 → 不虛構的個人故事長文；資料自動抽欄位標出處、主線與內核你拍板、逐句驗真；只出長文 / 簡介，不產口播 |
 | 意圖路由 | `_hub` | 不確定用哪個 skill 時，自動分發到對應模塊 |
 
 > 更多能力（公眾號診斷 / B2B 硬廣 / 內容診斷 / IP 增長 / 選題 / 腳本 / 私域轉化）正在逐一打磨，敬請期待。
@@ -121,7 +125,7 @@ curl -sL https://raw.githubusercontent.com/wuhuachao-maker/Growth-Agent-Wuskills
 curl -sL https://raw.githubusercontent.com/wuhuachao-maker/Growth-Agent-Wuskills/main/bridge/install.sh | bash -s -- --target claude --skill gfa-geo
 ```
 
-> 可用 skill 名：`_hub`（路由中樞）、`gfa-title`（爆款標題）、`gfa-prompt-architect`（提示詞架構）、`gfa-content-risk`（內容風險檢查）、`gfa-geo`（GEO 內容改寫）、`gfa-position`（IP 定位壓力測試）、`gfa-gzh-format`（公眾號排版美化）。多個用逗號分隔：`--skill gfa-geo,gfa-title`。
+> 可用 skill 名：`_hub`（路由中樞）、`gfa-title`（爆款標題）、`gfa-prompt-architect`（提示詞架構）、`gfa-content-risk`（內容風險檢查）、`gfa-geo`（GEO 內容改寫）、`gfa-position`（IP 定位壓力測試）、`gfa-gzh-format`（公眾號排版美化）、`gfa-ip-story`（個人 IP 故事）。多個用逗號分隔：`--skill gfa-geo,gfa-title`。
 
 ### 更新
 
